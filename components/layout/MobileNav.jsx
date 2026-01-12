@@ -1,33 +1,40 @@
-import { useState } from 'react';
-
+import Link from 'next/link';
+import { useEffect } from 'react';
+import Image from 'next/image';
 const MobileNav = () => {
-  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    // Ensure mobile nav receives the main menu markup if script didn't run yet
+    try {
+      const mobileContainer = document.querySelector('.mobile-nav__container');
+      const mainMenu = document.querySelector('.main-menu__list');
+      if (mobileContainer && mainMenu && !mobileContainer.querySelector('.main-menu__list')) {
+        mobileContainer.innerHTML = mainMenu.outerHTML;
+      }
+    } catch (e) {
+      // ignore in SSR or if DOM not available
+    }
+  }, []);
 
   return (
     <>
-      <div 
-        className={`mobile-nav__wrapper ${isOpen ? 'expanded' : ''}`}
-      >
-        <div 
-          className="mobile-nav__overlay mobile-nav__toggler"
-          onClick={() => setIsOpen(false)}
-        ></div>
+      <div className="mobile-nav__wrapper">
+        <div className="mobile-nav__overlay mobile-nav__toggler"></div>
         <div className="mobile-nav__content">
-          <span 
-            className="mobile-nav__close mobile-nav__toggler"
-            onClick={() => setIsOpen(false)}
-          >
+          <span className="mobile-nav__close mobile-nav__toggler">
             <i className="fa fa-times"></i>
           </span>
 
           <div className="logo-box">
-            <a href="/" aria-label="logo image">
-              <img 
+            <Link href="/" aria-label="logo image">
+              <Image
                 src="/assets/images/resources/logo-2.png" 
-                width="150"
-                alt="" 
+                width={150}
+                height={150}
+                alt="logo-2"
+                
               />
-            </a>
+            </Link>
           </div>
           
           <div className="mobile-nav__container"></div>
