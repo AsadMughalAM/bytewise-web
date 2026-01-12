@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-css-tags */
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 // Public assets should not be imported directly. Use <link> tags to load
 // files from the `public/` folder at runtime (served from '/').
@@ -70,6 +71,38 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+
+        {/* Core libs (load before interactive scripts) */}
+        <Script src="/assets/js/jquery-latest.js" strategy="beforeInteractive" />
+        <Script src="/assets/js/jquery-ui.js" strategy="beforeInteractive" />
+        <Script src="/assets/js/bootstrap.bundle.min.js" strategy="beforeInteractive" />
+
+        {/* GSAP + plugins (required by `script.js`) */}
+        <Script src="/assets/js/gsap/gsap.js" strategy="beforeInteractive" />
+        <Script src="/assets/js/gsap/ScrollTrigger.js" strategy="beforeInteractive" />
+        <Script src="/assets/js/gsap/SplitText.js" strategy="beforeInteractive" />
+
+        {/* Vendor plugins - ensure jQuery is available first */}
+        <Script src="/assets/js/jquery.appear.min.js" strategy="beforeInteractive" />
+        <Script src="/assets/js/jquery.validate.min.js" strategy="beforeInteractive" />
+        <Script src="/assets/js/jquery.magnific-popup.min.js" strategy="beforeInteractive" />
+        {/* AOS (Animate On Scroll) - required by `script.js` */}
+        <Script src="/assets/js/aos.js" strategy="beforeInteractive" />
+        <Script src="/assets/js/isotope.js" strategy="beforeInteractive" />
+        <Script src="/assets/js/owl.carousel.min.js" strategy="beforeInteractive" />
+        <Script src="/assets/js/jquery.nice-select.min.js" strategy="beforeInteractive" />
+        <Script src="/assets/js/odometer.min.js" strategy="beforeInteractive" />
+        <Script src="/assets/js/marquee.min.js" strategy="beforeInteractive" />
+        <Script src="/assets/js/swiper.min.js" strategy="beforeInteractive" />
+        <Script src="/assets/js/twentytwenty.js" strategy="beforeInteractive" />
+        <Script src="/assets/js/wow.js" strategy="beforeInteractive" />
+
+        {/* Particles lib - required by `app.js` */}
+        <Script src="/assets/js/particles.js" strategy="beforeInteractive" />
+
+        {/* Project scripts */}
+        <Script src="/assets/js/script.js" strategy="afterInteractive" />
+        <Script src="/assets/js/app.js" strategy="afterInteractive" />
       </body>
     </html>
   );
