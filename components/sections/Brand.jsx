@@ -1,7 +1,3 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper/modules';
-import 'swiper/css';
-
 const Brand = () => {
   const brands = [
     '/assets/images/brand/brand-1-1.png',
@@ -42,31 +38,17 @@ const Brand = () => {
               </div>
             </div>
             <div className="brand-two__right">
-              <Swiper
-                modules={[Autoplay]}
-                loop={true}
-                autoplay={{ delay: 3000 }}
-                spaceBetween={30}
-                breakpoints={{
-                  0: { slidesPerView: 2 },
-                  768: { slidesPerView: 3 },
-                  992: { slidesPerView: 4 },
-                  1200: { slidesPerView: 5 },
-                }}
-                className="brand-two__carousel owl-theme owl-carousel"
-              >
+              <div className="brand-two__carousel owl-theme owl-carousel">
                 {brands.map((brand, index) => (
-                  <SwiperSlide key={index}>
-                    <div className="item">
-                      <div className="brand-two__single">
-                        <div className="brand-two__img">
-                          <img src={brand} alt="" />
-                        </div>
+                  <div className="item" key={index}>
+                    <div className="brand-two__single">
+                      <div className="brand-two__img">
+                        <img src={brand} alt="" />
                       </div>
                     </div>
-                  </SwiperSlide>
+                  </div>
                 ))}
-              </Swiper>
+              </div>
             </div>
           </div>
         </div>
