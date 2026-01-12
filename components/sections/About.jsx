@@ -84,8 +84,8 @@ const About = () => {
                 <div className="section-title__tagline-box">
                   <span className="section-title__tagline">About Us</span>
                 </div>
-                <h2 className="section-title__title title-animation">
-                  Your Business Growth with Our Cutting-Edge <span>IT Solutions</span>
+                <h2 className="section-title__title title-animation fs-4">
+                  Your Business Growth with Our Cutting-Edge <br /> <span>IT Solutions</span>
                 </h2>
               </div>
               <p className="about-three__text">
