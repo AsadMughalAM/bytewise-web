@@ -64,7 +64,7 @@ const Services = () => {
             992: { slidesPerView: 3 },
             1200: { slidesPerView: 4 },
           }}
-          className="services-three__carousel owl-theme owl-carousel"
+          
         >
           {services.map((service, index) => (
             <SwiperSlide key={index}>

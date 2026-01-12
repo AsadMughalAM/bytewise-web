@@ -45,7 +45,7 @@ function App() {
       <MobileNav />
       <Navbar />
       <Banner />
-      {/* <About />
+      <About />
       <SlidingText />
       <Services />
       <Counter />
@@ -57,7 +57,7 @@ function App() {
       <Brand />
       <Team />
       <Blog />
-      <Footer /> */}
+      <Footer />
     </div>
   );
 }
