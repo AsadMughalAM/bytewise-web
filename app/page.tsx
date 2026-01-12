@@ -1,10 +1,5 @@
 'use client'
 import { useEffect } from 'react';
-
-import Preloader from '../components/layout/Preloader';
-import MobileNav from '../components/layout/MobileNav';
-import Navbar from '../components/layout/Navbar';
-import Footer from '../components/layout/Footer';
 import Banner from '../components/sections/Banner';
 import About from '../components/sections/About';
 import SlidingText from '../components/sections/SlidingText';
@@ -41,9 +36,7 @@ function App() {
 
   return (
     <div className="page-wrapper">
-      <Preloader />
-      <MobileNav />
-      <Navbar />
+      
       <Banner />
       <About />
       <SlidingText />
@@ -57,7 +50,6 @@ function App() {
       <Brand />
       <Team />
       <Blog />
-      <Footer />
     </div>
   );
 }

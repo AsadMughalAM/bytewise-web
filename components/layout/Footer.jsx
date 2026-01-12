@@ -1,3 +1,5 @@
+"use client";
+
 const Footer = () => {
   const handleNewsletterSubmit = (e) => {
     e.preventDefault();
