@@ -11,9 +11,10 @@ particlesJS.load('particles-js', 'particles.json', function() {
 
 /* Otherwise just put the config content (json): */
 
-particlesJS('particles-js',
+if (document.getElementById('particles-js')) {
+  particlesJS('particles-js',
 
-  {
+    {
     "particles": {
       "number": {
         "value": 80,
@@ -21,10 +22,10 @@ particlesJS('particles-js',
           "enable": true,
           "value_area": 800
         }
-      },
-      "color": {
-        "value": "#ffffff"
-      },
+        }
+
+      );
+    }
       "shape": {
         "type": "circle",
         "stroke": {
@@ -133,9 +134,10 @@ particlesJS('particles-js',
 );
 
 
-particlesJS('particles-js-two',
+if (document.getElementById('particles-js-two')) {
+  particlesJS('particles-js-two',
 
-  {
+    {
     "particles": {
       "number": {
         "value": 80,
@@ -250,6 +252,7 @@ particlesJS('particles-js-two',
       "background_repeat": "no-repeat",
       "background_size": "cover"
     }
-  }
+    }
 
-);
+  );
+}
