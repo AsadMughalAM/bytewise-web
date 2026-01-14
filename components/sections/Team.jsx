@@ -39,7 +39,7 @@ const Team = () => {
             992: { slidesPerView: 3 },
             1200: { slidesPerView: 4 },
           }}
-          className="team-two__carousel owl-theme owl-carousel"
+          // className="team-two__carousel owl-theme owl-carousel"
         >
           {teamMembers.map((member, index) => (
             <SwiperSlide key={index}>

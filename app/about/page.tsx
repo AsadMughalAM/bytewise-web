@@ -1,14 +1,23 @@
 "use client";
-import React from "react";
-import AboutSection from "@/components/sections/About";
-import Services from "@/components/sections/Services";
+import React, { useEffect } from "react";
+import AboutOne from "@/components/sections/AboutOne";
+import ServicesOne from "@/components/sections/ServicesOne";
 import SlidingText from "@/components/sections/SlidingText";
 import Team from "@/components/sections/Team";
-import Counter from "@/components/sections/Counter";
-import Testimonial from "@/components/sections/Testimonial";
-import Blog from "@/components/sections/Blog";
+import CounterTwo from "@/components/sections/CounterTwo";
+import TestimonialTwo from "@/components/sections/TestimonialTwo";
+import BlogOne from "@/components/sections/BlogOne";
 
 const About = () => {
+  useEffect(() => {
+    // Ensure body class is set if needed, though layout usually handles common classes
+    // about.html has <body class="custom-cursor">
+    document.body.classList.add("custom-cursor");
+    return () => {
+      document.body.classList.remove("custom-cursor");
+    };
+  }, []);
+
   return (
     <>
       <section className="page-header">
@@ -36,14 +45,14 @@ const About = () => {
           </div>
         </div>
       </section>
-
-      <AboutSection />
-      <Services />
+      <AboutOne />
+      <ServicesOne />
       <SlidingText />
       <Team />
-      <Counter />
-      <Testimonial />
-      <Blog />
+      <CounterTwo />
+      <TestimonialTwo />
+      <BlogOne />
+  
     </>
   );
 };

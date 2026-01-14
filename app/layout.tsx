@@ -68,6 +68,7 @@ export default function RootLayout({
         <link rel="stylesheet" href="/assets/css/module-css/newsletter.css" />
         <link rel="stylesheet" href="/assets/css/module-css/video.css" />
         <link rel="stylesheet" href="/assets/css/module-css/feature.css" />
+        <link rel="stylesheet" href="/assets/css/module-css/page-header.css" />
         <link rel="stylesheet" href="/assets/css/style.css" />
         <link rel="stylesheet" href="/assets/css/responsive.css" />
       </head>

@@ -1,4 +1,18 @@
 @import "tailwindcss";
 
+body {
+    overflow-x: hidden;
+}
 
+.stricky-header.stricked-menu {
+    background-color: #fff;
+    box-shadow: 0px 10px 60px 0px rgba(0, 0, 0, 0.05);
+}
 
+.owl-carousel .owl-stage-outer {
+    overflow: hidden;
+}
+
+.sliding-text-one {
+    overflow: hidden;
+}
