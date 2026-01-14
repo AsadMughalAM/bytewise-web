@@ -60,10 +60,10 @@ const Navbar = () => {
               </ul>
               <ul className="list-unstyled main-menu-three__top-menu">
                 <li>
-                  <a href="#about">Help</a>
+                  <a href="/about">Help</a>
                 </li>
                 <li>
-                  <a href="#contact">Support</a>
+                  <a href="/contact">Support</a>
                 </li>
                 <li>
                   <a href="#faq">Faqs</a>
@@ -90,10 +90,10 @@ const Navbar = () => {
                   </a>
                   <ul className="main-menu__list">
                     <li>
-                      <a href="#">Home</a>
+                      <a href="/">Home</a>
                     </li>
                     <li>
-                      <a href="#about">About</a>
+                      <a href="/about">About</a>
                     </li>
                     <li
                       className={`dropdown ${
@@ -102,45 +102,45 @@ const Navbar = () => {
                       onMouseEnter={() => setActiveDropdown("services")}
                       onMouseLeave={() => setActiveDropdown(null)}
                     >
-                      <a href="#services">services</a>
+                      <a href="/services">services</a>
                       <ul className="shadow-box">
                         <li>
-                          <a href="#services">Services</a>
+                          <a href="/services">Services</a>
                         </li>
                         <li>
-                          <a href="#services">UI/UX Design</a>
+                          <a href="/services">UI/UX Design</a>
                         </li>
                         <li>
-                          <a href="#services">Web Development</a>
+                          <a href="/services">Web Development</a>
                         </li>
                         <li>
-                          <a href="#services">Digital Marketing</a>
+                          <a href="/services">Digital Marketing</a>
                         </li>
                         <li>
-                          <a href="#services">Business Analysis</a>
+                          <a href="/services">Business Analysis</a>
                         </li>
                         <li>
-                          <a href="#services">Software Development</a>
+                          <a href="/services">Software Development</a>
                         </li>
                         <li>
-                          <a href="#services">Product Design</a>
+                          <a href="/services">Product Design</a>
                         </li>
                       </ul>
                     </li>
 
                     <li>
-                      <a href="#blog">Blog</a>
+                      <a href="/blog">Blog</a>
                     </li>
 
                     <li>
-                      <a href="#contact">Contact</a>
+                      <a href="/contact">Contact</a>
                     </li>
                   </ul>
                 </div>
 
                 <div className="main-menu-three__right">
                   <div className="main-menu-three__btn-box">
-                    <a href="#contact" className="thm-btn">
+                    <a href="/contact" className="thm-btn">
                       Get in Touch
                       <span className="icon-right-arrow"></span>
                     </a>
