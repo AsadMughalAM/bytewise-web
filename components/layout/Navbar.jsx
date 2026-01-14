@@ -102,10 +102,10 @@ const Navbar = () => {
                       onMouseEnter={() => setActiveDropdown("services")}
                       onMouseLeave={() => setActiveDropdown(null)}
                     >
-                      <a href="/services">services</a>
+                      <a href="/service">services</a>
                       <ul className="shadow-box">
                         <li>
-                          <a href="/services">Services</a>
+                          <a href="/service">Services</a>
                         </li>
                         <li>
                           <a href="/services">UI/UX Design</a>
