@@ -1,12 +1,13 @@
 import React from "react";
 import { servicesData } from "@/components/sections/ServicePage_Services";
+import { notFound } from "next/navigation";
 
 const page = async ({ params }) => {
   const { slug } = await params;
   const serviceData = servicesData.find((service) => service.slug === slug);
 
   if (!serviceData) {
-    return <div>Service not found</div>;
+      notFound();
   }
 
   return (
