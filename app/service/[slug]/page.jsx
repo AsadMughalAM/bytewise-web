@@ -91,7 +91,7 @@ const page = async ({ params }) => {
               <div className="service-details__left">
                 <div className="service-details__img">
                   <img
-                    src="assets/images/services/service-details-img-5.jpg"
+                    src="/assets/images/services/service-details-img-5.jpg"
                     alt=""
                   />
                 </div>
@@ -157,7 +157,7 @@ const page = async ({ params }) => {
                       <div className="service-details__img-box-single">
                         <div className="service-details__img-box-img">
                           <img
-                            src="assets/images/services/service-details-img-box-img-1.jpg"
+                            src="/assets/images/services/service-details-img-box-img-1.jpg"
                             alt=""
                           />
                         </div>
@@ -183,7 +183,7 @@ const page = async ({ params }) => {
                       <div className="service-details__img-box-single">
                         <div className="service-details__img-box-img">
                           <img
-                            src="assets/images/services/service-details-img-box-img-2.jpg"
+                            src="/assets/images/services/service-details-img-box-img-2.jpg"
                             alt=""
                           />
                         </div>

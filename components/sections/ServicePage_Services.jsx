@@ -3,7 +3,7 @@ import React from "react";
 const ServicePage_Services = () => {
   const servicesData = [
     {
-      img: "assets/images/services/services-2-1.jpg",
+      img: "/assets/images/services/services-2-1.jpg",
       icon: "icon-ux-design",
       title: "UI/UX Design",
       slug: "ui-ux-design",
@@ -12,7 +12,7 @@ const ServicePage_Services = () => {
         "Comprehensive IT management, including network monitoring and data backup.",
     },
     {
-      img: "assets/images/services/services-2-2.jpg",
+      img: "/assets/images/services/services-2-2.jpg",
       icon: "icon-software-development",
       title: "APP Development",
       slug: "app-development",
@@ -21,7 +21,7 @@ const ServicePage_Services = () => {
         "Custom mobile and web applications built for performance and scalability.",
     },
     {
-      img: "assets/images/services/services-2-3.jpg",
+      img: "/assets/images/services/services-2-3.jpg",
       icon: "icon-product-design",
       title: "Product Design",
       slug: "product-design",
@@ -30,7 +30,7 @@ const ServicePage_Services = () => {
         "User-centered product designs that turn ideas into engaging experiences.",
     },
     {
-      img: "assets/images/services/services-2-4.jpg",
+      img: "/assets/images/services/services-2-4.jpg",
       icon: "icon-code",
       title: "Website Design",
       slug: "website-design",
@@ -39,7 +39,7 @@ const ServicePage_Services = () => {
         "Modern, responsive websites tailored to your brand and business goals.",
     },
     {
-      img: "assets/images/services/services-2-5.jpg",
+      img: "/assets/images/services/services-2-5.jpg",
       icon: "icon-promotion-1",
       title: "Business Analysis",
       slug: "business-analysis",
@@ -48,7 +48,7 @@ const ServicePage_Services = () => {
         "Strategic analysis to optimize processes, performance, and growth.",
     },
     {
-      img: "assets/images/services/services-2-6.jpg",
+      img: "/assets/images/services/services-2-6.jpg",
       icon: "icon-social-media-marketing",
       title: "Web Development",
       slug: "web-development",
