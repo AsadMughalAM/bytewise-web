@@ -1,7 +1,5 @@
 import React from "react";
-
-const ServicePage_Services = () => {
-  const servicesData = [
+ export const  servicesData = [
     {
       img: "/assets/images/services/services-2-1.jpg",
       icon: "icon-ux-design",
@@ -57,6 +55,8 @@ const ServicePage_Services = () => {
         "Scalable web solutions using modern technologies and best practices.",
     },
   ];
+const ServicePage_Services = () => {
+ 
 
   return (
     <>
