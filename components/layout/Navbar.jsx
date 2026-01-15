@@ -1,152 +1,121 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
+
+// menuData.js
+export const menuItems = [
+  { title: "Home", href: "/" },
+  { title: "About", href: "/about" },
+  { title: "Portfolio", href: "/portfolio" },
+  {
+    title: "Services",
+    href: "/service",
+    dropdown: [
+      { title: "Services", href: "/service" },
+      { title: "UI/UX Design", href: "/services" },
+      { title: "Web Development", href: "/services" },
+      { title: "Digital Marketing", href: "/services" },
+      { title: "Business Analysis", href: "/services" },
+      { title: "Software Development", href: "/services" },
+      { title: "Product Design", href: "/services" },
+    ],
+  },
+  { title: "Blog", href: "/blog" },
+  { title: "Contact", href: "/contact" },
+];
 
 const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
 
-  const toggleDropdown = (menu) => {
-    setActiveDropdown(activeDropdown === menu ? null : menu);
-  };
-
   return (
     <>
       <header className="main-header-three">
+        {/* Top bar */}
         <div className="main-menu-three__top">
           <div className="container">
             <div className="main-menu-three__top-inner">
               <div className="main-menu-three__top-social">
-                <a href="#">
-                  <span className="icon-facebook-app-symbol"></span>
-                </a>
-                <a href="#">
-                  <span className="icon-twitter-1"></span>
-                </a>
-                <a href="#">
-                  <span className="icon-linkedin"></span>
-                </a>
-                <a href="#">
-                  <span className="icon-pinterest"></span>
-                </a>
+                <Link href="#"><span className="icon-facebook-app-symbol"></span></Link>
+                <Link href="#"><span className="icon-twitter-1"></span></Link>
+                <Link href="#"><span className="icon-linkedin"></span></Link>
+                <Link href="#"><span className="icon-pinterest"></span></Link>
               </div>
+
               <ul className="list-unstyled main-menu-three__contact-list">
                 <li>
-                  <div className="icon">
-                    <i className="icon-pin"></i>
-                  </div>
-                  <div className="text">
-                    <p>1629 N. Dixie Avenue, Kentucky, 42701</p>
-                  </div>
+                  <div className="icon"><i className="icon-pin"></i></div>
+                  <div className="text"><p>1629 N. Dixie Avenue, Kentucky, 42701</p></div>
                 </li>
                 <li>
-                  <div className="icon">
-                    <i className="icon-mail"></i>
-                  </div>
+                  <div className="icon"><i className="icon-mail"></i></div>
                   <div className="text">
                     <p>
-                      <a href="mailto:example@domain.com">example@domain.com</a>
+                      <Link href="mailto:example@domain.com">example@domain.com</Link>
                     </p>
                   </div>
                 </li>
                 <li>
-                  <div className="icon">
-                    <i className="icon-phone-call"></i>
-                  </div>
+                  <div className="icon"><i className="icon-phone-call"></i></div>
                   <div className="text">
                     <p>
-                      <a href="tel:1212345678900">+12 (123) 456 78900</a>
+                      <Link href="tel:1212345678900">+12 (123) 456 78900</Link>
                     </p>
                   </div>
                 </li>
               </ul>
+
               <ul className="list-unstyled main-menu-three__top-menu">
-                <li>
-                  <a href="/about">Help</a>
-                </li>
-                <li>
-                  <a href="/contact">Support</a>
-                </li>
-                <li>
-                  <a href="#faq">Faqs</a>
-                </li>
+                <li><Link href="/about">Help</Link></li>
+                <li><Link href="/contact">Support</Link></li>
+                <li><Link href="/faq">Faqs</Link></li>
               </ul>
             </div>
           </div>
         </div>
+
+        {/* Main navigation */}
         <nav className="main-menu main-menu-three">
           <div className="main-menu-three__wrapper">
             <div className="container">
               <div className="main-menu-three__wrapper-inner">
                 <div className="main-menu-three__left">
                   <div className="main-menu-three__logo">
-                    <a href="/">
-                      <img src="/assets/images/resources/logo-1.png" alt="" />
-                    </a>
+                    <Link href="/">
+                      <img src="/assets/images/resources/logo-1.png" alt="Logo" />
+                    </Link>
                   </div>
                 </div>
 
                 <div className="main-menu-three__main-menu-box">
-                  <a href="#" className="mobile-nav__toggler">
-                    <i className="fa fa-bars"></i>
-                  </a>
+                  <a href="#" className="mobile-nav__toggler"><i className="fa fa-bars"></i></a>
                   <ul className="main-menu__list">
-                    <li>
-                      <a href="/">Home</a>
-                    </li>
-                    <li>
-                      <a href="/about">About</a>
-                    </li>
-                    <li>
-                      <a href="/portfolio">portfolio</a>
-                    </li>
-                    <li
-                      className={`dropdown ${
-                        activeDropdown === "services" ? "active" : ""
-                      }`}
-                      onMouseEnter={() => setActiveDropdown("services")}
-                      onMouseLeave={() => setActiveDropdown(null)}
-                    >
-                      <a href="/service">services</a>
-                      <ul className="shadow-box">
-                        <li>
-                          <a href="/service">Services</a>
-                        </li>
-                        <li>
-                          <a href="/services">UI/UX Design</a>
-                        </li>
-                        <li>
-                          <a href="/services">Web Development</a>
-                        </li>
-                        <li>
-                          <a href="/services">Digital Marketing</a>
-                        </li>
-                        <li>
-                          <a href="/services">Business Analysis</a>
-                        </li>
-                        <li>
-                          <a href="/services">Software Development</a>
-                        </li>
-                        <li>
-                          <a href="/services">Product Design</a>
-                        </li>
-                      </ul>
-                    </li>
-
-                    <li>
-                      <a href="/blog">Blog</a>
-                    </li>
-
-                    <li>
-                      <a href="/contact">Contact</a>
-                    </li>
+                    {menuItems.map((item, index) => (
+                      <li
+                        key={index} 
+                        className={`dropdown ${activeDropdown === item.title ? "active" : ""}`}
+                        onMouseEnter={() => item.dropdown && setActiveDropdown(item.title)}
+                        onMouseLeave={() => item.dropdown && setActiveDropdown(null)}
+                      >
+                        <Link href={item.href}>{item.title}</Link>
+                        {item.dropdown && (
+                          <ul className="shadow-box">
+                            {item.dropdown.map((subItem, subIndex) => (
+                              <li key={subIndex}>
+                                <Link href={subItem.href}>{subItem.title}</Link>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </li>
+                    ))}
                   </ul>
                 </div>
 
                 <div className="main-menu-three__right">
                   <div className="main-menu-three__btn-box">
-                    <a href="/contact" className="thm-btn">
-                      Get in Touch
-                      <span className="icon-right-arrow"></span>
-                    </a>
+                    <Link href="/contact" className="thm-btn">
+                      Get in Touch <span className="icon-right-arrow"></span>
+                    </Link>
                   </div>
                 </div>
               </div>
