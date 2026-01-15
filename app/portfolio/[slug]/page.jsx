@@ -1,7 +1,13 @@
 import React from "react";
+import Link from "next/link";
 
-const ProjectDetails =async ({ params }) => {
+const ProjectDetails = async ({ params }) => {
   const { slug } = await params;
+  const projectTitle = slug
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+
   return (
     <>
       <section className="page-header">
@@ -14,20 +20,22 @@ const ProjectDetails =async ({ params }) => {
         ></div>
         <div className="container">
           <div className="page-header__inner">
-            <h3>{slug.split('-').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</h3>
+            <h3>{projectTitle}</h3>
             <div className="thm-breadcrumb__inner">
               <ul className="thm-breadcrumb list-unstyled">
                 <li>
-                  <a href="index.html">Home</a>
+                  <Link href="/">Home</Link>
                 </li>
                 <li>
                   <span className="icon-arrow-angle-pointing-to-right"></span>
                 </li>
-                <li>Portfolio</li>
+                <li>
+                  <Link href="/portfolio">Portfolio</Link>
+                </li>
                 <li>
                   <span className="icon-arrow-angle-pointing-to-right"></span>
                 </li>
-                <li>{slug.split('-').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</li>
+                <li>{projectTitle}</li>
               </ul>
             </div>
           </div>
@@ -41,7 +49,7 @@ const ProjectDetails =async ({ params }) => {
                 <div className="project-details__img">
                   <img
                     src="/assets/images/project/project-details-img-1.jpg"
-                    alt=""
+                    alt={projectTitle}
                   />
                 </div>
                 <h3 className="project-details__title-1">
@@ -192,9 +200,9 @@ const ProjectDetails =async ({ params }) => {
                     </li>
                   </ul>
                   <div className="service-details__get-started-btn-box">
-                    <a href="contact.html" className="thm-btn">
+                    <Link href="/contact" className="thm-btn">
                       get in touch <span className="fas fa-arrow-right"></span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -207,7 +215,13 @@ const ProjectDetails =async ({ params }) => {
                   <li>
                     <div className="icon">
                       <a href="#">
-                        <span className="icon-right-arrow"></span>
+                        <span
+                          className="icon-right-arrow"
+                          style={{
+                            transform: "rotate(180deg)",
+                            display: "inline-block",
+                          }}
+                        ></span>
                       </a>
                     </div>
                     <div className="text-box">

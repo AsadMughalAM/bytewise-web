@@ -1,5 +1,7 @@
 import React from "react";
+import Link from "next/link";
 import { projects } from "./PortfolioData";
+
 const Portfolio = () => {
   return (
     <>
@@ -8,7 +10,7 @@ const Portfolio = () => {
           className="page-header__bg"
           style={{
             backgroundImage:
-              "url(assets/images/backgrounds/page-header-bg.jpg)",
+              "url(/assets/images/backgrounds/page-header-bg.jpg)",
           }}
         ></div>
         <div className="container">
@@ -17,12 +19,12 @@ const Portfolio = () => {
             <div className="thm-breadcrumb__inner">
               <ul className="thm-breadcrumb list-unstyled">
                 <li>
-                  <a href="index.html">Home</a>
+                  <Link href="/">Home</Link>
                 </li>
                 <li>
                   <span className="icon-arrow-angle-pointing-to-right"></span>
                 </li>
-                <li>    Portfolio</li>
+                <li>Portfolio</li>
               </ul>
             </div>
           </div>
@@ -33,24 +35,25 @@ const Portfolio = () => {
           <div className="row">
             {projects.map((project) => (
               <div
+                key={project.id}
                 className="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft"
                 data-wow-delay="100ms"
               >
                 <div className="project-two__single">
                   <div className="project-two__img-box">
                     <div className="project-two__img">
-                      <img src={project.img} alt="" />
+                      <img src={project.img} alt={project.title} />
                       <div className="project-two__arrow">
-                        <a href={`/portfolio/${project.slug}`} className="img-popup">
+                        <Link href={`/portfolio/${project.slug}`}>
                           <span className="fas fa-arrow-right"></span>
-                        </a>
+                        </Link>
                       </div>
                     </div>
                     <div className="project-two__content">
                       <h3 className="project-two__title">
-                        <a href={`/portfolio/${project.slug}`}>
+                        <Link href={`/portfolio/${project.slug}`}>
                           {project.title}
-                        </a>
+                        </Link>
                       </h3>
                       <p className="project-two__sub-title">
                         {project.category}

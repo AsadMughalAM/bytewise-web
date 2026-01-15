@@ -95,6 +95,9 @@ const Navbar = () => {
                     <li>
                       <a href="/about">About</a>
                     </li>
+                    <li>
+                      <a href="/portfolio">portfolio</a>
+                    </li>
                     <li
                       className={`dropdown ${
                         activeDropdown === "services" ? "active" : ""
