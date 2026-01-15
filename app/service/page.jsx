@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Contact from "@/components/sections/Contact";
 import ServicePage_Services from "@/components/sections/ServicePage_Services";
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -35,7 +34,7 @@ const Service = () => {
         </div>
       </section>
       <ServicePage_Services />
-      <Contact />
+      
       <section className="process-two">
         <div
           className="process-two__bg-shape"

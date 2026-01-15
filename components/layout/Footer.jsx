@@ -7,37 +7,12 @@ const Footer = () => {
   };
 
   return (
-    <footer className="site-footer-three">
+    <footer className="site-footer-three pt-5">
       <div 
         className="site-footer-three__shape-bg"
         style={{ backgroundImage: 'url(/assets/images/shapes/site-footer-three-shape-bg.png)' }}
       ></div>
       <div className="container">
-        <div className="site-footer-three__top">
-          <div className="row">
-            <div className="col-xl-12">
-              <div className="footer-widget-three__column footer-widget-three__newsletter">
-                <h3 className="footer-widget-three__newsletter-title">
-                  Subscribe To Our Newsletter To<br />Get Latest Update
-                </h3>
-                <form 
-                  className="contact-form-validated footer-widget-three__newsletter-form"
-                  action="https://dreamlayout.mnsithub.com/html/itzone/main-html/assets/inc/sendemail.php" 
-                  method="POST"
-                  onSubmit={handleNewsletterSubmit}
-                >
-                  <div className="footer-widget-three__newsletter-form-input-box">
-                    <input type="email" placeholder="Enter email" name="email" required />
-                  </div>
-                  <button type="submit" className="thm-btn">
-                    Subscribe
-                    <span className="fas fa-arrow-right"></span>
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
         <div className="site-footer-three__middle">
           <div className="row">
             <div className="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
