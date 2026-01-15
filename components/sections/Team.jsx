@@ -1,22 +1,50 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 const Team = () => {
   const teamMembers = [
-    { img: '/assets/images/team/team-2-1.jpg', name: 'Alisha Martin', position: 'Cheif Expert' },
-    { img: '/assets/images/team/team-2-2.jpg', name: 'Devid Coper', position: 'Product Designer' },
-    { img: '/assets/images/team/team-2-3.jpg', name: 'Naila Dev', position: 'UI/UX Designer' },
-    { img: '/assets/images/team/team-2-4.jpg', name: 'Robert Martin', position: 'CEO & Founder' },
-    { img: '/assets/images/team/team-2-5.jpg', name: 'Kevin Martis', position: 'Chief Officer' },
-    { img: '/assets/images/team/team-2-6.jpg', name: 'Anila Koper', position: 'Software Engineer' },
+    {
+      img: "/assets/images/team/team-2-1.jpg",
+      name: "Alisha Martin",
+      position: "Cheif Expert",
+    },
+    {
+      img: "/assets/images/team/team-2-2.jpg",
+      name: "Devid Coper",
+      position: "Product Designer",
+    },
+    {
+      img: "/assets/images/team/team-2-3.jpg",
+      name: "Naila Dev",
+      position: "UI/UX Designer",
+    },
+    {
+      img: "/assets/images/team/team-2-4.jpg",
+      name: "Robert Martin",
+      position: "CEO & Founder",
+    },
+    {
+      img: "/assets/images/team/team-2-5.jpg",
+      name: "Kevin Martis",
+      position: "Chief Officer",
+    },
+    {
+      img: "/assets/images/team/team-2-6.jpg",
+      name: "Anila Koper",
+      position: "Software Engineer",
+    },
   ];
 
   return (
     <section className="team-two" id="team">
       <div className="team-two__shape-1">
-        <img src="/assets/images/shapes/team-two-shape-1.png" alt="" className="rotate-me" />
+        <img
+          src="/assets/images/shapes/team-two-shape-1.png"
+          alt=""
+          className="rotate-me"
+        />
       </div>
       <div className="container">
         <div className="section-title text-center sec-title-animation animation-style1">
@@ -63,16 +91,24 @@ const Team = () => {
                       </div>
                       <ul className="team-two__social list-unstyled">
                         <li>
-                          <a href="#"><span className="icon-facebook-app-symbol"></span></a>
+                          <a href="#">
+                            <span className="icon-facebook-app-symbol"></span>
+                          </a>
                         </li>
                         <li>
-                          <a href="#"><span className="icon-twitter-1"></span></a>
+                          <a href="#">
+                            <span className="icon-twitter-1"></span>
+                          </a>
                         </li>
                         <li>
-                          <a href="#"><span className="icon-pinterest"></span></a>
+                          <a href="#">
+                            <span className="icon-pinterest"></span>
+                          </a>
                         </li>
                         <li>
-                          <a href="#"><span className="icon-linkedin"></span></a>
+                          <a href="#">
+                            <span className="icon-linkedin"></span>
+                          </a>
                         </li>
                       </ul>
                     </div>
@@ -88,4 +124,3 @@ const Team = () => {
 };
 
 export default Team;
-

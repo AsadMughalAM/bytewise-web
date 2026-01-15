@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 const Project = () => {
   useEffect(() => {
     // Initialize Magnific Popup for image popup
     if (window.jQuery && window.jQuery().magnificPopup) {
-      window.jQuery('.img-popup').magnificPopup({
-        type: 'image',
+      window.jQuery(".img-popup").magnificPopup({
+        type: "image",
         gallery: {
           enabled: true,
         },
@@ -15,40 +15,43 @@ const Project = () => {
 
   const projects = [
     {
-      img: '/assets/images/project/project-3-1.jpg',
-      subtitle: 'Itzone',
-      title: 'Hosting Solution',
-      delay: '100ms',
-      animation: 'fadeInLeft',
+      img: "/assets/images/project/project-3-1.jpg",
+      subtitle: "Itzone",
+      title: "Hosting Solution",
+      delay: "100ms",
+      animation: "fadeInLeft",
     },
     {
-      img: '/assets/images/project/project-3-2.jpg',
-      subtitle: 'Itzone',
-      title: 'Technology Growth',
-      delay: '300ms',
-      animation: 'fadeInLeft',
+      img: "/assets/images/project/project-3-2.jpg",
+      subtitle: "Itzone",
+      title: "Technology Growth",
+      delay: "300ms",
+      animation: "fadeInLeft",
     },
     {
-      img: '/assets/images/project/project-3-3.jpg',
-      subtitle: 'Itzone',
-      title: 'Safety Gurranted',
-      delay: '600ms',
-      animation: 'fadeInRight',
+      img: "/assets/images/project/project-3-3.jpg",
+      subtitle: "Itzone",
+      title: "Safety Gurranted",
+      delay: "600ms",
+      animation: "fadeInRight",
     },
     {
-      img: '/assets/images/project/project-3-4.jpg',
-      subtitle: 'Itzone',
-      title: 'It Consultency',
-      delay: '900ms',
-      animation: 'fadeInRight',
+      img: "/assets/images/project/project-3-4.jpg",
+      subtitle: "Itzone",
+      title: "It Consultency",
+      delay: "900ms",
+      animation: "fadeInRight",
     },
   ];
 
   return (
     <section className="project-three" id="project">
-      <div 
+      <div
         className="project-three__bg-shape"
-        style={{ backgroundImage: 'url(/assets/images/shapes/project-three-bg-shape.png)' }}
+        style={{
+          backgroundImage:
+            "url(/assets/images/shapes/project-three-bg-shape.png)",
+        }}
       ></div>
       <div className="container">
         <div className="project-three__top">
@@ -72,7 +75,7 @@ const Project = () => {
         <div className="container">
           <div className="row">
             {projects.map((project, index) => (
-              <div 
+              <div
                 key={index}
                 className={`col-xl-3 col-lg-6 col-md-6 wow ${project.animation}`}
                 data-wow-delay={project.delay}
@@ -84,7 +87,9 @@ const Project = () => {
                     </div>
                     <div className="project-three__content">
                       <div className="project-three__title-box">
-                        <p className="project-three__sub-title">{project.subtitle}</p>
+                        <p className="project-three__sub-title">
+                          {project.subtitle}
+                        </p>
                         <h3 className="project-three__title">
                           <a href="#project">{project.title}</a>
                         </h3>
@@ -107,5 +112,3 @@ const Project = () => {
 };
 
 export default Project;
-
-

@@ -1,31 +1,31 @@
-import { useEffect, useRef } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
+import { useEffect, useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
 const Testimonial = () => {
   const testimonials = [
     {
-      text: 'Open gathering they are nights multiple brings living abundantly cent that may be wonor wasinton created shell first two beginning beast all airot you ando divide subdue one herb light',
-      name: 'Alisha Martin',
-      position: 'Senior Marketing Manager',
-      img: '/assets/images/testimonial/testimonial-three-1-1.png',
-      thumb: '/assets/images/testimonial/testimonial-three-thamb-1-1.jpg',
+      text: "Open gathering they are nights multiple brings living abundantly cent that may be wonor wasinton created shell first two beginning beast all airot you ando divide subdue one herb light",
+      name: "Alisha Martin",
+      position: "Senior Marketing Manager",
+      img: "/assets/images/testimonial/testimonial-three-1-1.png",
+      thumb: "/assets/images/testimonial/testimonial-three-thamb-1-1.jpg",
     },
     {
-      text: 'Open gathering they are nights multiple brings living abundantly cent that may be wonor wasinton created shell first two beginning beast all airot you ando divide subdue one herb light',
-      name: 'Kevin Martin',
-      position: 'Senior Marketing Manager',
-      img: '/assets/images/testimonial/testimonial-three-1-2.png',
-      thumb: '/assets/images/testimonial/testimonial-three-thamb-1-2.jpg',
+      text: "Open gathering they are nights multiple brings living abundantly cent that may be wonor wasinton created shell first two beginning beast all airot you ando divide subdue one herb light",
+      name: "Kevin Martin",
+      position: "Senior Marketing Manager",
+      img: "/assets/images/testimonial/testimonial-three-1-2.png",
+      thumb: "/assets/images/testimonial/testimonial-three-thamb-1-2.jpg",
     },
     {
-      text: 'Open gathering they are nights multiple brings living abundantly cent that may be wonor wasinton created shell first two beginning beast all airot you ando divide subdue one herb light',
-      name: 'Jessica Brown',
-      position: 'Senior Marketing Manager',
-      img: '/assets/images/testimonial/testimonial-three-1-3.png',
-      thumb: '/assets/images/testimonial/testimonial-three-thamb-1-3.jpg',
+      text: "Open gathering they are nights multiple brings living abundantly cent that may be wonor wasinton created shell first two beginning beast all airot you ando divide subdue one herb light",
+      name: "Jessica Brown",
+      position: "Senior Marketing Manager",
+      img: "/assets/images/testimonial/testimonial-three-1-3.png",
+      thumb: "/assets/images/testimonial/testimonial-three-thamb-1-3.jpg",
     },
   ];
 
@@ -33,16 +33,19 @@ const Testimonial = () => {
     <section className="testimonial-three" id="testimonial">
       <div className="container">
         <div className="testimonial-three__inner">
-          <div 
+          <div
             className="testimonial-three__bg"
-            style={{ backgroundImage: 'url(/assets/images/backgrounds/testimonial-three-bg.jpg)' }}
+            style={{
+              backgroundImage:
+                "url(/assets/images/backgrounds/testimonial-three-bg.jpg)",
+            }}
           ></div>
           <div className="testimonial-three__main-content">
             <Swiper
               modules={[Navigation]}
               navigation={{
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
               }}
               className="swiper-container"
               id="testimonial-three__carousel"
@@ -54,10 +57,14 @@ const Testimonial = () => {
                       <div className="testimonial-three__quote">
                         <i className="fas fa-quote-left"></i>
                       </div>
-                      <p className="testimonial-three__text">{testimonial.text}</p>
+                      <p className="testimonial-three__text">
+                        {testimonial.text}
+                      </p>
                       <div className="testimonial-three__client-info-box">
                         <div className="testimonial-three__client-info">
-                          <h3><a href="#testimonial">{testimonial.name}</a></h3>
+                          <h3>
+                            <a href="#testimonial">{testimonial.name}</a>
+                          </h3>
                           <p>{testimonial.position}</p>
                         </div>
                         <div className="testimonial-three__ratting">
@@ -109,5 +116,3 @@ const Testimonial = () => {
 };
 
 export default Testimonial;
-
-

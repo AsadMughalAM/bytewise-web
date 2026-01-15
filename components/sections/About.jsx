@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 const About = () => {
   const experienceOdometerRef = useRef(null);
@@ -14,7 +14,7 @@ const About = () => {
         });
         odometer1.update(25);
       }
-      
+
       if (clientOdometerRef.current) {
         const odometer2 = new window.Odometer({
           el: clientOdometerRef.current,
@@ -27,52 +27,85 @@ const About = () => {
 
   return (
     <section className="about-three" id="about">
-      <div 
+      <div
         className="about-three__bg-shape"
-        style={{ backgroundImage: 'url(/assets/images/shapes/about-three-bg-shape.png)' }}
+        style={{
+          backgroundImage:
+            "url(/assets/images/shapes/about-three-bg-shape.png)",
+        }}
       ></div>
       <div className="container">
         <div className="row">
           <div className="col-xl-6">
-            <div className="about-three__left wow slideInLeft" data-wow-delay="100ms" data-wow-duration="2500ms">
+            <div
+              className="about-three__left wow slideInLeft"
+              data-wow-delay="100ms"
+              data-wow-duration="2500ms"
+            >
               <div className="about-three__img-box">
                 <div className="about-three__img">
-                  <img src="/assets/images/resources/about-three-img-1.jpg" alt="" />
+                  <img
+                    src="/assets/images/resources/about-three-img-1.jpg"
+                    alt=""
+                  />
                 </div>
                 <div className="about-three__img-2">
-                  <img src="/assets/images/resources/about-three-img-2.jpg" alt="" />
+                  <img
+                    src="/assets/images/resources/about-three-img-2.jpg"
+                    alt=""
+                  />
                 </div>
                 <div className="about-three__experience">
                   <div className="about-three__experience-count-box">
-                    <h3 className="odometer" ref={experienceOdometerRef}>00</h3>
+                    <h3 className="odometer" ref={experienceOdometerRef}>
+                      00
+                    </h3>
                     <span>+</span>
                   </div>
-                  <p className="about-three__experience-count-text">Years of Experience</p>
+                  <p className="about-three__experience-count-text">
+                    Years of Experience
+                  </p>
                 </div>
               </div>
               <div className="about-three__client-box">
                 <ul className="about-three__client-img-list list-unstyled">
                   <li>
                     <div className="about-three__client-img">
-                      <img src="/assets/images/resources/about-three-client-img-1-1.jpg" alt="" />
+                      <img
+                        src="/assets/images/resources/about-three-client-img-1-1.jpg"
+                        alt=""
+                      />
                     </div>
                   </li>
                   <li>
                     <div className="about-three__client-img">
-                      <img src="/assets/images/resources/about-three-client-img-1-2.jpg" alt="" />
+                      <img
+                        src="/assets/images/resources/about-three-client-img-1-2.jpg"
+                        alt=""
+                      />
                     </div>
                   </li>
                   <li>
                     <div className="about-three__client-img">
-                      <img src="/assets/images/resources/about-three-client-img-1-3.jpg" alt="" />
+                      <img
+                        src="/assets/images/resources/about-three-client-img-1-3.jpg"
+                        alt=""
+                      />
                     </div>
                   </li>
                   <li>
-                    <a href="#"><span className="fas fa-plus"></span></a>
+                    <a href="#">
+                      <span className="fas fa-plus"></span>
+                    </a>
                   </li>
                 </ul>
                 <p className="about-three__client-text">
-                  <span className="odometer count-text-1" ref={clientOdometerRef}>00</span>
+                  <span
+                    className="odometer count-text-1"
+                    ref={clientOdometerRef}
+                  >
+                    00
+                  </span>
                   <span className="count-text">K</span> Satisfied Client
                 </p>
               </div>
@@ -85,11 +118,14 @@ const About = () => {
                   <span className="section-title__tagline">About Us</span>
                 </div>
                 <h2 className="section-title__title title-animation fs-4">
-                  Your Business Growth with Our Cutting-Edge <br /> <span>IT Solutions</span>
+                  Your Business Growth with Our Cutting-Edge <br />{" "}
+                  <span>IT Solutions</span>
                 </h2>
               </div>
               <p className="about-three__text">
-                Transform your business with our innovative IT solutions, tailored to address your unique challenges and drive growth in today's digital landscape.
+                Transform your business with our innovative IT solutions,
+                tailored to address your unique challenges and drive growth in
+                today's digital landscape.
               </p>
               <div className="about-three__points-box">
                 <ul className="about-three__points-list list-unstyled">
@@ -97,13 +133,19 @@ const About = () => {
                     <div className="icon">
                       <span className="icon-checked"></span>
                     </div>
-                    <p>Innovative IT Solutions Expert<br /> Support & Consulting</p>
+                    <p>
+                      Innovative IT Solutions Expert
+                      <br /> Support & Consulting
+                    </p>
                   </li>
                   <li>
                     <div className="icon">
                       <span className="icon-checked"></span>
                     </div>
-                    <p>Cloud Solutions for Modern<br /> Enterprises</p>
+                    <p>
+                      Cloud Solutions for Modern
+                      <br /> Enterprises
+                    </p>
                   </li>
                 </ul>
                 <ul className="about-three__points-list about-three__points-list-2 list-unstyled">
@@ -111,11 +153,17 @@ const About = () => {
                     <div className="icon">
                       <span className="icon-checked"></span>
                     </div>
-                    <p>Seamless Digital<br /> Transformation AI-Driven</p>
+                    <p>
+                      Seamless Digital
+                      <br /> Transformation AI-Driven
+                    </p>
                   </li>
                   <li>
                     <div className="about-three__points-list-img">
-                      <img src="/assets/images/resources/about-three-points-list-img.jpg" alt="" />
+                      <img
+                        src="/assets/images/resources/about-three-points-list-img.jpg"
+                        alt=""
+                      />
                     </div>
                     <div className="about-three__points-list-content">
                       <h5>Thomas Alison</h5>
@@ -135,13 +183,18 @@ const About = () => {
                   <div className="icon">
                     <span className="icon-check"></span>
                   </div>
-                  <p>We provide 24/7 monitoring and support to ensure your systems.</p>
+                  <p>
+                    We provide 24/7 monitoring and support to ensure your
+                    systems.
+                  </p>
                 </li>
                 <li>
                   <div className="icon">
                     <span className="icon-check"></span>
                   </div>
-                  <p>Dramatically re-engineer value added IT systems via mission</p>
+                  <p>
+                    Dramatically re-engineer value added IT systems via mission
+                  </p>
                 </li>
               </ul>
               <div className="about-three__btn-box-and-call-box">
@@ -157,7 +210,9 @@ const About = () => {
                   </div>
                   <div className="about-three__call-box-content">
                     <p>Call to Anytime</p>
-                    <h4><a href="tel:15502505260">+1 (550) 250 5260</a></h4>
+                    <h4>
+                      <a href="tel:15502505260">+1 (550) 250 5260</a>
+                    </h4>
                   </div>
                 </div>
               </div>
@@ -170,5 +225,3 @@ const About = () => {
 };
 
 export default About;
-
-

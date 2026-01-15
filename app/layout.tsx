@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-css-tags */
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
@@ -7,8 +6,6 @@ import Navbar from "@/components/layout/Navbar";
 import MobileNav from "@/components/layout/MobileNav";
 import Preloader from "@/components/layout/Preloader";
 import Footer from "@/components/layout/Footer";
-// Public assets should not be imported directly. Use <link> tags to load
-// files from the `public/` folder at runtime (served from '/').
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

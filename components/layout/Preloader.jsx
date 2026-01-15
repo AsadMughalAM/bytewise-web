@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const Preloader = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -7,7 +7,7 @@ const Preloader = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-      document.body.classList.remove('loaded');
+      document.body.classList.remove("loaded");
     }, 1000);
 
     return () => clearTimeout(timer);
@@ -25,5 +25,3 @@ const Preloader = () => {
 };
 
 export default Preloader;
-
-

@@ -1,39 +1,39 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 const Services = () => {
   const services = [
     {
-      icon: 'icon-financial',
-      title: 'Cloud Solutions provider',
-      text: 'Comprehensive IT management, including network monitoring, data backup',
-      link: '#services',
+      icon: "icon-financial",
+      title: "Cloud Solutions provider",
+      text: "Comprehensive IT management, including network monitoring, data backup",
+      link: "#services",
     },
     {
-      icon: 'icon-software-development',
-      title: 'Software Development',
-      text: 'Comprehensive IT management, including network monitoring, data backup',
-      link: '#services',
+      icon: "icon-software-development",
+      title: "Software Development",
+      text: "Comprehensive IT management, including network monitoring, data backup",
+      link: "#services",
     },
     {
-      icon: 'icon-cyber-security',
-      title: 'Cybersecurity Solutions',
-      text: 'Comprehensive IT management, including network monitoring, data backup',
-      link: '#services',
+      icon: "icon-cyber-security",
+      title: "Cybersecurity Solutions",
+      text: "Comprehensive IT management, including network monitoring, data backup",
+      link: "#services",
     },
     {
-      icon: 'icon-digital-service',
-      title: 'All Kind Of IT Services',
-      text: 'Comprehensive IT management, including network monitoring, data backup',
-      link: '#services',
+      icon: "icon-digital-service",
+      title: "All Kind Of IT Services",
+      text: "Comprehensive IT management, including network monitoring, data backup",
+      link: "#services",
     },
     {
-      icon: 'icon-promotion-1',
-      title: 'Data Analytics Consulting',
-      text: 'Comprehensive IT management, including network monitoring, data backup',
-      link: '#services',
+      icon: "icon-promotion-1",
+      title: "Data Analytics Consulting",
+      text: "Comprehensive IT management, including network monitoring, data backup",
+      link: "#services",
     },
   ];
 
@@ -49,7 +49,8 @@ const Services = () => {
             <span className="section-title__tagline">Our Services</span>
           </div>
           <h2 className="section-title__title title-animation">
-            Reliable Services Crafted To <br />Your <span>Expectations</span>
+            Reliable Services Crafted To <br />
+            Your <span>Expectations</span>
           </h2>
         </div>
         <Swiper
@@ -64,7 +65,6 @@ const Services = () => {
             992: { slidesPerView: 3 },
             1200: { slidesPerView: 4 },
           }}
-          
         >
           {services.map((service, index) => (
             <SwiperSlide key={index}>
@@ -94,4 +94,3 @@ const Services = () => {
 };
 
 export default Services;
-

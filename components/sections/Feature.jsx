@@ -1,25 +1,25 @@
 const Feature = () => {
   const features = [
     {
-      img: '/assets/images/resources/feature-one-img-1-1.png',
-      title: 'Security Services',
-      text: 'Innovating and empowering businesses with tailored solutions for success and growth. Innovating and empowering',
-      link: '#services',
-      delay: '100ms',
+      img: "/assets/images/resources/feature-one-img-1-1.png",
+      title: "Security Services",
+      text: "Innovating and empowering businesses with tailored solutions for success and growth. Innovating and empowering",
+      link: "#services",
+      delay: "100ms",
     },
     {
-      img: '/assets/images/resources/feature-one-img-1-2.png',
-      title: 'Data Privacy',
-      text: 'Innovating and empowering businesses with tailored solutions for success and growth. Innovating and empowering',
-      link: '#services',
-      delay: '300ms',
+      img: "/assets/images/resources/feature-one-img-1-2.png",
+      title: "Data Privacy",
+      text: "Innovating and empowering businesses with tailored solutions for success and growth. Innovating and empowering",
+      link: "#services",
+      delay: "300ms",
     },
     {
-      img: '/assets/images/resources/feature-one-img-1-3.png',
-      title: 'Industry Certified',
-      text: 'Innovating and empowering businesses with tailored solutions for success and growth. Innovating and empowering',
-      link: '#services',
-      delay: '500ms',
+      img: "/assets/images/resources/feature-one-img-1-3.png",
+      title: "Industry Certified",
+      text: "Innovating and empowering businesses with tailored solutions for success and growth. Innovating and empowering",
+      link: "#services",
+      delay: "500ms",
     },
   ];
 
@@ -33,7 +33,7 @@ const Feature = () => {
       <div className="container">
         <div className="row">
           {features.map((feature, index) => (
-            <div 
+            <div
               key={index}
               className="col-xl-4 col-lg-4 wow fadeInUp"
               data-wow-delay={feature.delay}
@@ -56,5 +56,3 @@ const Feature = () => {
 };
 
 export default Feature;
-
-

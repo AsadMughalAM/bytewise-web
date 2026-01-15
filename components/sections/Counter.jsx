@@ -1,11 +1,35 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 const Counter = () => {
   const counters = [
-    { icon: 'icon-trophy', count: 120, suffix: '+', text: 'award Winning', delay: '100ms' },
-    { icon: 'icon-costumer', count: 99, suffix: '%', text: 'Satisfied client', delay: '200ms' },
-    { icon: 'icon-rating', count: 10, suffix: 'M', text: 'worldwide reviews', delay: '300ms' },
-    { icon: 'icon-customer', count: 200, suffix: '+', text: 'Happy Clients', delay: '400ms' },
+    {
+      icon: "icon-trophy",
+      count: 120,
+      suffix: "+",
+      text: "award Winning",
+      delay: "100ms",
+    },
+    {
+      icon: "icon-costumer",
+      count: 99,
+      suffix: "%",
+      text: "Satisfied client",
+      delay: "200ms",
+    },
+    {
+      icon: "icon-rating",
+      count: 10,
+      suffix: "M",
+      text: "worldwide reviews",
+      delay: "300ms",
+    },
+    {
+      icon: "icon-customer",
+      count: 200,
+      suffix: "+",
+      text: "Happy Clients",
+      delay: "400ms",
+    },
   ];
 
   const counterRefs = counters.map(() => useRef(null));
@@ -26,16 +50,21 @@ const Counter = () => {
 
   return (
     <section className="counter-two">
-      <div 
+      <div
         className="counter-two__bg-shape float-bob-y"
-        style={{ backgroundImage: 'url(/assets/images/shapes/counter-two-bg-shape.png)' }}
+        style={{
+          backgroundImage:
+            "url(/assets/images/shapes/counter-two-bg-shape.png)",
+        }}
       ></div>
       <div className="container">
         <div className="row">
           {counters.map((counter, index) => (
-            <div 
+            <div
               key={index}
-              className={`col-xl-3 col-lg-6 col-md-6 wow ${index < 2 ? 'fadeInLeft' : 'fadeInRight'}`}
+              className={`col-xl-3 col-lg-6 col-md-6 wow ${
+                index < 2 ? "fadeInLeft" : "fadeInRight"
+              }`}
               data-wow-delay={counter.delay}
             >
               <div className="counter-two__single">
@@ -44,7 +73,9 @@ const Counter = () => {
                 </div>
                 <div className="counter-two__content">
                   <div className="counter-two__count-box">
-                    <h3 className="odometer" ref={counterRefs[index]}>00</h3>
+                    <h3 className="odometer" ref={counterRefs[index]}>
+                      00
+                    </h3>
                     <span>{counter.suffix}</span>
                   </div>
                   <p className="counter-two__text">{counter.text}</p>
@@ -59,5 +90,3 @@ const Counter = () => {
 };
 
 export default Counter;
-
-

@@ -5,9 +5,16 @@ const WhyChoose = () => {
       <div className="container">
         <div className="why-choose-three__inner">
           <div className="why-choose-three__img-1">
-            <img src="/assets/images/resources/why-choose-three-img-1.png" alt="" className="float-bob-x" />
+            <img
+              src="/assets/images/resources/why-choose-three-img-1.png"
+              alt=""
+              className="float-bob-x"
+            />
             <div className="why-choose-three__shape-1 rotate-me">
-              <img src="/assets/images/shapes/why-choose-three-shape-1.png" alt="" />
+              <img
+                src="/assets/images/shapes/why-choose-three-shape-1.png"
+                alt=""
+              />
             </div>
           </div>
           <div className="row">
@@ -15,14 +22,19 @@ const WhyChoose = () => {
               <div className="why-choose-three__left">
                 <div className="section-title text-left sec-title-animation animation-style2">
                   <div className="section-title__tagline-box">
-                    <span className="section-title__tagline">Why Chooses Us</span>
+                    <span className="section-title__tagline">
+                      Why Chooses Us
+                    </span>
                   </div>
                   <h2 className="section-title__title title-animation">
-                    Why People Are Very loved<br /> To Working <span>With Us?</span>
+                    Why People Are Very loved
+                    <br /> To Working <span>With Us?</span>
                   </h2>
                 </div>
                 <p className="why-choose-three__text">
-                  nnovating and empowering businesses with tailored solutions for success<br /> and growth. Innovating and empowering
+                  nnovating and empowering businesses with tailored solutions
+                  for success
+                  <br /> and growth. Innovating and empowering
                 </p>
                 <div className="why-choose-three__points-list-box">
                   <ul className="why-choose-three__points-list list-unstyled">
@@ -59,13 +71,19 @@ const WhyChoose = () => {
                     <div className="icon">
                       <span className="icon-check-1"></span>
                     </div>
-                    <p>Dramatically re-engineer value added IT systems via mission</p>
+                    <p>
+                      Dramatically re-engineer value added IT systems via
+                      mission
+                    </p>
                   </li>
                   <li>
                     <div className="icon">
                       <span className="icon-check-1"></span>
                     </div>
-                    <p>We provide 24/7 monitoring and support to ensure your systems.</p>
+                    <p>
+                      We provide 24/7 monitoring and support to ensure your
+                      systems.
+                    </p>
                   </li>
                   <li>
                     <div className="icon">
@@ -90,5 +108,3 @@ const WhyChoose = () => {
 };
 
 export default WhyChoose;
-
-

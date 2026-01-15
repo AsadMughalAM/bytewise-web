@@ -1,15 +1,17 @@
 "use client";
-import Link from 'next/link';
-import { useEffect } from 'react';
-import Image from 'next/image';
+import Link from "next/link";
+import { useEffect } from "react";
+import Image from "next/image";
 const MobileNav = () => {
-
   useEffect(() => {
-    // Ensure mobile nav receives the main menu markup if script didn't run yet
     try {
-      const mobileContainer = document.querySelector('.mobile-nav__container');
-      const mainMenu = document.querySelector('.main-menu__list');
-      if (mobileContainer && mainMenu && !mobileContainer.querySelector('.main-menu__list')) {
+      const mobileContainer = document.querySelector(".mobile-nav__container");
+      const mainMenu = document.querySelector(".main-menu__list");
+      if (
+        mobileContainer &&
+        mainMenu &&
+        !mobileContainer.querySelector(".main-menu__list")
+      ) {
         mobileContainer.innerHTML = mainMenu.outerHTML;
       }
     } catch (e) {
@@ -29,15 +31,14 @@ const MobileNav = () => {
           <div className="logo-box">
             <Link href="/" aria-label="logo image">
               <Image
-                src="/assets/images/resources/logo-2.png" 
+                src="/assets/images/resources/logo-2.png"
                 width={150}
                 height={150}
                 alt="logo-2"
-                
               />
             </Link>
           </div>
-          
+
           <div className="mobile-nav__container"></div>
 
           <ul className="mobile-nav__contact list-unstyled">
@@ -50,7 +51,7 @@ const MobileNav = () => {
               <a href="tel:666-888-0000">666 888 0000</a>
             </li>
           </ul>
-          
+
           <div className="mobile-nav__top">
             <div className="mobile-nav__social">
               <a href="#" className="fab fa-twitter"></a>
@@ -66,5 +67,3 @@ const MobileNav = () => {
 };
 
 export default MobileNav;
-
-

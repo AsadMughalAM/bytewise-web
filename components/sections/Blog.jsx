@@ -1,40 +1,40 @@
 const Blog = () => {
   const blogs = [
     {
-      img: '/assets/images/blog/blog-2-1.jpg',
-      tags: ['Digital', 'Technology'],
-      userImg: '/assets/images/blog/blog-one-user-1.jpg',
-      userName: 'Malaika alise',
-      date: 'April 5, 2025',
-      comments: '80 Comments',
-      title: 'Improving Business Growth with New Technology',
-      text: 'Winning the Digital business The 2025 Transformation Roadmap.',
-      delay: '100ms',
-      animation: 'fadeInLeft',
+      img: "/assets/images/blog/blog-2-1.jpg",
+      tags: ["Digital", "Technology"],
+      userImg: "/assets/images/blog/blog-one-user-1.jpg",
+      userName: "Malaika alise",
+      date: "April 5, 2025",
+      comments: "80 Comments",
+      title: "Improving Business Growth with New Technology",
+      text: "Winning the Digital business The 2025 Transformation Roadmap.",
+      delay: "100ms",
+      animation: "fadeInLeft",
     },
     {
-      img: '/assets/images/blog/blog-2-2.jpg',
-      tags: ['Digital', 'Technology'],
-      userImg: '/assets/images/blog/blog-one-user-2.jpg',
-      userName: 'Readik males',
-      date: 'April 5, 2025',
-      comments: '80 Comments',
-      title: 'Regional Manager & limited management.',
-      text: 'Winning the Digital business The 2025 Transformation Roadmap.',
-      delay: '200ms',
-      animation: 'fadeInUp',
+      img: "/assets/images/blog/blog-2-2.jpg",
+      tags: ["Digital", "Technology"],
+      userImg: "/assets/images/blog/blog-one-user-2.jpg",
+      userName: "Readik males",
+      date: "April 5, 2025",
+      comments: "80 Comments",
+      title: "Regional Manager & limited management.",
+      text: "Winning the Digital business The 2025 Transformation Roadmap.",
+      delay: "200ms",
+      animation: "fadeInUp",
     },
     {
-      img: '/assets/images/blog/blog-2-3.jpg',
-      tags: ['Digital', 'Technology'],
-      userImg: '/assets/images/blog/blog-one-user-3.jpg',
-      userName: 'Tamu Tanu',
-      date: 'April 5, 2025',
-      comments: '80 Comments',
-      title: 'Easy and Most Powerful Server and Platform.',
-      text: 'Winning the Digital business The 2025 Transformation Roadmap.',
-      delay: '300ms',
-      animation: 'fadeInRight',
+      img: "/assets/images/blog/blog-2-3.jpg",
+      tags: ["Digital", "Technology"],
+      userImg: "/assets/images/blog/blog-one-user-3.jpg",
+      userName: "Tamu Tanu",
+      date: "April 5, 2025",
+      comments: "80 Comments",
+      title: "Easy and Most Powerful Server and Platform.",
+      text: "Winning the Digital business The 2025 Transformation Roadmap.",
+      delay: "300ms",
+      animation: "fadeInRight",
     },
   ];
 
@@ -56,7 +56,7 @@ const Blog = () => {
         </div>
         <ul className="row list-unstyled">
           {blogs.map((blog, index) => (
-            <li 
+            <li
               key={index}
               className={`col-xl-4 col-lg-4 wow ${blog.animation}`}
               data-wow-delay={blog.delay}
@@ -80,12 +80,14 @@ const Blog = () => {
                   <ul className="blog-one__meta list-unstyled">
                     <li>
                       <a href="#blog">
-                        <span className="far fa-calendar-alt"></span>{blog.date}
+                        <span className="far fa-calendar-alt"></span>
+                        {blog.date}
                       </a>
                     </li>
                     <li>
                       <a href="#blog">
-                        <span className="fal fa-comments"></span>{blog.comments}
+                        <span className="fal fa-comments"></span>
+                        {blog.comments}
                       </a>
                     </li>
                   </ul>
@@ -110,5 +112,3 @@ const Blog = () => {
 };
 
 export default Blog;
-
-

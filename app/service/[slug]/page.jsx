@@ -2,21 +2,21 @@ import React from "react";
 import { servicesData } from "@/components/sections/ServicePage_Services";
 
 const page = async ({ params }) => {
-  const { slug } = await params; // params se slug le rahe hain
+  const { slug } = await params;
   const serviceData = servicesData.find((service) => service.slug === slug);
 
   if (!serviceData) {
-    return <div>Service not found</div>; // fallback agar slug invalid ho
+    return <div>Service not found</div>;
   }
 
   return (
-    <div>
-      {/* Page Header */}
+    <>
       <section className="page-header">
         <div
           className="page-header__bg"
           style={{
-            backgroundImage: "url(/assets/images/backgrounds/page-header-bg.jpg)",
+            backgroundImage:
+              "url(/assets/images/backgrounds/page-header-bg.jpg)",
           }}
         ></div>
         <div className="container">
@@ -24,10 +24,18 @@ const page = async ({ params }) => {
             <h3 className="text-capitalize">{slug.split("-").join(" ")}</h3>
             <div className="thm-breadcrumb__inner">
               <ul className="thm-breadcrumb list-unstyled">
-                <li><a href="/">Home</a></li>
-                <li><span className="icon-arrow-angle-pointing-to-right"></span></li>
-                <li><a href="/services">Services</a></li>
-                <li><span className="icon-arrow-angle-pointing-to-right"></span></li>
+                <li>
+                  <a href="/">Home</a>
+                </li>
+                <li>
+                  <span className="icon-arrow-angle-pointing-to-right"></span>
+                </li>
+                <li>
+                  <a href="/services">Services</a>
+                </li>
+                <li>
+                  <span className="icon-arrow-angle-pointing-to-right"></span>
+                </li>
                 <li>{slug.split("-").join(" ")}</li>
               </ul>
             </div>
@@ -46,7 +54,9 @@ const page = async ({ params }) => {
                 style={{ position: "sticky", top: "100px", zIndex: 1 }}
               >
                 <div className="service-details__services-box">
-                  <h3 className="service-details__services-title">Our Services</h3>
+                  <h3 className="service-details__services-title">
+                    Our Services
+                  </h3>
                   <ul className="service-details__services-list list-unstyled">
                     {servicesData.map((service) => (
                       <li
@@ -78,7 +88,9 @@ const page = async ({ params }) => {
                 </h3>
 
                 {/* Description */}
-                <p className="service-details__text-1">{serviceData.description}</p>
+                <p className="service-details__text-1">
+                  {serviceData.description}
+                </p>
 
                 {/* Static Extra Text (optional) */}
                 <p className="service-details__text-2">
@@ -91,20 +103,35 @@ const page = async ({ params }) => {
                 {/* Optional Points List */}
                 <ul className="service-details__points-list list-unstyled">
                   <li>
-                    <div className="icon"><span className="icon-check"></span></div>
-                    <p>It is a long established fact that a reader will be distracted by readable content.</p>
+                    <div className="icon">
+                      <span className="icon-check"></span>
+                    </div>
+                    <p>
+                      It is a long established fact that a reader will be
+                      distracted by readable content.
+                    </p>
                   </li>
                   <li>
-                    <div className="icon"><span className="icon-check"></span></div>
-                    <p>Content layout and readability enhance user experience.</p>
+                    <div className="icon">
+                      <span className="icon-check"></span>
+                    </div>
+                    <p>
+                      Content layout and readability enhance user experience.
+                    </p>
                   </li>
                   <li>
-                    <div className="icon"><span className="icon-check"></span></div>
+                    <div className="icon">
+                      <span className="icon-check"></span>
+                    </div>
                     <p>Clear content presentation keeps users engaged.</p>
                   </li>
                   <li>
-                    <div className="icon"><span className="icon-check"></span></div>
-                    <p>Good design and structure improve trust and conversion.</p>
+                    <div className="icon">
+                      <span className="icon-check"></span>
+                    </div>
+                    <p>
+                      Good design and structure improve trust and conversion.
+                    </p>
                   </li>
                 </ul>
 
@@ -129,7 +156,8 @@ const page = async ({ params }) => {
                             </h3>
                           </div>
                           <p className="service-details__img-box-content-text">
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
+                            Duis aute irure dolor in reprehenderit in voluptate
+                            velit esse cillum dolore.
                           </p>
                         </div>
                       </div>
@@ -152,7 +180,8 @@ const page = async ({ params }) => {
                             </h3>
                           </div>
                           <p className="service-details__img-box-content-text">
-                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.
+                            Duis aute irure dolor in reprehenderit in voluptate
+                            velit esse cillum dolore.
                           </p>
                         </div>
                       </div>
@@ -162,24 +191,44 @@ const page = async ({ params }) => {
 
                 {/* FAQ Section (Optional Static) */}
                 <div className="service-details__faq-box">
-                  <div className="accrodion-grp" data-grp-name="faq-one-accrodion">
+                  <div
+                    className="accrodion-grp"
+                    data-grp-name="faq-one-accrodion"
+                  >
                     <div className="accrodion">
-                      <div className="accrodion-title"><h4>How long should a business plan be?</h4></div>
-                      <div className="accrodion-content"><div className="inner"><p>From personalized solutions to expert execution, we prioritize quality and reliability.</p></div></div>
+                      <div className="accrodion-title">
+                        <h4>How long should a business plan be?</h4>
+                      </div>
+                      <div className="accrodion-content">
+                        <div className="inner">
+                          <p>
+                            From personalized solutions to expert execution, we
+                            prioritize quality and reliability.
+                          </p>
+                        </div>
+                      </div>
                     </div>
                     <div className="accrodion active">
-                      <div className="accrodion-title"><h4>Do I need a business plan?</h4></div>
-                      <div className="accrodion-content"><div className="inner"><p>Yes, a business plan helps guide your strategy and decision making.</p></div></div>
+                      <div className="accrodion-title">
+                        <h4>Do I need a business plan?</h4>
+                      </div>
+                      <div className="accrodion-content">
+                        <div className="inner">
+                          <p>
+                            Yes, a business plan helps guide your strategy and
+                            decision making.
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

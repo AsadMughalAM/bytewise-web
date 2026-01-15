@@ -1,63 +1,61 @@
 import React from "react";
- export const  servicesData = [
-    {
-      img: "/assets/images/services/services-2-1.jpg",
-      icon: "icon-ux-design",
-      title: "UI/UX Design",
-      slug: "ui-ux-design",
-      delay: "100ms",
-      description:
-        "Comprehensive IT management, including network monitoring and data backup.",
-    },
-    {
-      img: "/assets/images/services/services-2-2.jpg",
-      icon: "icon-software-development",
-      title: "APP Development",
-      slug: "app-development",
-      delay: "300ms",
-      description:
-        "Custom mobile and web applications built for performance and scalability.",
-    },
-    {
-      img: "/assets/images/services/services-2-3.jpg",
-      icon: "icon-product-design",
-      title: "Product Design",
-      slug: "product-design",
-      delay: "500ms",
-      description:
-        "User-centered product designs that turn ideas into engaging experiences.",
-    },
-    {
-      img: "/assets/images/services/services-2-4.jpg",
-      icon: "icon-code",
-      title: "Website Design",
-      slug: "website-design",
-      delay: "700ms",
-      description:
-        "Modern, responsive websites tailored to your brand and business goals.",
-    },
-    {
-      img: "/assets/images/services/services-2-5.jpg",
-      icon: "icon-promotion-1",
-      title: "Business Analysis",
-      slug: "business-analysis",
-      delay: "900ms",
-      description:
-        "Strategic analysis to optimize processes, performance, and growth.",
-    },
-    {
-      img: "/assets/images/services/services-2-6.jpg",
-      icon: "icon-social-media-marketing",
-      title: "Web Development",
-      slug: "web-development",
-      delay: "1100ms",
-      description:
-        "Scalable web solutions using modern technologies and best practices.",
-    },
-  ];
+export const servicesData = [
+  {
+    img: "/assets/images/services/services-2-1.jpg",
+    icon: "icon-ux-design",
+    title: "UI/UX Design",
+    slug: "ui-ux-design",
+    delay: "100ms",
+    description:
+      "Comprehensive IT management, including network monitoring and data backup.",
+  },
+  {
+    img: "/assets/images/services/services-2-2.jpg",
+    icon: "icon-software-development",
+    title: "APP Development",
+    slug: "app-development",
+    delay: "300ms",
+    description:
+      "Custom mobile and web applications built for performance and scalability.",
+  },
+  {
+    img: "/assets/images/services/services-2-3.jpg",
+    icon: "icon-product-design",
+    title: "Product Design",
+    slug: "product-design",
+    delay: "500ms",
+    description:
+      "User-centered product designs that turn ideas into engaging experiences.",
+  },
+  {
+    img: "/assets/images/services/services-2-4.jpg",
+    icon: "icon-code",
+    title: "Website Design",
+    slug: "website-design",
+    delay: "700ms",
+    description:
+      "Modern, responsive websites tailored to your brand and business goals.",
+  },
+  {
+    img: "/assets/images/services/services-2-5.jpg",
+    icon: "icon-promotion-1",
+    title: "Business Analysis",
+    slug: "business-analysis",
+    delay: "900ms",
+    description:
+      "Strategic analysis to optimize processes, performance, and growth.",
+  },
+  {
+    img: "/assets/images/services/services-2-6.jpg",
+    icon: "icon-social-media-marketing",
+    title: "Web Development",
+    slug: "web-development",
+    delay: "1100ms",
+    description:
+      "Scalable web solutions using modern technologies and best practices.",
+  },
+];
 const ServicePage_Services = () => {
- 
-
   return (
     <>
       <section className="services-page">

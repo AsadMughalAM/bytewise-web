@@ -36,10 +36,7 @@ const CounterTwo = () => {
                 <div className="counter-two__content">
                   <div className="counter-two__count-box">
                     <h3 className="odometer">
-                      <CountUp
-                        end={counter.count}
-                        duration={2.5}
-                      />
+                      <CountUp end={counter.count} duration={2.5} />
                     </h3>
                     <span>{counter.suffix}</span>
                   </div>

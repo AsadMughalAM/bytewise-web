@@ -10,8 +10,6 @@ import BlogOne from "@/components/sections/BlogOne";
 
 const About = () => {
   useEffect(() => {
-    // Ensure body class is set if needed, though layout usually handles common classes
-    // about.html has <body class="custom-cursor">
     document.body.classList.add("custom-cursor");
     return () => {
       document.body.classList.remove("custom-cursor");
@@ -52,7 +50,6 @@ const About = () => {
       <CounterTwo />
       <TestimonialTwo />
       <BlogOne />
-  
     </>
   );
 };

@@ -34,7 +34,7 @@ const Service = () => {
         </div>
       </section>
       <ServicePage_Services />
-      
+
       <section className="process-two">
         <div
           className="process-two__bg-shape"
