@@ -1,9 +1,6 @@
+"use client";
+import ContactForm from "./ContactForm";
 const Contact = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Contact form submitted");
-  };
-
   return (
     <section className="contact-three" id="contact">
       <div className="contact-three__bg-color">
@@ -107,93 +104,7 @@ const Contact = () => {
                 />
               </div>
               <div className="contact-one__right">
-                <form
-                  className="contact-form-validated contact-one__form"
-                  action="https://dreamlayout.mnsithub.com/html/itzone/main-html/assets/inc/sendemail.php"
-                  method="post"
-                  onSubmit={handleSubmit}
-                >
-                  <div className="row">
-                    <div className="col-xl-6 col-lg-6 col-md-6">
-                      <h4 className="contact-one__input-title">Full Name</h4>
-                      <div className="contact-one__input-box">
-                        <div className="contact-one__input-icon">
-                          <span className="icon-user"></span>
-                        </div>
-                        <input
-                          type="text"
-                          name="name"
-                          placeholder="Thomas Alison"
-                          required=""
-                        />
-                      </div>
-                    </div>
-                    <div className="col-xl-6 col-lg-6 col-md-6">
-                      <h4 className="contact-one__input-title">
-                        Email Address
-                      </h4>
-                      <div className="contact-one__input-box">
-                        <div className="contact-one__input-icon">
-                          <span className="icon-mail"></span>
-                        </div>
-                        <input
-                          type="email"
-                          name="email"
-                          placeholder="thomas@domain.com"
-                          required=""
-                        />
-                      </div>
-                    </div>
-                    <div className="col-xl-6 col-lg-6 col-md-6">
-                      <h4 className="contact-one__input-title">Phone Number</h4>
-                      <div className="contact-one__input-box">
-                        <div className="contact-one__input-icon">
-                          <span className="icon-phone-call"></span>
-                        </div>
-                        <input
-                          type="text"
-                          name="phone"
-                          placeholder="+12 (00) 123 4567 890"
-                          required=""
-                        />
-                      </div>
-                    </div>
-                    <div className="col-xl-6 col-lg-6 col-md-6">
-                      <h4 className="contact-one__input-title">Subject</h4>
-                      <div className="contact-one__input-box">
-                        <div className="contact-one__input-icon">
-                          <span className="icon-edit"></span>
-                        </div>
-                        <input
-                          type="text"
-                          name="subject"
-                          placeholder="Subject"
-                          required=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-xl-12">
-                    <h4 className="contact-one__input-title">Inquiry about </h4>
-                    <div className="contact-one__input-box text-message-box">
-                      <div className="contact-one__input-icon">
-                        <span className="icon-edit"></span>
-                      </div>
-                      <textarea
-                        name="message"
-                        placeholder="Write your message"
-                        required=""
-                      ></textarea>
-                    </div>
-                    <div className="contact-one__btn-box">
-                      <button type="submit" className="thm-btn">
-                        Submit Now
-                        <span className="fas fa-arrow-right"></span>
-                      </button>
-                    </div>
-                  </div>
-                  <div className="result"></div>
-                </form>
+                <ContactForm />
               </div>
             </div>
           </div>
@@ -201,6 +112,6 @@ const Contact = () => {
       </div>
     </section>
   );
-};
+};  
 
 export default Contact;

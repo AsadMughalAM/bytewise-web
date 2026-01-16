@@ -29,9 +29,17 @@
   }
 
   // Preloader
-  $(window).on("load", function (event) {
-    $(".js-preloader").delay(200).fadeOut(300);
-  });
+  if ($(".js-preloader").length) {
+    $(window).on("load", function (event) {
+      $(".js-preloader").delay(200).fadeOut(300);
+    });
+    // Fallback if window already loaded
+    setTimeout(() => {
+      if ($(".js-preloader").is(":visible")) {
+        $(".js-preloader").fadeOut(300);
+      }
+    }, 2000);
+  }
 
   // AOS Animation
   if ($("[data-aos]").length) {
@@ -731,6 +739,7 @@
     });
   }
 
+  /*
   $(".contact-form-validated").each(function () {
     $(this).validate({
       rules: {
@@ -754,6 +763,7 @@
       },
     });
   });
+  */
 
   if ($(".video-popup").length) {
     $(".video-popup").magnificPopup({

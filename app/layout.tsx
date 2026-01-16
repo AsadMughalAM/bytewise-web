@@ -7,7 +7,8 @@ import Navbar from "@/components/layout/Navbar";
 import MobileNav from "@/components/layout/MobileNav";
 import Preloader from "@/components/layout/Preloader";
 import Footer from "@/components/layout/Footer";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -78,6 +79,7 @@ export default function RootLayout({
         <MobileNav />
         <Navbar />
         {children}
+         <ToastContainer position="top-right" autoClose={3000} />
         <Footer />
 
         {/* Core libs (load before interactive scripts) */}
