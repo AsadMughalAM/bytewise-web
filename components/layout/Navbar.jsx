@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { servicesData } from "@/components/sections/ServicePage_Services";
 
-// menuData.js
 export const menuItems = [
   { title: "Home", href: "/" },
   { title: "About", href: "/about" },
@@ -11,13 +11,11 @@ export const menuItems = [
     title: "Services",
     href: "/service",
     dropdown: [
-      { title: "Services", href: "/service" },
-      { title: "UI/UX Design", href: "/services" },
-      { title: "Web Development", href: "/services" },
-      { title: "Digital Marketing", href: "/services" },
-      { title: "Business Analysis", href: "/services" },
-      { title: "Software Development", href: "/services" },
-      { title: "Product Design", href: "/services" },
+      { title: "Our Services", href: "/service" },
+      ...servicesData.map((service) => ({
+        title: service.title,
+        href: `/service/${service.slug}`,
+      })),
     ],
   },
   { title: "Blog", href: "/blog" },
