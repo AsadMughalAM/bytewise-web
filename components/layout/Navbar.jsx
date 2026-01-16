@@ -35,27 +35,45 @@ const Navbar = () => {
           <div className="container">
             <div className="main-menu-three__top-inner">
               <div className="main-menu-three__top-social">
-                <Link href="#"><span className="icon-facebook-app-symbol"></span></Link>
-                <Link href="#"><span className="icon-twitter-1"></span></Link>
-                <Link href="#"><span className="icon-linkedin"></span></Link>
-                <Link href="#"><span className="icon-pinterest"></span></Link>
+                <Link href="#">
+                  <span className="icon-facebook-app-symbol"></span>
+                </Link>
+                <Link href="#">
+                  <span className="icon-twitter-1"></span>
+                </Link>
+                <Link href="#">
+                  <span className="icon-linkedin"></span>
+                </Link>
+                <Link href="#">
+                  <span className="icon-pinterest"></span>
+                </Link>
               </div>
 
               <ul className="list-unstyled main-menu-three__contact-list">
                 <li>
-                  <div className="icon"><i className="icon-pin"></i></div>
-                  <div className="text"><p>1629 N. Dixie Avenue, Kentucky, 42701</p></div>
+                  <div className="icon">
+                    <i className="icon-pin"></i>
+                  </div>
+                  <div className="text">
+                    <p>1629 N. Dixie Avenue, Kentucky, 42701</p>
+                  </div>
                 </li>
                 <li>
-                  <div className="icon"><i className="icon-mail"></i></div>
+                  <div className="icon">
+                    <i className="icon-mail"></i>
+                  </div>
                   <div className="text">
                     <p>
-                      <Link href="mailto:example@domain.com">example@domain.com</Link>
+                      <Link href="mailto:example@domain.com">
+                        example@domain.com
+                      </Link>
                     </p>
                   </div>
                 </li>
                 <li>
-                  <div className="icon"><i className="icon-phone-call"></i></div>
+                  <div className="icon">
+                    <i className="icon-phone-call"></i>
+                  </div>
                   <div className="text">
                     <p>
                       <Link href="tel:1212345678900">+12 (123) 456 78900</Link>
@@ -65,9 +83,15 @@ const Navbar = () => {
               </ul>
 
               <ul className="list-unstyled main-menu-three__top-menu">
-                <li><Link href="/about">Help</Link></li>
-                <li><Link href="/contact">Support</Link></li>
-                <li><Link href="/faq">Faqs</Link></li>
+                <li>
+                  <Link href="/about">Help</Link>
+                </li>
+                <li>
+                  <Link href="/contact">Support</Link>
+                </li>
+                <li>
+                  <Link href="/faq">Faqs</Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -81,20 +105,31 @@ const Navbar = () => {
                 <div className="main-menu-three__left">
                   <div className="main-menu-three__logo">
                     <Link href="/">
-                      <img src="/assets/images/resources/logo-1.png" alt="Logo" />
+                      <img
+                        src="/assets/images/resources/logo-1.png"
+                        alt="Logo"
+                      />
                     </Link>
                   </div>
                 </div>
 
                 <div className="main-menu-three__main-menu-box">
-                  <a href="#" className="mobile-nav__toggler"><i className="fa fa-bars"></i></a>
+                  <a href="#" className="mobile-nav__toggler">
+                    <i className="fa fa-bars"></i>
+                  </a>
                   <ul className="main-menu__list">
                     {menuItems.map((item, index) => (
                       <li
-                        key={index} 
-                        className={`dropdown ${activeDropdown === item.title ? "active" : ""}`}
-                        onMouseEnter={() => item.dropdown && setActiveDropdown(item.title)}
-                        onMouseLeave={() => item.dropdown && setActiveDropdown(null)}
+                        key={index}
+                        className={`${item.dropdown ? "dropdown" : ""} ${
+                          activeDropdown === item.title ? "active" : ""
+                        }`}
+                        onMouseEnter={() =>
+                          item.dropdown && setActiveDropdown(item.title)
+                        }
+                        onMouseLeave={() =>
+                          item.dropdown && setActiveDropdown(null)
+                        }
                       >
                         <Link href={item.href}>{item.title}</Link>
                         {item.dropdown && (
