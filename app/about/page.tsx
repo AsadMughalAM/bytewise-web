@@ -9,13 +9,6 @@ import TestimonialTwo from "@/components/sections/TestimonialTwo";
 import BlogOne from "@/components/sections/BlogOne";
 
 const About = () => {
-  useEffect(() => {
-    document.body.classList.add("custom-cursor");
-    return () => {
-      document.body.classList.remove("custom-cursor");
-    };
-  }, []);
-
   return (
     <>
       <section className="page-header">

@@ -15,23 +15,6 @@ import Team from "../components/sections/Team";
 import Blog from "../components/sections/Blog";
 
 function App() {
-  useEffect(() => {
-    document.body.className = "custom-cursor";
-
-    const cursor = document.createElement("div");
-    cursor.className = "custom-cursor__cursor";
-    const cursorTwo = document.createElement("div");
-    cursorTwo.className = "custom-cursor__cursor-two";
-    document.body.appendChild(cursor);
-    document.body.appendChild(cursorTwo);
-
-    return () => {
-      document.body.className = "";
-      cursor.remove();
-      cursorTwo.remove();
-    };
-  }, []);
-
   return (
     <div className="page-wrapper">
       <Banner />
