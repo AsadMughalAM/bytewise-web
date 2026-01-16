@@ -8,19 +8,36 @@ const ContactForm = () => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-    toast.success("Form submitted successfully ");
+      const result = await response.json();
 
-    reset();
+      if (result.success) {
+        toast.success(result.message || "Message sent successfully!");
+        reset();
+      } else {
+        toast.error(result.message || "Failed to send message");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong!");
+    }
   };
 
   const onError = () => {
-    toast.error("Please fill all required fields ");
+    toast.error("Please fill all required fields");
   };
 
   return (
@@ -73,7 +90,6 @@ const ContactForm = () => {
               type="text"
               placeholder="+12 (00) 123 4567 890"
               {...register("phone", {
-                required: "Phone number is required",
                 minLength: {
                   value: 10,
                   message: "Minimum 10 digits required",
@@ -122,8 +138,8 @@ const ContactForm = () => {
         </div>
 
         <div className="contact-one__btn-box">
-          <button type="submit" className="thm-btn">
-            Submit Now
+          <button type="submit" className="thm-btn" disabled={isSubmitting}>
+            {isSubmitting ? "Sending..." : "Submit Now"}
           </button>
         </div>
       </div>
