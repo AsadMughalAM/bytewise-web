@@ -1,271 +1,132 @@
-import React from 'react'
+import React from "react";
+import contentfulFetch from "@/lib/contentful";
+import { GET_BLOG_POSTS_LIST } from "./query";
+import Link from "next/link";
 
-const BlogPage = () => {
+const BlogPage = async () => {
+  const data = await contentfulFetch(GET_BLOG_POSTS_LIST, {
+    limit: 12,
+    skip: 0,
+  });
+  const blogs = data.blogCollection.items;
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
   return (
     <>
-       <section className="page-header">
-            <div className="page-header__bg" style={{backgroundImage: "url(assets/images/backgrounds/page-header-bg.jpg)"}}>
+      <section className="page-header">
+        <div
+          className="page-header__bg"
+          style={{
+            backgroundImage:
+              "url(/assets/images/backgrounds/page-header-bg.jpg)",
+          }}
+        ></div>
+        <div className="container">
+          <div className="page-header__inner">
+            <h3>Blog</h3>
+            <div className="thm-breadcrumb__inner">
+              <ul className="thm-breadcrumb list-unstyled">
+                <li>
+                  <Link href="/">Home</Link>
+                </li>
+                <li>
+                  <span className="icon-arrow-angle-pointing-to-right"></span>
+                </li>
+                <li>Blog</li>
+              </ul>
             </div>
-            <div className="container">
-                <div className="page-header__inner">
-                    <h3>Blog</h3>
-                    <div className="thm-breadcrumb__inner">
-                        <ul className="thm-breadcrumb list-unstyled">
-                            <li><a href="index.html">Home</a></li>
-                            <li><span className="icon-arrow-angle-pointing-to-right"></span></li>
-                            <li>Blog</li>
-                        </ul>
+          </div>
+        </div>
+      </section>
+      <section className="blog-page">
+        <div className="container">
+          <div className="row">
+            {blogs.map((blog, index) => (
+              <div
+                key={blog._id}
+                className="col-xl-4 col-lg-6 col-md-6 wow fadeInUp"
+                data-wow-delay={`${((index % 3) + 1) * 100}ms`}
+              >
+                <div className="blog-one__single">
+                  <div className="blog-one__img">
+                    <img
+                      src={
+                        blog.thumbnail?.url ||
+                        "/assets/images/blog/blog-2-1.jpg"
+                      }
+                      alt={blog.thumbnail?.title || blog.title}
+                    />
+                    <div className="blog-one__tags">
+                      {blog.tags?.map((tag) => (
+                        <span key={tag}>{tag}</span>
+                      ))}
                     </div>
+                  </div>
+                  <div className="blog-one__content">
+                    <div className="blog-one__user">
+                      <div className="blog-one__user-img">
+                        <img
+                          src="/assets/images/blog/blog-one-user-1.jpg"
+                          alt=""
+                        />
+                      </div>
+                      <p className="blog-one__user-title">Admin</p>
+                    </div>
+                    <ul className="blog-one__meta list-unstyled">
+                      <li>
+                        <Link href={`/blog/${blog.slug}`}>
+                          <span className="far fa-calendar-alt"></span>
+                          {formatDate(blog.publishedDate)}
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href={`/blog/${blog.slug}`}>
+                          <span className="fal fa-comments"></span>
+                          {blog.comments || "0"} Comments
+                        </Link>
+                      </li>
+                    </ul>
+                    <h3 className="blog-one__title">
+                      <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
+                    </h3>
+                    <div className="blog-one__btn-box">
+                      <Link href={`/blog/${blog.slug}`} className="thm-btn">
+                        Read More
+                        <span className="fas fa-arrow-right"></span>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
+              </div>
+            ))}
+          </div>
+          {blogs.length === 0 && (
+            <div className="text-center py-5">
+              <h3>No blog posts found.</h3>
             </div>
-        </section>
-         <section className="blog-page">
-            <div className="container">
-                <div className="row">
-
-                    <div className="col-xl-4 col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay="100ms">
-                        <div className="blog-one__single">
-                            <div className="blog-one__img">
-                                <img src="assets/images/blog/blog-2-1.jpg" alt=""/>
-                                <div className="blog-one__tags">
-                                    <span>Digital</span>
-                                    <span>Technology</span>
-                                </div>
-                            </div>
-                            <div className="blog-one__content">
-                                <div className="blog-one__user">
-                                    <div className="blog-one__user-img">
-                                        <img src="assets/images/blog/blog-one-user-1.jpg" alt=""/>
-                                    </div>
-                                    <p className="blog-one__user-title">Malaika alise</p>
-                                </div>
-                                <ul className="blog-one__meta list-unstyled">
-                                    <li>
-                                        <a href="blog-details.html"><span className="far fa-calendar-alt"></span>April 5,
-                                            2025</a>
-                                    </li>
-                                    <li>
-                                        <a href="blog-details.html"><span className="fal fa-comments"></span>80
-                                            Comments</a>
-                                    </li>
-                                </ul>
-                                <h3 className="blog-one__title"><a href="blog-details.html">Improving Business
-                                        Growth with
-                                        New Technology</a></h3>
-                                <div className="blog-one__btn-box">
-                                    <a href="blog-details.html" className="thm-btn">Reed More
-                                        <span className="fas fa-arrow-right"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                  
-                    <div className="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="200ms">
-                        <div className="blog-one__single">
-                            <div className="blog-one__img">
-                                <img src="assets/images/blog/blog-2-2.jpg" alt=""/>
-                                <div className="blog-one__tags">
-                                    <span>Digital</span>
-                                    <span>Technology</span>
-                                </div>
-                            </div>
-                            <div className="blog-one__content">
-                                <div className="blog-one__user">
-                                    <div className="blog-one__user-img">
-                                        <img src="assets/images/blog/blog-one-user-2.jpg" alt=""/>
-                                    </div>
-                                    <p className="blog-one__user-title">Readik males</p>
-                                </div>
-                                <ul className="blog-one__meta list-unstyled">
-                                    <li>
-                                        <a href="blog-details.html"><span className="far fa-calendar-alt"></span>April 5,
-                                            2025</a>
-                                    </li>
-                                    <li>
-                                        <a href="blog-details.html"><span className="fal fa-comments"></span>80
-                                            Comments</a>
-                                    </li>
-                                </ul>
-                                <h3 className="blog-one__title"><a href="blog-details.html">Regional Manager &
-                                        limited
-                                        management.</a></h3>
-                                <div className="blog-one__btn-box">
-                                    <a href="blog-details.html" className="thm-btn">Reed More
-                                        <span className="fas fa-arrow-right"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                  
-                    <div className="col-xl-4 col-lg-6 col-md-6 wow fadeInRight" data-wow-delay="300ms">
-                        <div className="blog-one__single">
-                            <div className="blog-one__img">
-                                <img src="assets/images/blog/blog-2-3.jpg" alt=""/>
-                                <div className="blog-one__tags">
-                                    <span>Digital</span>
-                                    <span>Technology</span>
-                                </div>
-                            </div>
-                            <div className="blog-one__content">
-                                <div className="blog-one__user">
-                                    <div className="blog-one__user-img">
-                                        <img src="assets/images/blog/blog-one-user-3.jpg" alt=""/>
-                                    </div>
-                                    <p className="blog-one__user-title">Tamu Tanu</p>
-                                </div>
-                                <ul className="blog-one__meta list-unstyled">
-                                    <li>
-                                        <a href="blog-details.html"><span className="far fa-calendar-alt"></span>April 5,
-                                            2025</a>
-                                    </li>
-                                    <li>
-                                        <a href="blog-details.html"><span className="fal fa-comments"></span>80
-                                            Comments</a>
-                                    </li>
-                                </ul>
-                                <h3 className="blog-one__title"><a href="blog-details.html">Easy and Most Powerful
-                                        Server
-                                        and Platform.</a></h3>
-                                <div className="blog-one__btn-box">
-                                    <a href="blog-details.html" className="thm-btn">Reed More
-                                        <span className="fas fa-arrow-right"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div className="col-xl-4 col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay="400ms">
-                        <div className="blog-one__single">
-                            <div className="blog-one__img">
-                                <img src="assets/images/blog/blog-2-4.jpg" alt=""/>
-                                <div className="blog-one__tags">
-                                    <span>Digital</span>
-                                    <span>Technology</span>
-                                </div>
-                            </div>
-                            <div className="blog-one__content">
-                                <div className="blog-one__user">
-                                    <div className="blog-one__user-img">
-                                        <img src="assets/images/blog/blog-one-user-4.jpg" alt=""/>
-                                    </div>
-                                    <p className="blog-one__user-title">Hardik Pandey</p>
-                                </div>
-                                <ul className="blog-one__meta list-unstyled">
-                                    <li>
-                                        <a href="blog-details.html"><span className="far fa-calendar-alt"></span>Aug
-                                            9,
-                                            2025</a>
-                                    </li>
-                                    <li>
-                                        <a href="blog-details.html"><span className="fal fa-comments"></span>80
-                                            Comments</a>
-                                    </li>
-                                </ul>
-                                <h3 className="blog-one__title"><a href="blog-details.html">Improving Business
-                                        Growth with
-                                        New Technology</a></h3>
-                                <div className="blog-one__btn-box">
-                                    <a href="blog-details.html" className="thm-btn">Reed More
-                                        <span className="fas fa-arrow-right"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                  
-                    <div className="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="500ms">
-                        <div className="blog-one__single">
-                            <div className="blog-one__img">
-                                <img src="assets/images/blog/blog-2-5.jpg" alt=""/>
-                                <div className="blog-one__tags">
-                                    <span>Digital</span>
-                                    <span>Technology</span>
-                                </div>
-                            </div>
-                            <div className="blog-one__content">
-                                <div className="blog-one__user">
-                                    <div className="blog-one__user-img">
-                                        <img src="assets/images/blog/blog-one-user-5.jpg" alt=""/>
-                                    </div>
-                                    <p className="blog-one__user-title">Ronalfi Kenis</p>
-                                </div>
-                                <ul className="blog-one__meta list-unstyled">
-                                    <li>
-                                        <a href="blog-details.html"><span className="far fa-calendar-alt"></span>may
-                                            14,
-                                            2025</a>
-                                    </li>
-                                    <li>
-                                        <a href="blog-details.html"><span className="fal fa-comments"></span>80
-                                            Comments</a>
-                                    </li>
-                                </ul>
-                                <h3 className="blog-one__title"><a href="blog-details.html">The Role of AI in IT
-                                        Support and Security</a></h3>
-                                <div className="blog-one__btn-box">
-                                    <a href="blog-details.html" className="thm-btn">Reed More
-                                        <span className="fas fa-arrow-right"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            
-                    <div className="col-xl-4 col-lg-6 col-md-6 wow fadeInRight" data-wow-delay="600ms">
-                        <div className="blog-one__single">
-                            <div className="blog-one__img">
-                                <img src="assets/images/blog/blog-2-6.jpg" alt=""/>
-                                <div className="blog-one__tags">
-                                    <span>Digital</span>
-                                    <span>Technology</span>
-                                </div>
-                            </div>
-                            <div className="blog-one__content">
-                                <div className="blog-one__user">
-                                    <div className="blog-one__user-img">
-                                        <img src="assets/images/blog/blog-one-user-6.jpg" alt=""/>
-                                    </div>
-                                    <p className="blog-one__user-title">Tapila Gos</p>
-                                </div>
-                                <ul className="blog-one__meta list-unstyled">
-                                    <li>
-                                        <a href="blog-details.html"><span className="far fa-calendar-alt"></span>Janu 15,
-                                            2025</a>
-                                    </li>
-                                    <li>
-                                        <a href="blog-details.html"><span className="fal fa-comments"></span>80
-                                            Comments</a>
-                                    </li>
-                                </ul>
-                                <h3 className="blog-one__title"><a href="blog-details.html">Cloud vs. On-Premise Is
-                                        Right for You?</a></h3>
-                                <div className="blog-one__btn-box">
-                                    <a href="blog-details.html" className="thm-btn">Reed More
-                                        <span className="fas fa-arrow-right"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                  
-                    <div className="blog-list__pagination">
-                        <ul className="pg-pagination list-unstyled">
-                            <li className="count active"><a href="#">1</a></li>
-                            <li className="count"><a href="#">2</a></li>
-                            <li className="count"><a href="#">3</a></li>
-                            <li className="next">
-                                <a href="#" aria-label="Next"><i className="fas fa-angle-right"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+          )}
+          {data.blogCollection.total > blogs.length && (
+            <div className="blog-list__pagination">
+              <ul className="pg-pagination list-unstyled">
+                <li className="count active">
+                  <a href="#">1</a>
+                </li>
+                {/* Pagination logic can be added later if needed */}
+              </ul>
             </div>
-        </section>
+          )}
+        </div>
+      </section>
     </>
-  )
-}
+  );
+};
 
-export default BlogPage
+export default BlogPage;

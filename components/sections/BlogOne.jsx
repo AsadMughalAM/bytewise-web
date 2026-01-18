@@ -1,9 +1,28 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
+import contentfulFetch from "@/lib/contentful";
+import { GET_BLOG_POSTS_LIST } from "@/app/blog/query";
+import Link from "next/link";
 
-const BlogOne = () => {
+const BlogOne = async () => {
+  const data = await contentfulFetch(GET_BLOG_POSTS_LIST, {
+    limit: 3,
+    skip: 0,
+  });
+  const blogs = data.blogCollection.items;
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  };
+
+  if (blogs.length === 0) return null;
+
+  const mainBlog = blogs[0];
+  const sideBlogs = blogs.slice(1);
+
   return (
     <section className="blog-one">
       <div className="blog-one__shape-1"></div>
@@ -25,10 +44,17 @@ const BlogOne = () => {
           <div className="col-xl-6 wow fadeInLeft" data-wow-delay="100ms">
             <div className="blog-one__single">
               <div className="blog-one__img">
-                <img src="/assets/images/blog/blog-1-1.jpg" alt="" />
+                <img
+                  src={
+                    mainBlog.thumbnail?.url ||
+                    "/assets/images/blog/blog-1-1.jpg"
+                  }
+                  alt={mainBlog.title}
+                />
                 <div className="blog-one__tags">
-                  <span>Digital</span>
-                  <span>Technology</span>
+                  {mainBlog.tags?.map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
                 </div>
               </div>
               <div className="blog-one__content">
@@ -36,133 +62,99 @@ const BlogOne = () => {
                   <div className="blog-one__user-img">
                     <img src="/assets/images/blog/blog-one-user-1.jpg" alt="" />
                   </div>
-                  <p className="blog-one__user-title">Malaika alise</p>
+                  <p className="blog-one__user-title">Admin</p>
                 </div>
                 <ul className="blog-one__meta list-unstyled">
                   <li>
-                    <a href="blog-details.html">
-                      <span className="far fa-calendar-alt"></span>April 5, 2025
-                    </a>
+                    <Link href={`/blog/${mainBlog.slug}`}>
+                      <span className="far fa-calendar-alt"></span>
+                      {formatDate(mainBlog.publishedDate)}
+                    </Link>
                   </li>
                   <li>
-                    <a href="blog-details.html">
-                      <span className="fal fa-comments"></span>80 Comments
-                    </a>
+                    <Link href={`/blog/${mainBlog.slug}`}>
+                      <span className="fal fa-comments"></span>
+                      {mainBlog.comments || "0"} Comments
+                    </Link>
                   </li>
                 </ul>
                 <h3 className="blog-one__title">
-                  <a href="blog-details.html">
-                    Improving Business Growth with New
-                    <br /> Technology
-                  </a>
+                  <Link href={`/blog/${mainBlog.slug}`}>{mainBlog.title}</Link>
                 </h3>
                 <p className="blog-one__text">
-                  Winning the Digital business The 2025 Transformation Roadmap.
-                  Holisticly leverage existing magnetic. Next-Gen Digital
-                  Transformation
+                  {mainBlog.excerpt || "Click to read more about this article."}
                 </p>
                 <div className="blog-one__btn-box">
-                  <a href="blog-details.html" className="thm-btn">
+                  <Link href={`/blog/${mainBlog.slug}`} className="thm-btn">
                     Read More
                     <span className="fas fa-arrow-right"></span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
           <div className="col-xl-6">
-            <div
-              className="blog-one__single-two wow fadeInUp"
-              data-wow-delay="200ms"
-            >
-              <div className="blog-one__img-two">
-                <img src="/assets/images/blog/blog-1-2.jpg" alt="" />
-                <div className="blog-one__tags-two">
-                  <span>Digital</span>
-                  <span>Technology</span>
-                </div>
-              </div>
-              <div className="blog-one__content-two">
-                <div className="blog-one__user-two">
-                  <div className="blog-one__user-two-img">
-                    <img src="/assets/images/blog/blog-one-user-2.jpg" alt="" />
+            {sideBlogs.map((blog, index) => (
+              <div
+                key={blog._id}
+                className="blog-one__single-two wow fadeInUp"
+                data-wow-delay={`${(index + 2) * 100}ms`}
+              >
+                <div className="blog-one__img-two">
+                  <img
+                    src={
+                      blog.thumbnail?.url ||
+                      `/assets/images/blog/blog-1-${index + 2}.jpg`
+                    }
+                    alt={blog.title}
+                  />
+                  <div className="blog-one__tags-two">
+                    {blog.tags?.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
                   </div>
-                  <p className="blog-one__user-two-title">John Smith</p>
                 </div>
-                <ul className="blog-one__meta-two list-unstyled">
-                  <li>
-                    <a href="blog-details.html">
-                      <span className="far fa-calendar-alt"></span>Feb 25, 2025
-                    </a>
-                  </li>
-                  <li>
-                    <a href="blog-details.html">
-                      <span className="fal fa-comments"></span>22 Comments
-                    </a>
-                  </li>
-                </ul>
-                <h3 className="blog-one__title-two">
-                  <a href="blog-details.html">
-                    Regional Manager & limited management.
-                  </a>
-                </h3>
-                <p className="blog-one__text-two">
-                  Winning the Digital business The 2025 Transformation Roadmap.
-                </p>
-                <div className="blog-one__btn-box-two">
-                  <a href="blog-details.html" className="thm-btn">
-                    Reed More
-                    <span className="fas fa-arrow-right"></span>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div
-              className="blog-one__single-two wow fadeInUp"
-              data-wow-delay="300ms"
-            >
-              <div className="blog-one__img-two">
-                <img src="/assets/images/blog/blog-1-3.jpg" alt="" />
-                <div className="blog-one__tags-two">
-                  <span>Digital</span>
-                  <span>Technology</span>
-                </div>
-              </div>
-              <div className="blog-one__content-two">
-                <div className="blog-one__user-two">
-                  <div className="blog-one__user-two-img">
-                    <img src="/assets/images/blog/blog-one-user-3.jpg" alt="" />
+                <div className="blog-one__content-two">
+                  <div className="blog-one__user-two">
+                    <div className="blog-one__user-two-img">
+                      <img
+                        src={`/assets/images/blog/blog-one-user-${
+                          index + 2
+                        }.jpg`}
+                        alt=""
+                      />
+                    </div>
+                    <p className="blog-one__user-two-title">Admin</p>
                   </div>
-                  <p className="blog-one__user-two-title">Jerin jara</p>
-                </div>
-                <ul className="blog-one__meta-two list-unstyled">
-                  <li>
-                    <a href="blog-details.html">
-                      <span className="far fa-calendar-alt"></span>May 19, 2025
-                    </a>
-                  </li>
-                  <li>
-                    <a href="blog-details.html">
-                      <span className="fal fa-comments"></span>15 Comments
-                    </a>
-                  </li>
-                </ul>
-                <h3 className="blog-one__title-two">
-                  <a href="blog-details.html">
-                    Easy and Most Powerful Server and Platform.
-                  </a>
-                </h3>
-                <p className="blog-one__text-two">
-                  Winning the Digital business The 2025 Transformation Roadmap.
-                </p>
-                <div className="blog-one__btn-box-two">
-                  <a href="blog-details.html" className="thm-btn">
-                    Reed More
-                    <span className="fas fa-arrow-right"></span>
-                  </a>
+                  <ul className="blog-one__meta-two list-unstyled">
+                    <li>
+                      <Link href={`/blog/${blog.slug}`}>
+                        <span className="far fa-calendar-alt"></span>
+                        {formatDate(blog.publishedDate)}
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href={`/blog/${blog.slug}`}>
+                        <span className="fal fa-comments"></span>
+                        {blog.comments || "0"} Comments
+                      </Link>
+                    </li>
+                  </ul>
+                  <h3 className="blog-one__title-two">
+                    <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
+                  </h3>
+                  <p className="blog-one__text-two">
+                    {blog.excerpt || "Click to read more."}
+                  </p>
+                  <div className="blog-one__btn-box-two">
+                    <Link href={`/blog/${blog.slug}`} className="thm-btn">
+                      Read More
+                      <span className="fas fa-arrow-right"></span>
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

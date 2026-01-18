@@ -1,42 +1,22 @@
-const Blog = () => {
-  const blogs = [
-    {
-      img: "/assets/images/blog/blog-2-1.jpg",
-      tags: ["Digital", "Technology"],
-      userImg: "/assets/images/blog/blog-one-user-1.jpg",
-      userName: "Malaika alise",
-      date: "April 5, 2025",
-      comments: "80 Comments",
-      title: "Improving Business Growth with New Technology",
-      text: "Winning the Digital business The 2025 Transformation Roadmap.",
-      delay: "100ms",
-      animation: "fadeInLeft",
-    },
-    {
-      img: "/assets/images/blog/blog-2-2.jpg",
-      tags: ["Digital", "Technology"],
-      userImg: "/assets/images/blog/blog-one-user-2.jpg",
-      userName: "Readik males",
-      date: "April 5, 2025",
-      comments: "80 Comments",
-      title: "Regional Manager & limited management.",
-      text: "Winning the Digital business The 2025 Transformation Roadmap.",
-      delay: "200ms",
-      animation: "fadeInUp",
-    },
-    {
-      img: "/assets/images/blog/blog-2-3.jpg",
-      tags: ["Digital", "Technology"],
-      userImg: "/assets/images/blog/blog-one-user-3.jpg",
-      userName: "Tamu Tanu",
-      date: "April 5, 2025",
-      comments: "80 Comments",
-      title: "Easy and Most Powerful Server and Platform.",
-      text: "Winning the Digital business The 2025 Transformation Roadmap.",
-      delay: "300ms",
-      animation: "fadeInRight",
-    },
-  ];
+import contentfulFetch from "@/lib/contentful";
+import { GET_BLOG_POSTS_LIST } from "@/app/blog/query";
+import Link from "next/link";
+
+const Blog = async () => {
+  const data = await contentfulFetch(GET_BLOG_POSTS_LIST, {
+    limit: 3,
+    skip: 0,
+  });
+  const blogs = data.blogCollection.items;
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
 
   return (
     <section className="blog-one blog-two blog-three" id="blog">
@@ -57,49 +37,59 @@ const Blog = () => {
         <ul className="row list-unstyled">
           {blogs.map((blog, index) => (
             <li
-              key={index}
-              className={`col-xl-4 col-lg-4 wow ${blog.animation}`}
-              data-wow-delay={blog.delay}
+              key={blog._id}
+              className={`col-xl-4 col-lg-4 wow fadeInUp`}
+              data-wow-delay={`${(index + 1) * 100}ms`}
             >
               <div className="blog-one__single">
                 <div className="blog-one__img">
-                  <img src={blog.img} alt="" />
+                  <img
+                    src={
+                      blog.thumbnail?.url || "/assets/images/blog/blog-2-1.jpg"
+                    }
+                    alt={blog.title}
+                  />
                   <div className="blog-one__tags">
-                    {blog.tags.map((tag, idx) => (
-                      <span key={idx}>{tag}</span>
+                    {blog.tags?.map((tag) => (
+                      <span key={tag}>{tag}</span>
                     ))}
                   </div>
                 </div>
                 <div className="blog-one__content">
                   <div className="blog-one__user">
                     <div className="blog-one__user-img">
-                      <img src={blog.userImg} alt="" />
+                      <img
+                        src="/assets/images/blog/blog-one-user-1.jpg"
+                        alt=""
+                      />
                     </div>
-                    <p className="blog-one__user-title">{blog.userName}</p>
+                    <p className="blog-one__user-title">Admin</p>
                   </div>
                   <ul className="blog-one__meta list-unstyled">
                     <li>
-                      <a href="#blog">
+                      <Link href={`/blog/${blog.slug}`}>
                         <span className="far fa-calendar-alt"></span>
-                        {blog.date}
-                      </a>
+                        {formatDate(blog.publishedDate)}
+                      </Link>
                     </li>
                     <li>
-                      <a href="#blog">
+                      <Link href={`/blog/${blog.slug}`}>
                         <span className="fal fa-comments"></span>
-                        {blog.comments}
-                      </a>
+                        {blog.comments || "0"} Comments
+                      </Link>
                     </li>
                   </ul>
                   <h3 className="blog-one__title">
-                    <a href="#blog">{blog.title}</a>
+                    <Link href={`/blog/${blog.slug}`}>{blog.title}</Link>
                   </h3>
-                  <p className="blog-one__text">{blog.text}</p>
+                  <p className="blog-one__text">
+                    {blog.excerpt || "Click to read more about this article."}
+                  </p>
                   <div className="blog-one__btn-box">
-                    <a href="#blog" className="thm-btn">
-                      Reed More
+                    <Link href={`/blog/${blog.slug}`} className="thm-btn">
+                      Read More
                       <span className="fas fa-arrow-right"></span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

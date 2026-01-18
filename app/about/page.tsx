@@ -1,5 +1,4 @@
-"use client";
-import React, { useEffect } from "react";
+import React from "react";
 import AboutOne from "@/components/sections/AboutOne";
 import ServicesOne from "@/components/sections/ServicesOne";
 import SlidingText from "@/components/sections/SlidingText";

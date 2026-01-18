@@ -79,9 +79,8 @@ export default function RootLayout({
         <MobileNav />
         <Navbar />
         {children}
-         <ToastContainer position="top-right" autoClose={3000} />
+        <ToastContainer position="top-right" autoClose={3000} />
         <Footer />
-
         {/* Core libs (load before interactive scripts) */}
         <Script
           src="/assets/js/jquery-latest.js"

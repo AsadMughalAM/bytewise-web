@@ -1,5 +1,3 @@
-"use client";
-import { useEffect } from "react";
 import Banner from "../components/sections/Banner";
 import About from "../components/sections/About";
 import SlidingText from "../components/sections/SlidingText";
