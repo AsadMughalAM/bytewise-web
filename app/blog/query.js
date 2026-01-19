@@ -49,6 +49,7 @@ export const GET_BLOG_POSTS_LIST = `
         title
         slug
         excerpt
+        tags
         thumbnail {
           title
           url(
