@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image"; // Added import
 
 import { portfolioProjects } from "@/data/portfolioData";
 import { notFound } from "next/navigation";
@@ -60,7 +61,14 @@ const ProjectDetails = async ({ params }) => {
             <div className="col-xl-8 col-lg-7">
               <div className="project-details__left">
                 <div className="project-details__img">
-                  <img src={project.img} alt={projectTitle} />
+                  <Image
+                    src={project.img}
+                    alt={projectTitle}
+                    width={1000}
+                    height={600}
+                    className="w-100"
+                    style={{ height: "auto" }}
+                  />
                 </div>
                 <h3 className="project-details__title-1">
                   About The Project Overview
@@ -94,9 +102,13 @@ const ProjectDetails = async ({ params }) => {
                     circumstances
                   </p>
                   <div className="project-details__text-img">
-                    <img
+                    <Image
                       src="/assets/images/project/project-details-text-img.jpg"
                       alt=""
+                      width={400}
+                      height={300}
+                      className="w-100"
+                      style={{ height: "auto" }}
                     />
                   </div>
                 </div>
@@ -113,9 +125,13 @@ const ProjectDetails = async ({ params }) => {
                 </p>
                 <div className="project-details__img-and-points">
                   <div className="project-details__points-img">
-                    <img
+                    <Image
                       src="/assets/images/project/project-details-points-img.jpg"
                       alt=""
+                      width={400}
+                      height={300}
+                      className="w-100"
+                      style={{ height: "auto" }}
                     />
                   </div>
                   <ul className="project-details__points list-unstyled">

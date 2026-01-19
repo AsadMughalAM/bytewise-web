@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image"; // Added import
 import { services as servicesData } from "@/data/servicesData";
 
 const ServicePage_Services = () => {
@@ -17,7 +18,14 @@ const ServicePage_Services = () => {
                 <div className="services-two__single">
                   <div className="services-two__img-box">
                     <div className="services-two__img">
-                      <img src={service.img} alt={service.title} />
+                      <Image
+                        src={service.img}
+                        alt={service.title}
+                        width={400}
+                        height={300}
+                        className="w-100"
+                        style={{ height: "auto" }}
+                      />
                     </div>
                     <div className="services-two__icon">
                       <span className={service.icon}></span>

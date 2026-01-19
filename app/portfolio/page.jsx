@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image"; // Added import
 import { portfolioProjects as projects } from "@/data/portfolioData";
 
 const Portfolio = () => {
@@ -42,7 +43,14 @@ const Portfolio = () => {
                 <div className="project-two__single">
                   <div className="project-two__img-box">
                     <div className="project-two__img">
-                      <img src={project.img} alt={project.title} />
+                      <Image
+                        src={project.img}
+                        alt={project.title}
+                        width={370}
+                        height={400}
+                        className="w-100"
+                        style={{ height: "auto" }}
+                      />
                       <div className="project-two__arrow">
                         <Link href={`/portfolio/${project.slug}`}>
                           <span className="fas fa-arrow-right"></span>

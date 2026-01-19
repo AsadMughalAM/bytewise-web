@@ -1,7 +1,8 @@
 import React from "react";
 import { services as servicesData } from "@/data/servicesData";
 import { notFound } from "next/navigation";
-import Link from "next/link"; // Added import
+import Link from "next/link";
+import Image from "next/image"; // Added import
 
 const page = async ({ params }) => {
   const { slug } = await params;
@@ -81,7 +82,14 @@ const page = async ({ params }) => {
               <div className="service-details__left">
                 {/* Main Image */}
                 <div className="service-details__img">
-                  <img src={serviceData.img} alt={serviceData.title} />
+                  <Image
+                    src={serviceData.img}
+                    alt={serviceData.title}
+                    width={1000}
+                    height={600}
+                    className="w-100"
+                    style={{ height: "auto" }}
+                  />
                 </div>
 
                 {/* Title */}
@@ -143,9 +151,13 @@ const page = async ({ params }) => {
                     <div className="col-xl-6">
                       <div className="service-details__img-box-single">
                         <div className="service-details__img-box-img">
-                          <img
+                          <Image
                             src="/assets/images/services/service-details-img-box-img-1.jpg"
                             alt=""
+                            width={400}
+                            height={300}
+                            className="w-100"
+                            style={{ height: "auto" }}
                           />
                         </div>
                         <div className="service-details__img-box-content">
@@ -167,9 +179,13 @@ const page = async ({ params }) => {
                     <div className="col-xl-6">
                       <div className="service-details__img-box-single">
                         <div className="service-details__img-box-img">
-                          <img
+                          <Image
                             src="/assets/images/services/service-details-img-box-img-2.jpg"
                             alt=""
+                            width={400}
+                            height={300}
+                            className="w-100"
+                            style={{ height: "auto" }}
                           />
                         </div>
                         <div className="service-details__img-box-content">
