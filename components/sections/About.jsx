@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 
 import { teamMembers } from "@/data/teamData";
 
@@ -99,9 +100,9 @@ const About = () => {
                     </div>
                   </li>
                   <li>
-                    <a href="#">
+                    <Link href="/">
                       <span className="fas fa-plus"></span>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
                 <p className="about-three__client-text">
@@ -204,10 +205,10 @@ const About = () => {
               </ul>
               <div className="about-three__btn-box-and-call-box">
                 <div className="about-three__btn-box">
-                  <a href="#about" className="about-three__btn thm-btn">
+                  <Link href="/about" className="about-three__btn thm-btn">
                     Discover More
                     <span className="fas fa-arrow-right"></span>
-                  </a>
+                  </Link>
                 </div>
                 <div className="about-three__call-box">
                   <div className="about-three__call-box-icon">
@@ -216,7 +217,7 @@ const About = () => {
                   <div className="about-three__call-box-content">
                     <p>Call to Anytime</p>
                     <h4>
-                      <a href="tel:15502505260">+1 (550) 250 5260</a>
+                      <Link href="tel:15502505260">+1 (550) 250 5260</Link>
                     </h4>
                   </div>
                 </div>

@@ -50,11 +50,18 @@
     flex-direction: column;
     background-color: var(--itzone-white);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    border-radius: 15px;
-    padding: 0px; /* Removed outer padding for edge-to-edge images */
+    border-radius: 16px; /* Slightly more rounded */
+    padding: 0px;
     margin-bottom: 30px;
     height: 100%;
     overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.03); /* Subtle border */
+}
+
+.blog-one__single:hover {
+    transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); /* Deeper shadow */
 }
 
 .blog-one__img {
@@ -62,7 +69,7 @@
     display: block;
     overflow: hidden;
     z-index: 1;
-    height: 220px; /* Smaller, fixed height for images */
+    height: 180px; /* Reduced height */
 }
 
 .blog-one__img:before {
@@ -85,7 +92,9 @@
 
 .blog-one__img img {
     width: 100%;
-    border-radius: var(--itzone-bdr-radius);
+    height: 100%; /* Fill container */
+    object-fit: cover; /* Maintain aspect ratio */
+    border-radius: 12px;
     transform: scale3d(1, 1, 1);
     transition: transform 1s ease-in-out;
 }
@@ -94,87 +103,19 @@
     transform: scale(1.05) rotate(0deg);
 }
 
-.blog-one__tags {
-    position: absolute;
-    bottom: 14px;
-    left: 14px;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    z-index: 5;
-}
-
-.blog-one__tags span {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    color: var(--itzone-white);
-    font-weight: 600;
-    line-height: 1;
-    background-color: var(--itzone-base);
-    border-radius: 4px;
-    padding: 5px 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
+/* Tags removed */
 
 .blog-one__content {
     position: relative;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    padding: 20px;
+    padding: 20px 25px 25px; /* Compact padding */
 }
 
-.blog-one__user {
-    position: absolute;
-    top: 50px;
-    left: -58px;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 4px;
-    padding-right: 15px;
-    transform: rotate(90deg);
-}
+/* User/Admin section removed */
 
-.blog-one__user:before {
-    content: "";
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    border-radius: 40px;
-    border: 1px solid rgba(var(--itzone-base-rgb), .20);
-    z-index: -1;
-}
-
-.blog-one__user-img {
-    position: relative;
-    display: block;
-    width: 32px;
-    border-radius: 50%;
-    overflow: hidden;
-    transform: rotate(-90deg);
-}
-
-.blog-one__user-img img {
-    width: 100%;
-    border-radius: 50%;
-}
-
-.blog-one__user-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--itzone-black);
-    font-family: var(--itzone-font-two);
-    text-transform: capitalize;
-}
+/* User image styles removed */
 
 .blog-one__meta {
     position: relative;
@@ -229,53 +170,76 @@
 }
 
 .blog-one__title {
-    font-size: 24px;
+    font-size: 20px; /* Reduced font size */
     font-weight: 700;
-    line-height: 34px;
-    margin-bottom: 18px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    min-height: 56px; /* Reduced min-height */
+    display: flex;
+    align-items: flex-start;
+    transition: color 0.3s ease;
+}
+
+.blog-one__single:hover .blog-one__title a {
+    color: var(--itzone-base);
 }
 
 .blog-one__title a {
     color: var(--itzone-black);
-}
-
-.blog-one__title a:hover {
-    color: var(--itzone-base);
+    transition: color 0.3s ease;
 }
 
 .blog-one__text {
-    font-size: 16px;
-    margin-bottom: 18px;
+    font-size: 15px; /* Slightly smaller text */
+    line-height: 1.6;
+    color: var(--itzone-gray);
+    margin-bottom: 0px; 
+    flex-grow: 1;
+    min-height: 60px; /* Reduced min-height */
+    display: flex;
+    align-items: flex-start;
 }
 
-.blog-one__btn-box {
-    position: relative;
-    display: block;
-}
-
-.blog-one__btn-box .thm-btn {
-    padding: 8px 20px 8px;
-}
+/* Button box removed */
 
 .blog-one__single-two {
     position: relative;
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
     background-color: var(--itzone-white);
-    box-shadow: -10px 0px 60px 0px rgba(0, 0, 0, 0.09);
-    border-radius: var(--itzone-bdr-radius);
-    padding: 30px 30px 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    padding: 20px;
     margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.blog-one__single-two:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
 .blog-one__img-two {
     position: relative;
     display: block;
-    border-radius: var(--itzone-bdr-radius);
+    border-radius: 12px;
     overflow: hidden;
-    max-width: 250px;
+    width: 200px; /* Fixed width for consistency */
+    flex-shrink: 0; /* Prevent shrinking */
+    height: 140px; /* Fixed height */
     z-index: 1;
+}
+
+.blog-one__img-two img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; /* Ensure image covers area properly */
+    transition: transform 0.5s ease;
+}
+
+.blog-one__single-two:hover .blog-one__img-two img {
+    transform: scale(1.05);
 }
 
 .blog-one__img-two:before {
@@ -311,87 +275,19 @@
     position: relative;
     display: block;
     flex: 1;
-    padding-left: 75px;
+    padding-left: 25px; /* Comfortable spacing from image */
 }
 
-.blog-one__user-two {
-    position: absolute;
-    top: 50px;
-    left: -31px;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 4px;
-    padding-right: 15px;
-    transform: rotate(90deg);
-}
+/* User info removed */
 
-.blog-one__user-two:before {
-    content: "";
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    border-radius: 40px;
-    border: 1px solid rgba(var(--itzone-base-rgb), .20);
-    z-index: -1;
-}
-
-.blog-one__user-two-img {
-    position: relative;
-    display: block;
-    width: 32px;
-    border-radius: 50%;
-    overflow: hidden;
-    transform: rotate(-90deg);
-}
-
-.blog-one__user-two-img img {
-    width: 100%;
-    border-radius: 50%;
-}
-
-.blog-one__user-two-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--itzone-black);
-    font-family: var(--itzone-font-two);
-    text-transform: capitalize;
-}
-
-.blog-one__tags-two {
-    position: absolute;
-    bottom: 14px;
-    left: 14px;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    z-index: 2;
-}
-
-.blog-one__tags-two span {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    color: var(--itzone-white);
-    font-weight: 500;
-    line-height: 14px;
-    background-color: var(--itzone-base);
-    border-radius: var(--itzone-bdr-radius);
-    padding: 7px 14px 7px;
-}
+/* Tags removed */
 
 .blog-one__title-two {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
-    line-height: 30px;
+    line-height: 1.4;
     margin-bottom: 10px;
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
 .blog-one__title-two a {
@@ -458,14 +354,7 @@
     margin-bottom: 14px;
 }
 
-.blog-one__btn-box-two {
-    position: relative;
-    display: block;
-}
-
-.blog-one__btn-box-two .thm-btn {
-    padding: 8px 20px 8px;
-}
+/* Button box removed from CSS */
 
 /*==============================================
     Blog Two
@@ -1204,7 +1093,6 @@
 
 .sidebar__tags-list li {
     position: relative;
-    display: inline-block;
     float: left;
     padding: 0px 5px 0px;
     margin-bottom: 10px;

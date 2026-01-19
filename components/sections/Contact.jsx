@@ -1,5 +1,7 @@
 "use client";
+import Link from "next/link";
 import ContactForm from "./ContactForm";
+
 const Contact = () => {
   return (
     <section className="contact-three" id="contact">
@@ -65,7 +67,7 @@ const Contact = () => {
                   <div className="content">
                     <span>Email Us</span>
                     <p>
-                      <a href="mailto:info@domain.com">info@domain.com</a>
+                      <Link href="mailto:info@domain.com">info@domain.com</Link>
                     </p>
                   </div>
                 </li>
@@ -76,7 +78,7 @@ const Contact = () => {
                   <div className="content">
                     <span>Contact US</span>
                     <p>
-                      <a href="tel:9900567780">+99 (00) 567 780</a>
+                      <Link href="tel:9900567780">+99 (00) 567 780</Link>
                     </p>
                   </div>
                 </li>
@@ -112,6 +114,6 @@ const Contact = () => {
       </div>
     </section>
   );
-};  
+};
 
 export default Contact;

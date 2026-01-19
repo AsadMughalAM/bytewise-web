@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { services as servicesData } from "@/data/servicesData";
 
 const ServicePage_Services = () => {
@@ -25,15 +26,17 @@ const ServicePage_Services = () => {
 
                   <div className="services-two__content">
                     <h3 className="services-two__title">
-                      <a href={`/service/${service.slug}`}>{service.title}</a>
+                      <Link href={`/service/${service.slug}`}>
+                        {service.title}
+                      </Link>
                     </h3>
 
                     <p className="services-two__text">{service.text}</p>
 
                     <div className="services-two__plus">
-                      <a href={`/service/${service.slug}`}>
+                      <Link href={`/service/${service.slug}`}>
                         <span className="fas fa-plus"></span>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

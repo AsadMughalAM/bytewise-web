@@ -189,7 +189,7 @@ const ProjectDetails = async ({ params }) => {
                         <span className="icon-call"></span>
                       </div>
                       <p>
-                        <a href="tel:585858575084">+58 585 857 5084</a>
+                        <Link href="tel:585858575084">+58 585 857 5084</Link>
                       </p>
                     </li>
                     <li>
@@ -197,7 +197,9 @@ const ProjectDetails = async ({ params }) => {
                         <span className="icon-email"></span>
                       </div>
                       <p>
-                        <a href="mailto:example@gmail.com">example@gmail.com</a>
+                        <Link href="mailto:example@gmail.com">
+                          example@gmail.com
+                        </Link>
                       </p>
                     </li>
                     <li>

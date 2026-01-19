@@ -53,7 +53,7 @@ const TermsAndConditions = () => {
                   </div>
                   <p className="service-details__text-2">
                     We operate the website{" "}
-                    <a
+                    <Link
                       href="https://bytewisetechnologies.com"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -61,7 +61,7 @@ const TermsAndConditions = () => {
                       style={{ color: "var(--itzone-base)" }}
                     >
                       https://bytewisetechnologies.com
-                    </a>{" "}
+                    </Link>{" "}
                     (the "Site") and related products and services
                     (collectively, the "Services").
                   </p>
@@ -69,12 +69,12 @@ const TermsAndConditions = () => {
                     Contact us: <br />
                     <strong>Phone:</strong> (+1) 778-800-6793 <br />
                     <strong>Email:</strong>{" "}
-                    <a
+                    <Link
                       href="mailto:info@bytewisetechnologies.com"
                       style={{ color: "var(--itzone-base)" }}
                     >
                       info@bytewisetechnologies.com
-                    </a>
+                    </Link>
                   </p>
 
                   <hr className="my-5" style={{ opacity: "0.1" }} />
@@ -106,7 +106,7 @@ const TermsAndConditions = () => {
                         "Contact Us",
                       ].map((item, idx) => (
                         <li key={idx} className="mb-2">
-                          <a
+                          <Link
                             href={`#section-${idx + 1}`}
                             style={{ fontSize: "16px", padding: "10px 15px" }}
                           >
@@ -118,7 +118,7 @@ const TermsAndConditions = () => {
                                 color: "var(--itzone-base)",
                               }}
                             ></span>
-                          </a>
+                          </Link>
                         </li>
                       ))}
                     </ul>

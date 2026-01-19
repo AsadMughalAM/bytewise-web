@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link"; // Added import
 
 const NotFound = () => {
   return (
@@ -23,9 +24,9 @@ const NotFound = () => {
                 moved or deleted.
               </p>
               <div className="btn-box">
-                <a href="/" className="thm-btn">
+                <Link href="/" className="thm-btn">
                   Back To Home <span className="fas fa-arrow-right"></span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

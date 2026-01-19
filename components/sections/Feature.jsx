@@ -1,24 +1,26 @@
+import Link from "next/link";
+
 const Feature = () => {
   const features = [
     {
       img: "/assets/images/resources/feature-one-img-1-1.png",
       title: "Security Services",
       text: "Innovating and empowering businesses with tailored solutions for success and growth. Innovating and empowering",
-      link: "#services",
+      link: "/service",
       delay: "100ms",
     },
     {
       img: "/assets/images/resources/feature-one-img-1-2.png",
       title: "Data Privacy",
       text: "Innovating and empowering businesses with tailored solutions for success and growth. Innovating and empowering",
-      link: "#services",
+      link: "/service",
       delay: "300ms",
     },
     {
       img: "/assets/images/resources/feature-one-img-1-3.png",
       title: "Industry Certified",
       text: "Innovating and empowering businesses with tailored solutions for success and growth. Innovating and empowering",
-      link: "#services",
+      link: "/service",
       delay: "500ms",
     },
   ];
@@ -43,7 +45,7 @@ const Feature = () => {
                   <img src={feature.img} alt="" />
                 </div>
                 <h3 className="feature-one__title">
-                  <a href={feature.link}>{feature.title}</a>
+                  <Link href={feature.link}>{feature.title}</Link>
                 </h3>
                 <p className="feature-one__text">{feature.text}</p>
               </div>

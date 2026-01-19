@@ -128,12 +128,12 @@ const BlogDetailsPage = async ({ params }) => {
                     </div>
                     <ul className="blog-details__meta list-unstyled">
                       <li>
-                        <Link href="#">
+                        <Link href="/">
                           <span className="fas fa-comments"></span>Comments (0)
                         </Link>
                       </li>
                       <li>
-                        <Link href="#">
+                        <Link href="/">
                           <span className="fas fa-clock"></span>4 Min Read
                         </Link>
                       </li>

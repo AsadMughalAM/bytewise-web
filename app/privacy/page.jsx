@@ -55,7 +55,7 @@ const PrivacyPolicy = () => {
                   </div>
                   <p className="service-details__text-2">
                     When you visit our website{" "}
-                    <a
+                    <Link
                       href="https://bytewisetechnologies.com"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -63,7 +63,7 @@ const PrivacyPolicy = () => {
                       style={{ color: "var(--itzone-base)" }}
                     >
                       https://bytewisetechnologies.com
-                    </a>{" "}
+                    </Link>{" "}
                     (the "Website"), and more generally, use any of our services
                     (the "Services", which include the Website), we appreciate
                     that you are trusting us with your personal information. We
@@ -99,7 +99,7 @@ const PrivacyPolicy = () => {
                         "How Can You Contact Us About This Notice?",
                       ].map((item, idx) => (
                         <li key={idx} className="mb-2">
-                          <a
+                          <Link
                             href={`#section-${idx + 1}`}
                             style={{ fontSize: "16px", padding: "10px 15px" }}
                           >
@@ -111,7 +111,7 @@ const PrivacyPolicy = () => {
                                 color: "var(--itzone-base)",
                               }}
                             ></span>
-                          </a>
+                          </Link>
                         </li>
                       ))}
                     </ul>

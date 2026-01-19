@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import ContactSection from "@/components/sections/Contact";
+import Link from "next/link"; // Added import
 
 const ContactPage = () => {
   return (
@@ -19,7 +20,7 @@ const ContactPage = () => {
             <div className="thm-breadcrumb__inner">
               <ul className="thm-breadcrumb list-unstyled">
                 <li>
-                  <a href="/">Home</a>
+                  <Link href="/">Home</Link>
                 </li>
                 <li>
                   <span className="icon-arrow-angle-pointing-to-right"></span>
@@ -44,7 +45,7 @@ const ContactPage = () => {
                 </div>
                 <p>Contact Us</p>
                 <h3>
-                  <a href="tel:558270575405">+55 827 057 5405</a>
+                  <Link href="tel:558270575405">+55 827 057 5405</Link>
                 </h3>
               </div>
             </div>
@@ -58,7 +59,7 @@ const ContactPage = () => {
                 </div>
                 <p>Email Us</p>
                 <h3>
-                  <a href="mailto:example@gamil.com">example@gamil.com</a>
+                  <Link href="mailto:example@gamil.com">example@gamil.com</Link>
                 </h3>
               </div>
             </div>

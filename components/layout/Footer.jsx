@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -19,27 +20,27 @@ const Footer = () => {
             >
               <div className="footer-widget-three__column footer-widget-three__about">
                 <div className="footer-widget-three__logo">
-                  <a href="/">
+                  <Link href="/">
                     <img src="/assets/images/resources/logo-2.png" alt="" />
-                  </a>
+                  </Link>
                 </div>
                 <p className="footer-widget-three__about-text">
                   Secure other greater pleasures, or else he endures pains to
                   avoid worse pains selection
                 </p>
                 <div className="site-footer-three__social">
-                  <a href="#">
+                  <Link href="/">
                     <i className="icon-facebook-app-symbol"></i>
-                  </a>
-                  <a href="#">
+                  </Link>
+                  <Link href="/">
                     <i className="icon-twitter-1"></i>
-                  </a>
-                  <a href="#">
+                  </Link>
+                  <Link href="/">
                     <i className="icon-pinterest"></i>
-                  </a>
-                  <a href="#">
+                  </Link>
+                  <Link href="/">
                     <i className="icon-linkedin"></i>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -54,19 +55,19 @@ const Footer = () => {
                 <div className="footer-widget-three__link-box">
                   <ul className="footer-widget-three__link list-unstyled">
                     <li>
-                      <a href="#about">About Us</a>
+                      <Link href="/about">About Us</Link>
                     </li>
                     <li>
-                      <a href="#team">Meet Our Team</a>
+                      <Link href="/team">Meet Our Team</Link>
                     </li>
                     <li>
-                      <a href="#project">Our Projects</a>
+                      <Link href="/portfolio">Our Projects</Link>
                     </li>
                     <li>
-                      <a href="#faq">Help & FAQs</a>
+                      <Link href="/faq">Help & FAQs</Link>
                     </li>
                     <li>
-                      <a href="#contact">Contact Us</a>
+                      <Link href="/contact">Contact Us</Link>
                     </li>
                   </ul>
                 </div>
@@ -82,19 +83,19 @@ const Footer = () => {
                 </div>
                 <ul className="footer-widget-three__link list-unstyled">
                   <li>
-                    <a href="#services">Web Development</a>
+                    <Link href="/service">Web Development</Link>
                   </li>
                   <li>
-                    <a href="#services">Cloud services</a>
+                    <Link href="/service">Cloud services</Link>
                   </li>
                   <li>
-                    <a href="#services">Product Management</a>
+                    <Link href="/service">Product Management</Link>
                   </li>
                   <li>
-                    <a href="#services">UI/UX Design</a>
+                    <Link href="/service">UI/UX Design</Link>
                   </li>
                   <li>
-                    <a href="#services">Business Development</a>
+                    <Link href="/service">Business Development</Link>
                   </li>
                 </ul>
               </div>
@@ -114,10 +115,10 @@ const Footer = () => {
                     </div>
                     <div className="content">
                       <p>
-                        <a href="tel:885747546027">(88) 574 7546 027</a>
+                        <Link href="tel:885747546027">(88) 574 7546 027</Link>
                       </p>
                       <p>
-                        <a href="tel:885747546027">(88) 574 7546 027</a>
+                        <Link href="tel:885747546027">(88) 574 7546 027</Link>
                       </p>
                     </div>
                   </li>
@@ -127,10 +128,14 @@ const Footer = () => {
                     </div>
                     <div className="content">
                       <p>
-                        <a href="mailto:example@gmail.com">example@gmail.com</a>
+                        <Link href="mailto:example@gmail.com">
+                          example@gmail.com
+                        </Link>
                       </p>
                       <p>
-                        <a href="mailto:example@gmail.com">example@gmail.com</a>
+                        <Link href="mailto:example@gmail.com">
+                          example@gmail.com
+                        </Link>
                       </p>
                     </div>
                   </li>
@@ -153,18 +158,20 @@ const Footer = () => {
           <div className="site-footer-three__bottom-inner">
             <p className="site-footer-three__bottom-text">
               © Copywright 2025 by{" "}
-              <a href="https://themeforest.net/user/dreamlayout">Itzone.com</a>{" "}
+              <Link href="https://themeforest.net/user/dreamlayout">
+                Itzone.com
+              </Link>{" "}
               All Rights Reserved.
             </p>
             <ul className="list-unstyled site-footer-three__bottom-menu">
               <li>
-                <a href="#contact">Support</a>
+                <Link href="/contact">Support</Link>
               </li>
               <li>
-                <a href="#about">Terms and Condition</a>
+                <Link href="/about">Terms and Condition</Link>
               </li>
               <li>
-                <a href="#about">Privacy and Policy</a>
+                <Link href="/about">Privacy and Policy</Link>
               </li>
             </ul>
           </div>

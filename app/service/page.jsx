@@ -22,7 +22,7 @@ const Service = () => {
             <div className="thm-breadcrumb__inner">
               <ul className="thm-breadcrumb list-unstyled">
                 <li>
-                  <a href="index.html">Home</a>
+                  <Link href="/">Home</Link>
                 </li>
                 <li>
                   <span className="icon-arrow-angle-pointing-to-right"></span>

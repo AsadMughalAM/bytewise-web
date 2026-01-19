@@ -1,6 +1,7 @@
 import React from "react";
 import { services as servicesData } from "@/data/servicesData";
 import { notFound } from "next/navigation";
+import Link from "next/link"; // Added import
 
 const page = async ({ params }) => {
   const { slug } = await params;
@@ -26,13 +27,13 @@ const page = async ({ params }) => {
             <div className="thm-breadcrumb__inner">
               <ul className="thm-breadcrumb list-unstyled">
                 <li>
-                  <a href="/">Home</a>
+                  <Link href="/">Home</Link>
                 </li>
                 <li>
                   <span className="icon-arrow-angle-pointing-to-right"></span>
                 </li>
                 <li>
-                  <a href="/services">Services</a>
+                  <Link href="/services">Services</Link>
                 </li>
                 <li>
                   <span className="icon-arrow-angle-pointing-to-right"></span>
@@ -64,10 +65,10 @@ const page = async ({ params }) => {
                         key={service.slug}
                         className={service.slug === slug ? "active" : ""}
                       >
-                        <a href={`/service/${service.slug}`}>
+                        <Link href={`/service/${service.slug}`}>
                           {service.title}
                           <span className="icon-arrow-right"></span>
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>

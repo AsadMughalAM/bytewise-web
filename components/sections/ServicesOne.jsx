@@ -2,6 +2,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
+import Link from "next/link";
 import { services } from "@/data/servicesData";
 
 const ServicesOne = () => {
@@ -44,16 +45,18 @@ const ServicesOne = () => {
                         <span className={service.icon}></span>
                       </div>
                       <h3 className="service-one__title">
-                        <a href={service.link}>{service.title}</a>
+                        <Link href={`/service/${service.slug}`}>
+                          {service.title}
+                        </Link>
                       </h3>
                       <p className="service-one__text">{service.text}</p>
                     </div>
                   </div>
                   <div className="service-one__btn-box">
-                    <a href={service.link} className="thm-btn">
+                    <Link href={`/service/${service.slug}`} className="thm-btn">
                       Read More
                       <span className="fas fa-arrow-right"></span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

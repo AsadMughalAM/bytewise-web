@@ -5,7 +5,8 @@ import SlidingText from "@/components/sections/SlidingText";
 import Team from "@/components/sections/Team";
 import CounterTwo from "@/components/sections/CounterTwo";
 import TestimonialTwo from "@/components/sections/TestimonialTwo";
-import BlogOne from "@/components/sections/BlogOne";
+import Blog from "@/components/sections/Blog";
+import Link from "next/link"; // Added import
 
 const About = () => {
   return (
@@ -24,7 +25,7 @@ const About = () => {
             <div className="thm-breadcrumb__inner">
               <ul className="thm-breadcrumb list-unstyled">
                 <li>
-                  <a href="/">Home</a>
+                  <Link href="/">Home</Link>
                 </li>
                 <li>
                   <span className="icon-arrow-angle-pointing-to-right"></span>
@@ -41,7 +42,7 @@ const About = () => {
       <Team />
       <CounterTwo />
       <TestimonialTwo />
-      <BlogOne />
+      <Blog />
     </>
   );
 };

@@ -44,20 +44,20 @@ const MobileNav = () => {
           <ul className="mobile-nav__contact list-unstyled">
             <li>
               <i className="fa fa-envelope"></i>
-              <a href="mailto:needhelp@Itzone.com">needhelp@Itzone.com</a>
+              <Link href="mailto:needhelp@Itzone.com">needhelp@Itzone.com</Link>
             </li>
             <li>
               <i className="fas fa-phone"></i>
-              <a href="tel:666-888-0000">666 888 0000</a>
+              <Link href="tel:666-888-0000">666 888 0000</Link>
             </li>
           </ul>
 
           <div className="mobile-nav__top">
             <div className="mobile-nav__social">
-              <a href="#" className="fab fa-twitter"></a>
-              <a href="#" className="fab fa-facebook-square"></a>
-              <a href="#" className="fab fa-pinterest-p"></a>
-              <a href="#" className="fab fa-instagram"></a>
+              <Link href="/" className="fab fa-twitter"></Link>
+              <Link href="/" className="fab fa-facebook-square"></Link>
+              <Link href="/" className="fab fa-pinterest-p"></Link>
+              <Link href="/" className="fab fa-instagram"></Link>
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@
 
 import CountUp from "react-countup";
 import { teamMembers } from "@/data/teamData";
+import Link from "next/link";
 
 const AboutOne = () => {
   const ceo =
@@ -69,9 +70,9 @@ const AboutOne = () => {
 
               <div className="about-one__btn-and-client-info">
                 <div className="about-one__btn-box">
-                  <a href="/about" className="thm-btn">
+                  <Link href="/about" className="thm-btn">
                     Learn More <span className="fas fa-arrow-right"></span>
-                  </a>
+                  </Link>
                 </div>
 
                 <div className="about-one__client-info-inner">
@@ -126,7 +127,7 @@ const AboutOne = () => {
                 </div>
 
                 <div className="about-one__video-link">
-                  <a
+                  <Link
                     href="https://www.youtube.com/watch?v=Get7rqXYrbQ"
                     className="video-popup"
                   >
@@ -134,7 +135,7 @@ const AboutOne = () => {
                       <span className="fa fa-play"></span>
                       <i className="ripple"></i>
                     </div>
-                  </a>
+                  </Link>
                 </div>
 
                 {/* CLIENT COUNTER */}
@@ -165,9 +166,9 @@ const AboutOne = () => {
                       </div>
                     </li>
                     <li>
-                      <a href="#">
+                      <Link href="/">
                         <span className="fas fa-plus"></span>
-                      </a>
+                      </Link>
                     </li>
                   </ul>
 

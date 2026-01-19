@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Link from "next/link"; // Added import
 
 const Banner = () => {
   const odometerRef = useRef(null);
@@ -110,10 +111,10 @@ const Banner = () => {
                 </div>
               </div>
               <div className="banner-two__btn">
-                <a href="#about" className="thm-btn">
+                <Link href="/about" className="thm-btn">
                   Discover More
                   <span className="fas fa-arrow-right"></span>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

@@ -49,33 +49,13 @@ const Blog = async () => {
                     }
                     alt={blog.title}
                   />
-                  <div className="blog-one__tags">
-                    {blog.tags?.map((tag) => (
-                      <span key={tag}>{tag}</span>
-                    ))}
-                  </div>
                 </div>
                 <div className="blog-one__content">
-                  <div className="blog-one__user">
-                    <div className="blog-one__user-img">
-                      <img
-                        src="/assets/images/blog/blog-one-user-1.jpg"
-                        alt=""
-                      />
-                    </div>
-                    <p className="blog-one__user-title">Admin</p>
-                  </div>
                   <ul className="blog-one__meta list-unstyled">
                     <li>
                       <Link href={`/blog/${blog.slug}`}>
                         <span className="far fa-calendar-alt"></span>
                         {formatDate(blog.publishedDate)}
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href={`/blog/${blog.slug}`}>
-                        <span className="fal fa-comments"></span>
-                        {blog.comments || "0"} Comments
                       </Link>
                     </li>
                   </ul>

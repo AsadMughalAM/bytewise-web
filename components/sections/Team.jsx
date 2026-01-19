@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import Link from "next/link";
 
 import { teamMembers } from "@/data/teamData";
 
@@ -51,7 +52,7 @@ const Team = () => {
                   <div className="team-two__content-inner">
                     <div className="team-two__content">
                       <h3 className="team-two__title">
-                        <a href="#team">{member.name}</a>
+                        <Link href="/team">{member.name}</Link>
                       </h3>
                       <p className="team-two__sub-title">{member.position}</p>
                     </div>
@@ -61,24 +62,24 @@ const Team = () => {
                       </div>
                       <ul className="team-two__social list-unstyled">
                         <li>
-                          <a href="#">
+                          <Link href="/">
                             <span className="icon-facebook-app-symbol"></span>
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a href="#">
+                          <Link href="/">
                             <span className="icon-twitter-1"></span>
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a href="#">
+                          <Link href="/">
                             <span className="icon-pinterest"></span>
-                          </a>
+                          </Link>
                         </li>
                         <li>
-                          <a href="#">
+                          <Link href="/">
                             <span className="icon-linkedin"></span>
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                     </div>

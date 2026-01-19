@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import Link from "next/link"; // Added import
 
 import { services } from "@/data/servicesData";
 
@@ -44,14 +45,16 @@ const Services = () => {
                     <span className={service.icon}></span>
                   </div>
                   <h3 className="services-three__title">
-                    <a href={service.link}>{service.title}</a>
+                    <Link href={`/service/${service.slug}`}>
+                      {service.title}
+                    </Link>
                   </h3>
                   <p className="services-three__text">{service.text}</p>
                   <div className="services-three__read-more">
-                    <a href={service.link}>
+                    <Link href={`/service/${service.slug}`}>
                       Read More
                       <span className="fas fa-arrow-right"></span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

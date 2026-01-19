@@ -44,16 +44,16 @@ const Navbar = () => {
           <div className="container">
             <div className="main-menu-three__top-inner">
               <div className="main-menu-three__top-social">
-                <Link href="#">
+                <Link href="/">
                   <span className="icon-facebook-app-symbol"></span>
                 </Link>
-                <Link href="#">
+                <Link href="/">
                   <span className="icon-twitter-1"></span>
                 </Link>
-                <Link href="#">
+                <Link href="/">
                   <span className="icon-linkedin"></span>
                 </Link>
-                <Link href="#">
+                <Link href="/">
                   <span className="icon-pinterest"></span>
                 </Link>
               </div>
@@ -121,11 +121,10 @@ const Navbar = () => {
                     </Link>
                   </div>
                 </div>
-
                 <div className="main-menu-three__main-menu-box">
-                  <a href="#" className="mobile-nav__toggler">
+                  <Link href="/" className="mobile-nav__toggler">
                     <i className="fa fa-bars"></i>
-                  </a>
+                  </Link>
                   <ul className="main-menu__list">
                     {menuItems.map((item, index) => (
                       <li

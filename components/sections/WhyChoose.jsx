@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const WhyChoose = () => {
   return (
     <section className="why-choose-three">
@@ -93,10 +95,10 @@ const WhyChoose = () => {
                   </li>
                 </ul>
                 <div className="why-choose-three__btn-box">
-                  <a href="#about" className="thm-btn">
+                  <Link href="/about" className="thm-btn">
                     Get Started
                     <span className="fas fa-arrow-right"></span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

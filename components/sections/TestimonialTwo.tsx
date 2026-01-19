@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import Link from "next/link";
 
 const TestimonialTwo = () => {
   const testimonials = [
@@ -91,7 +92,7 @@ const TestimonialTwo = () => {
                       </div>
                       <div className="testimonial-two__client-content">
                         <h3 className="testimonial-two__client-name">
-                          <a href="testimonials.html">{item.name}</a>
+                          <Link href="/">{item.name}</Link>
                         </h3>
                         <p className="testimonial-two__client-sub-title">
                           {item.role}
