@@ -1,10 +1,9 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import PageHeader from "@/components/layout/PageHeader"; // Added import
-
-
-const ContactPage = () => { 
+import PageHeader from "@/components/layout/PageHeader";
+import Contact from "@/components/sections/Contact";
+const ContactPage = () => {
   return (
     <>
       <PageHeader
@@ -58,8 +57,7 @@ const ContactPage = () => {
           </div>
         </div>
       </section>
-
-     
+      <Contact />
     </>
   );
 };
