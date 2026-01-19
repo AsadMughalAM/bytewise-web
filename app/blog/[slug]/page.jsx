@@ -3,6 +3,7 @@ import contentfulFetch from "@/lib/contentful";
 import { GET_BLOG_POST, GET_BLOG_POST_CATEGORIES } from "./query";
 import { GET_BLOG_POSTS_LIST } from "../query";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { BLOCKS } from "@contentful/rich-text-types";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -40,11 +41,31 @@ const BlogDetailsPage = async ({ params }) => {
 
   // Helper to count category occurrences
   const categoryCounts = categories.reduce((acc, curr) => {
-    acc[curr.category] = (acc[curr.category] || 0) + 1;
+    if (curr.category && typeof curr.category === "string") {
+      const catName = curr.category.trim();
+      if (catName) {
+        acc[catName] = (acc[catName] || 0) + 1;
+      }
+    }
     return acc;
   }, {});
 
   const uniqueCategories = Object.keys(categoryCounts);
+
+  const richTextOptions = {
+    renderNode: {
+      [BLOCKS.PARAGRAPH]: (node, children) => <p>{children}</p>,
+      [BLOCKS.UL_LIST]: (node, children) => (
+        <ul className="list-unstyled blog-details__bullet-list">{children}</ul>
+      ),
+      [BLOCKS.LIST_ITEM]: (node, children) => (
+        <li className="d-flex align-items-start">
+          <span className="fas fa-check-circle text-primary mt-1 me-2"></span>
+          <span>{children}</span>
+        </li>
+      ),
+    },
+  };
 
   return (
     <>
@@ -120,37 +141,7 @@ const BlogDetailsPage = async ({ params }) => {
                   </div>
                   <h3 className="blog-details__title">{blog.title}</h3>
                   <div className="blog-details__text-1">
-                    {documentToReactComponents(blog.body.json)}
-                  </div>
-
-                  <div className="blog-details__tag-and-share">
-                    <div className="blog-details__tag">
-                      <h3 className="blog-details__tag-title">Tags :</h3>
-                      <ul className="blog-details__tag-list list-unstyled">
-                        {blog.tags?.map((tag) => (
-                          <li key={tag}>
-                            <Link href="#">{tag}</Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="blog-details__share-box">
-                      <h3 className="blog-details__share-title">Share :</h3>
-                      <div className="blog-details__share">
-                        <Link href="#">
-                          <span className="icon-facebook-app-symbol"></span>
-                        </Link>
-                        <Link href="#">
-                          <span className="icon-twitter-1"></span>
-                        </Link>
-                        <Link href="#">
-                          <span className="icon-linkedin"></span>
-                        </Link>
-                        <Link href="#">
-                          <span className="icon-pinterest"></span>
-                        </Link>
-                      </div>
-                    </div>
+                    {documentToReactComponents(blog.body.json, richTextOptions)}
                   </div>
                 </div>
               </div>
@@ -162,8 +153,16 @@ const BlogDetailsPage = async ({ params }) => {
                   className="sidebar__single sidebar__search wow fadeInUp"
                   data-wow-delay=".1s"
                 >
-                  <form action="#" className="sidebar__search-form">
-                    <input type="search" placeholder="Search..." />
+                  <form
+                    action="/blog"
+                    method="GET"
+                    className="sidebar__search-form"
+                  >
+                    <input
+                      type="search"
+                      name="search"
+                      placeholder="Search..."
+                    />
                     <button type="submit">
                       <i className="fa fa-search"></i>
                     </button>
@@ -179,9 +178,15 @@ const BlogDetailsPage = async ({ params }) => {
                     {uniqueCategories.map((cat) => (
                       <li
                         key={cat}
-                        className={blog.category === cat ? "active" : ""}
+                        className={
+                          blog.category?.toLowerCase() === cat?.toLowerCase()
+                            ? "active"
+                            : ""
+                        }
                       >
-                        <Link href="#">
+                        <Link
+                          href={`/blog?category=${encodeURIComponent(cat)}`}
+                        >
                           {cat} <span>({categoryCounts[cat]})</span>
                         </Link>
                       </li>
@@ -225,9 +230,9 @@ const BlogDetailsPage = async ({ params }) => {
                     {Array.from(new Set(categories.flatMap((c) => c.tags))).map(
                       (tag) => (
                         <li key={tag}>
-                          <Link href="#">{tag}</Link>
+                          <span>{tag}</span>
                         </li>
-                      )
+                      ),
                     )}
                   </ul>
                 </div>

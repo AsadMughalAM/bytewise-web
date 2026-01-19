@@ -6,12 +6,25 @@ import Link from "next/link";
 const BlogPage = async ({ searchParams }) => {
   const resolvedParams = await searchParams;
   const page = parseInt(resolvedParams.page) || 1;
+  const search = resolvedParams.search || "";
+  const category = resolvedParams.category || "";
   const limit = 9;
   const skip = (page - 1) * limit;
+
+  const where = { private: false };
+  if (search) {
+    where.title_contains = search;
+  }
+  if (category) {
+    // Ensure the category is a string and not an array/object
+    const cleanCategory = Array.isArray(category) ? category[0] : category;
+    where.category = cleanCategory;
+  }
 
   const data = await contentfulFetch(GET_BLOG_POSTS_LIST, {
     limit: limit,
     skip: skip,
+    where: where,
   });
 
   const blogs = data?.blogCollection?.items || [];
@@ -58,6 +71,53 @@ const BlogPage = async ({ searchParams }) => {
 
       <section className="blog-page py-5">
         <div className="container">
+          <div className="row mb-5 justify-content-center">
+            <div className="col-lg-6">
+              <div
+                className="sidebar__single sidebar__search wow fadeInUp"
+                data-wow-delay=".1s"
+              >
+                <form
+                  action="/blog"
+                  method="GET"
+                  className="sidebar__search-form"
+                >
+                  <input
+                    type="search"
+                    name="search"
+                    placeholder="Search articles..."
+                    defaultValue={search}
+                  />
+                  <button type="submit">
+                    <i className="fa fa-search"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+          {(search || category) && (
+            <div className="d-flex align-items-center justify-content-between mb-4 p-3 bg-light rounded shadow-sm">
+              <div className="d-flex align-items-center">
+                <span className="me-2 fw-bold text-muted">Active Filters:</span>
+                {search && (
+                  <span className="badge bg-primary me-2 p-2 px-3 rounded-pill">
+                    Search: {search}
+                  </span>
+                )}
+                {category && (
+                  <span className="badge bg-secondary me-2 p-2 px-3 rounded-pill">
+                    Category: {category}
+                  </span>
+                )}
+              </div>
+              <Link
+                href="/blog"
+                className="btn btn-outline-danger btn-sm rounded-pill px-3"
+              >
+                <i className="fas fa-times me-1"></i> Clear All
+              </Link>
+            </div>
+          )}
           <div className="row g-4">
             {blogs.map((blog, index) => (
               <div
@@ -78,7 +138,6 @@ const BlogPage = async ({ searchParams }) => {
                         style={{ objectFit: "cover" }}
                       />
                     </Link>
-                 
                   </div>
                   <div className="blog-one__content">
                     <ul className="blog-one__meta list-unstyled d-flex align-items-center mb-2">
@@ -137,7 +196,7 @@ const BlogPage = async ({ searchParams }) => {
                 {page > 1 && (
                   <li className="prev me-3">
                     <Link
-                      href={`/blog?page=${page - 1}`}
+                      href={`/blog?page=${page - 1}${search ? `&search=${encodeURIComponent(search)}` : ""}${category ? `&category=${encodeURIComponent(category)}` : ""}`}
                       className="btn btn-outline-primary rounded-circle d-flex align-items-center justify-content-center"
                       style={{ width: "45px", height: "45px" }}
                     >
@@ -152,7 +211,7 @@ const BlogPage = async ({ searchParams }) => {
                     className={`count mx-1 ${page === i + 1 ? "active" : ""}`}
                   >
                     <Link
-                      href={`/blog?page=${i + 1}`}
+                      href={`/blog?page=${i + 1}${search ? `&search=${encodeURIComponent(search)}` : ""}${category ? `&category=${encodeURIComponent(category)}` : ""}`}
                       className={`btn ${page === i + 1 ? "btn-primary" : "btn-outline-primary"} rounded-circle d-flex align-items-center justify-content-center`}
                       style={{ width: "45px", height: "45px" }}
                     >
@@ -164,7 +223,7 @@ const BlogPage = async ({ searchParams }) => {
                 {page < totalPages && (
                   <li className="next ms-3">
                     <Link
-                      href={`/blog?page=${page + 1}`}
+                      href={`/blog?page=${page + 1}${search ? `&search=${encodeURIComponent(search)}` : ""}${category ? `&category=${encodeURIComponent(category)}` : ""}`}
                       className="btn btn-outline-primary rounded-circle d-flex align-items-center justify-content-center"
                       style={{ width: "45px", height: "45px" }}
                     >

@@ -34,10 +34,10 @@ export const GET_BLOG_POST_SLIDES = `
 `;
 
 export const GET_BLOG_POSTS_LIST = `
-  query GetBlogPostsList($limit: Int!, $skip: Int!) {
+  query GetBlogPostsList($limit: Int!, $skip: Int!, $where: BlogFilter) {
     blogCollection(
       order: [publishedDate_DESC]
-      where: { private: false }
+      where: $where
       limit: $limit
       skip: $skip
     ) {
