@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "app/service/page.jsx", "components/sections/AboutOne.jsx", "components/sections/BlogOne.jsx", "components/sections/CounterTwo.jsx", "components/sections/ServicesOne.jsx", "app/contact/page.jsx"  ],
+, "app/service/page.jsx", "components/sections/AboutOne.jsx", "components/sections/BlogOne.jsx", "components/sections/CounterTwo.jsx", "components/sections/ServicesOne.jsx", "app/contact/page.jsx", "app/about/page.jsx", "app/layout.jsx", "app/page.jsx", "components/sections/TestimonialTwo.jsx"  ],
   "exclude": ["node_modules"]
 }

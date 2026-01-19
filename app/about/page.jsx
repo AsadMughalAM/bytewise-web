@@ -6,9 +6,8 @@ import Team from "@/components/sections/Team";
 import CounterTwo from "@/components/sections/CounterTwo";
 import TestimonialTwo from "@/components/sections/TestimonialTwo";
 import Blog from "@/components/sections/Blog";
-import Link from "next/link"; // Added import
+import Link from "next/link";
 
-// Link import removed (already imported on line 9)
 import PageHeader from "@/components/layout/PageHeader";
 
 const About = () => {
