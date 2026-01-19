@@ -1,36 +1,16 @@
 "use client";
 import React from "react";
-import ContactSection from "@/components/sections/Contact";
-import Link from "next/link"; // Added import
+import Link from "next/link";
+import PageHeader from "@/components/layout/PageHeader"; // Added import
 
-const ContactPage = () => {
+
+const ContactPage = () => { 
   return (
     <>
-      <section className="page-header">
-        <div
-          className="page-header__bg"
-          style={{
-            backgroundImage:
-              "url(/assets/images/backgrounds/page-header-bg.jpg)",
-          }}
-        ></div>
-        <div className="container">
-          <div className="page-header__inner">
-            <h3>Contact</h3>
-            <div className="thm-breadcrumb__inner">
-              <ul className="thm-breadcrumb list-unstyled">
-                <li>
-                  <Link href="/">Home</Link>
-                </li>
-                <li>
-                  <span className="icon-arrow-angle-pointing-to-right"></span>
-                </li>
-                <li>Contact</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHeader
+        title="Contact"
+        breadcrumb={[{ label: "Home", link: "/" }, { label: "Contact" }]}
+      />
 
       <section className="contact-info">
         <div className="container">
@@ -79,7 +59,7 @@ const ContactPage = () => {
         </div>
       </section>
 
-      <ContactSection />
+     
     </>
   );
 };

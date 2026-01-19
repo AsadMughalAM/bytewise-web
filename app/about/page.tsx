@@ -8,34 +8,16 @@ import TestimonialTwo from "@/components/sections/TestimonialTwo";
 import Blog from "@/components/sections/Blog";
 import Link from "next/link"; // Added import
 
+// Link import removed (already imported on line 9)
+import PageHeader from "@/components/layout/PageHeader";
+
 const About = () => {
   return (
     <>
-      <section className="page-header">
-        <div
-          className="page-header__bg"
-          style={{
-            backgroundImage:
-              "url(/assets/images/backgrounds/page-header-bg.jpg)",
-          }}
-        ></div>
-        <div className="container">
-          <div className="page-header__inner">
-            <h3>About Us</h3>
-            <div className="thm-breadcrumb__inner">
-              <ul className="thm-breadcrumb list-unstyled">
-                <li>
-                  <Link href="/">Home</Link>
-                </li>
-                <li>
-                  <span className="icon-arrow-angle-pointing-to-right"></span>
-                </li>
-                <li>About Us</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHeader
+        title="About Us"
+        breadcrumb={[{ label: "Home", link: "/" }, { label: "About Us" }]}
+      />
       <AboutOne />
       <ServicesOne />
       <SlidingText />

@@ -1,36 +1,17 @@
+// Duplicate imports removed
 import React from "react";
 import Link from "next/link";
-import Image from "next/image"; // Added import
+import Image from "next/image";
+import PageHeader from "@/components/layout/PageHeader";
 import { portfolioProjects as projects } from "@/data/portfolioData";
 
 const Portfolio = () => {
   return (
     <>
-      <section className="page-header">
-        <div
-          className="page-header__bg"
-          style={{
-            backgroundImage:
-              "url(/assets/images/backgrounds/page-header-bg.jpg)",
-          }}
-        ></div>
-        <div className="container">
-          <div className="page-header__inner">
-            <h3>Portfolio</h3>
-            <div className="thm-breadcrumb__inner">
-              <ul className="thm-breadcrumb list-unstyled">
-                <li>
-                  <Link href="/">Home</Link>
-                </li>
-                <li>
-                  <span className="icon-arrow-angle-pointing-to-right"></span>
-                </li>
-                <li>Portfolio</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHeader
+        title="Portfolio"
+        breadcrumb={[{ label: "Home", link: "/" }, { label: "Portfolio" }]}
+      />
       <section className="project-page">
         <div className="container">
           <div className="row">

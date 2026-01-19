@@ -3,35 +3,18 @@
 import React from "react";
 import Link from "next/link";
 
+import PageHeader from "@/components/layout/PageHeader";
+
 const TermsAndConditions = () => {
   return (
     <>
-      {/* Page Header */}
-      <section className="page-header">
-        <div
-          className="page-header__bg"
-          style={{
-            backgroundImage:
-              "url(/assets/images/backgrounds/page-header-bg.jpg)",
-          }}
-        ></div>
-        <div className="container">
-          <div className="page-header__inner">
-            <h3>Terms & Conditions</h3>
-            <div className="thm-breadcrumb__inner">
-              <ul className="thm-breadcrumb list-unstyled">
-                <li>
-                  <Link href="/">Home</Link>
-                </li>
-                <li>
-                  <span className="icon-arrow-angle-pointing-to-right"></span>
-                </li>
-                <li>Terms & Conditions</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHeader
+        title="Terms & Conditions"
+        breadcrumb={[
+          { label: "Home", link: "/" },
+          { label: "Terms & Conditions" },
+        ]}
+      />
 
       {/* Terms & Conditions Content */}
       <section className="service-details pt-120 pb-120">
