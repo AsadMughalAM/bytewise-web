@@ -1,5 +1,6 @@
 "use client";
 import { useEffect } from "react";
+import { portfolioProjects as projects } from "@/data/portfolioData";
 
 const Project = () => {
   useEffect(() => {
@@ -13,37 +14,6 @@ const Project = () => {
       });
     }
   }, []);
-
-  const projects = [
-    {
-      img: "/assets/images/project/project-3-1.jpg",
-      subtitle: "Itzone",
-      title: "Hosting Solution",
-      delay: "100ms",
-      animation: "fadeInLeft",
-    },
-    {
-      img: "/assets/images/project/project-3-2.jpg",
-      subtitle: "Itzone",
-      title: "Technology Growth",
-      delay: "300ms",
-      animation: "fadeInLeft",
-    },
-    {
-      img: "/assets/images/project/project-3-3.jpg",
-      subtitle: "Itzone",
-      title: "Safety Gurranted",
-      delay: "600ms",
-      animation: "fadeInRight",
-    },
-    {
-      img: "/assets/images/project/project-3-4.jpg",
-      subtitle: "Itzone",
-      title: "It Consultency",
-      delay: "900ms",
-      animation: "fadeInRight",
-    },
-  ];
 
   return (
     <section className="project-three" id="project">

@@ -1,0 +1,38 @@
+export const portfolioProjects = [
+  {
+    img: "/assets/images/project/project-3-1.jpg",
+    subtitle: "Itzone",
+    title: "Hosting Solution",
+    delay: "100ms",
+    animation: "fadeInLeft",
+    category: "Hosting",
+    link: "/portfolio",
+  },
+  {
+    img: "/assets/images/project/project-3-2.jpg",
+    subtitle: "Itzone",
+    title: "Technology Growth",
+    delay: "300ms",
+    animation: "fadeInLeft",
+    category: "Technology",
+    link: "/portfolio",
+  },
+  {
+    img: "/assets/images/project/project-3-3.jpg",
+    subtitle: "Itzone",
+    title: "Safety Gurranted",
+    delay: "600ms",
+    animation: "fadeInRight",
+    category: "Security",
+    link: "/portfolio",
+  },
+  {
+    img: "/assets/images/project/project-3-4.jpg",
+    subtitle: "Itzone",
+    title: "IT Consultancy",
+    delay: "900ms",
+    animation: "fadeInRight",
+    category: "Consultancy",
+    link: "/portfolio",
+  },
+];

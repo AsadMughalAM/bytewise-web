@@ -4,40 +4,9 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-const Team = () => {
-  const teamMembers = [
-    {
-      img: "/assets/images/team/team-2-1.jpg",
-      name: "Alisha Martin",
-      position: "Cheif Expert",
-    },
-    {
-      img: "/assets/images/team/team-2-2.jpg",
-      name: "Devid Coper",
-      position: "Product Designer",
-    },
-    {
-      img: "/assets/images/team/team-2-3.jpg",
-      name: "Naila Dev",
-      position: "UI/UX Designer",
-    },
-    {
-      img: "/assets/images/team/team-2-4.jpg",
-      name: "Robert Martin",
-      position: "CEO & Founder",
-    },
-    {
-      img: "/assets/images/team/team-2-5.jpg",
-      name: "Kevin Martis",
-      position: "Chief Officer",
-    },
-    {
-      img: "/assets/images/team/team-2-6.jpg",
-      name: "Anila Koper",
-      position: "Software Engineer",
-    },
-  ];
+import { teamMembers } from "@/data/teamData";
 
+const Team = () => {
   return (
     <section className="team-two" id="team">
       <div className="team-two__shape-1">

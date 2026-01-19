@@ -4,40 +4,9 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-const Services = () => {
-  const services = [
-    {
-      icon: "icon-financial",
-      title: "Cloud Solutions provider",
-      text: "Comprehensive IT management, including network monitoring, data backup",
-      link: "#services",
-    },
-    {
-      icon: "icon-software-development",
-      title: "Software Development",
-      text: "Comprehensive IT management, including network monitoring, data backup",
-      link: "#services",
-    },
-    {
-      icon: "icon-cyber-security",
-      title: "Cybersecurity Solutions",
-      text: "Comprehensive IT management, including network monitoring, data backup",
-      link: "#services",
-    },
-    {
-      icon: "icon-digital-service",
-      title: "All Kind Of IT Services",
-      text: "Comprehensive IT management, including network monitoring, data backup",
-      link: "#services",
-    },
-    {
-      icon: "icon-promotion-1",
-      title: "Data Analytics Consulting",
-      text: "Comprehensive IT management, including network monitoring, data backup",
-      link: "#services",
-    },
-  ];
+import { services } from "@/data/servicesData";
 
+const Services = () => {
   return (
     <section className="services-three" id="services">
       <div className="services-three__shape-1"></div>
