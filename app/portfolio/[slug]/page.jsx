@@ -68,6 +68,7 @@ const ProjectDetails = async ({ params }) => {
                     height={600}
                     className="w-100"
                     style={{ height: "auto" }}
+                    unoptimized
                   />
                 </div>
                 <h3 className="project-details__title-1">
