@@ -1,5 +1,6 @@
 "use client";
 import { useEffect } from "react";
+import Link from "next/link";
 import { portfolioProjects as projects } from "@/data/portfolioData";
 
 const Project = () => {
@@ -35,17 +36,17 @@ const Project = () => {
             </h2>
           </div>
           <div className="project-three__btn-box">
-            <a href="#project" className="thm-btn">
+            <Link href="/portfolio" className="thm-btn">
               view all projects
               <span className="fas fa-arrow-right"></span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
       <div className="project-three__bottom">
         <div className="container">
           <div className="row">
-            {projects.map((project, index) => (
+            {projects.slice(0, 4).map((project, index) => (
               <div
                 key={index}
                 className={`col-xl-3 col-lg-6 col-md-6 wow ${project.animation}`}
@@ -54,7 +55,7 @@ const Project = () => {
                 <div className="project-three__single">
                   <div className="project-three__img-box">
                     <div className="project-three__img">
-                      <img src={project.img} alt="" />
+                      <img src={project.img} alt={project.title} />
                     </div>
                     <div className="project-three__content">
                       <div className="project-three__title-box">
@@ -62,7 +63,9 @@ const Project = () => {
                           {project.subtitle}
                         </p>
                         <h3 className="project-three__title">
-                          <a href="#project">{project.title}</a>
+                          <Link href={`/portfolio/${project.slug}`}>
+                            {project.title}
+                          </Link>
                         </h3>
                       </div>
                       <div className="project-three__arrow">

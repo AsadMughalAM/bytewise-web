@@ -14,6 +14,13 @@ const ProjectDetails = async ({ params }) => {
 
   const projectTitle = project.title;
 
+  const currentIndex = portfolioProjects.findIndex((p) => p.slug === slug);
+  const prevProject =
+    portfolioProjects[currentIndex - 1] ||
+    portfolioProjects[portfolioProjects.length - 1];
+  const nextProject =
+    portfolioProjects[currentIndex + 1] || portfolioProjects[0];
+
   return (
     <>
       <section className="page-header">
@@ -53,10 +60,7 @@ const ProjectDetails = async ({ params }) => {
             <div className="col-xl-8 col-lg-7">
               <div className="project-details__left">
                 <div className="project-details__img">
-                  <img
-                    src="/assets/images/project/project-details-img-1.jpg"
-                    alt={projectTitle}
-                  />
+                  <img src={project.img} alt={projectTitle} />
                 </div>
                 <h3 className="project-details__title-1">
                   About The Project Overview
@@ -159,7 +163,7 @@ const ProjectDetails = async ({ params }) => {
                     </li>
                     <li>
                       <h4>Category :</h4>
-                      <p>Upgrade Old Wiring</p>
+                      <p>{project.category}</p>
                     </li>
                     <li>
                       <h4>date :</h4>
@@ -221,7 +225,7 @@ const ProjectDetails = async ({ params }) => {
                 <ul>
                   <li>
                     <div className="icon">
-                      <a href="#">
+                      <Link href={`/portfolio/${prevProject.slug}`}>
                         <span
                           className="icon-right-arrow"
                           style={{
@@ -229,21 +233,25 @@ const ProjectDetails = async ({ params }) => {
                             display: "inline-block",
                           }}
                         ></span>
-                      </a>
+                      </Link>
                     </div>
                     <div className="text-box">
-                      <a href="#">Previous Project</a>
+                      <Link href={`/portfolio/${prevProject.slug}`}>
+                        Previous Project
+                      </Link>
                     </div>
                   </li>
 
                   <li>
                     <div className="text-box">
-                      <a href="#">Next Project</a>
+                      <Link href={`/portfolio/${nextProject.slug}`}>
+                        Next Project
+                      </Link>
                     </div>
                     <div className="icon">
-                      <a href="#">
+                      <Link href={`/portfolio/${nextProject.slug}`}>
                         <span className="icon-right-arrow"></span>
-                      </a>
+                      </Link>
                     </div>
                   </li>
                 </ul>
