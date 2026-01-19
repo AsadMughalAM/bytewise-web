@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { projects } from "./PortfolioData";
+import { portfolioProjects as projects } from "@/data/portfolioData";
 
 const Portfolio = () => {
   return (
@@ -36,8 +36,8 @@ const Portfolio = () => {
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="col-xl-3 col-lg-6 col-md-6 wow fadeInLeft"
-                data-wow-delay="100ms"
+                className={`col-xl-3 col-lg-6 col-md-6 wow ${project.animation || "fadeInLeft"}`}
+                data-wow-delay={project.delay || "100ms"}
               >
                 <div className="project-two__single">
                   <div className="project-two__img-box">

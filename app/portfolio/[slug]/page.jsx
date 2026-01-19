@@ -1,12 +1,18 @@
 import React from "react";
 import Link from "next/link";
 
+import { portfolioProjects } from "@/data/portfolioData";
+import { notFound } from "next/navigation";
+
 const ProjectDetails = async ({ params }) => {
   const { slug } = await params;
-  const projectTitle = slug
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
+  const project = portfolioProjects.find((p) => p.slug === slug);
+
+  if (!project) {
+    notFound();
+  }
+
+  const projectTitle = project.title;
 
   return (
     <>
@@ -114,7 +120,8 @@ const ProjectDetails = async ({ params }) => {
                         <span className="icon-right-arrow"></span>
                       </div>
                       <p>
-                        Fact that a reader will be distr acted bioiiy dablea{" "}
+                        Fact that a reader will be distr acted bioiiy
+                        dablea{" "}
                       </p>
                     </li>
                     <li>

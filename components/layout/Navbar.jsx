@@ -1,18 +1,29 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { servicesData } from "@/components/sections/ServicePage_Services";
+import { services } from "@/data/servicesData";
+import { portfolioProjects } from "@/data/portfolioData";
 
 export const menuItems = [
   { title: "Home", href: "/" },
   { title: "About", href: "/about" },
-  { title: "Portfolio", href: "/portfolio" },
+  {
+    title: "Portfolio",
+    href: "/portfolio",
+    dropdown: [
+      { title: "All Projects", href: "/portfolio" },
+      ...portfolioProjects.map((project) => ({
+        title: project.title,
+        href: `/portfolio/${project.slug}`,
+      })),
+    ],
+  },
   {
     title: "Services",
     href: "/service",
     dropdown: [
       { title: "Our Services", href: "/service" },
-      ...servicesData.map((service) => ({
+      ...services.map((service) => ({
         title: service.title,
         href: `/service/${service.slug}`,
       })),

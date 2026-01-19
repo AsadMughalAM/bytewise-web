@@ -1,7 +1,11 @@
 "use client";
 import { useEffect, useRef } from "react";
 
+import { teamMembers } from "@/data/teamData";
+
 const About = () => {
+  const founder =
+    teamMembers.find((m) => m.position.includes("CEO")) || teamMembers[0];
   const experienceOdometerRef = useRef(null);
   const clientOdometerRef = useRef(null);
 
@@ -167,8 +171,8 @@ const About = () => {
                       />
                     </div>
                     <div className="about-three__points-list-content">
-                      <h5>Thomas Alison</h5>
-                      <p>Founder & SEO</p>
+                      <h5>{founder.name}</h5>
+                      <p>{founder.position}</p>
                     </div>
                   </li>
                 </ul>

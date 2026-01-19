@@ -1,49 +1,10 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/pagination";
+import { services } from "@/data/servicesData";
 
 const ServicesOne = () => {
-  const services = [
-    {
-      icon: "icon-social-media-marketing",
-      title: "Software Development",
-      text: "Innovating and empowering businesses with tailored solutions for success and growth.",
-      link: "software-development.html",
-    },
-    {
-      icon: "icon-financial-risk",
-      title: "Risk Management",
-      text: "Innovating and empowering businesses with tailored solutions for success and growth.",
-      link: "web-development.html",
-    },
-    {
-      icon: "icon-ux-design",
-      title: "UI/UX Design",
-      text: "Innovating and empowering businesses with tailored solutions for success and growth.",
-      link: "ui-ux-design.html",
-    },
-    {
-      icon: "icon-promotion",
-      title: "Digital Marketing",
-      text: "Innovating and empowering businesses with tailored solutions for success and growth.",
-      link: "digital-marketing.html",
-    },
-    {
-      icon: "icon-implement",
-      title: "Cloud Provider",
-      text: "Innovating and empowering businesses with tailored solutions for success and growth.",
-      link: "software-development.html",
-    },
-    {
-      icon: "icon-monitor",
-      title: "Data Analytics",
-      text: "Innovating and empowering businesses with tailored solutions for success and growth.",
-      link: "business-analysis.html",
-    },
-  ];
-
   return (
     <section className="service-one">
       <div className="services-one__shape-1"></div>

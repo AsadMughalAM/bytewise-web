@@ -1,8 +1,11 @@
 "use client";
 
 import CountUp from "react-countup";
+import { teamMembers } from "@/data/teamData";
 
 const AboutOne = () => {
+  const ceo =
+    teamMembers.find((m) => m.position.includes("CEO")) || teamMembers[0];
   return (
     <section className="about-one">
       <div className="about-one__shape-2 float-bob">
@@ -82,8 +85,8 @@ const AboutOne = () => {
                       </div>
                     </div>
                     <div className="about-one__client-details">
-                      <h5>Adam Smith</h5>
-                      <p>ceo,Itzone</p>
+                      <h5>{ceo.name}</h5>
+                      <p>{ceo.position}</p>
                     </div>
                   </div>
                   <div className="about-one__client-sign">

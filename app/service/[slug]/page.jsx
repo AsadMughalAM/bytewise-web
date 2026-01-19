@@ -1,5 +1,5 @@
 import React from "react";
-import { servicesData } from "@/components/sections/ServicePage_Services";
+import { services as servicesData } from "@/data/servicesData";
 import { notFound } from "next/navigation";
 
 const page = async ({ params }) => {
@@ -7,7 +7,7 @@ const page = async ({ params }) => {
   const serviceData = servicesData.find((service) => service.slug === slug);
 
   if (!serviceData) {
-      notFound();
+    notFound();
   }
 
   return (

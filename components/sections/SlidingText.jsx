@@ -1,14 +1,7 @@
+import { services } from "@/data/servicesData";
+
 const SlidingText = () => {
-  const items = [
-    "UI/UX Design",
-    "Product Design",
-    "Web Development",
-    "BRANDING",
-    "Cyber Security",
-    "Website design",
-    "Digital Marketing",
-    "Website design",
-  ];
+  const items = services.map((s) => s.title);
 
   return (
     <section className="sliding-text-one">
