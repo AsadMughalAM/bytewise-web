@@ -1,19 +1,29 @@
+"use client";
 import React from "react";
-import { services as servicesData } from "@/data/servicesData";
-import { notFound } from "next/navigation";
+import { useQuery } from "@apollo/client/react";
+import { GET_SERVICE_BY_SLUG } from "./query"; // GraphQL query
+import { useParams } from "next/navigation";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import Image from "next/image";
 import Link from "next/link";
-import Image from "next/image"; // Added import
 
-const page = async ({ params }) => {
-  const { slug } = await params;
-  const serviceData = servicesData.find((service) => service.slug === slug);
+const ServiceDetailPage = () => {
+  const { slug } = useParams();
 
-  if (!serviceData) {
-    notFound();
-  }
+  const { data, loading, error } = useQuery(GET_SERVICE_BY_SLUG, {
+    variables: { slug },
+  });
+
+  if (loading) return <p>Loading service...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  const service = data?.serviceCollection?.items[0];
+
+  if (!service) return <p>Service not found</p>;
 
   return (
     <>
+      {/* Page Header */}
       <section className="page-header">
         <div
           className="page-header__bg"
@@ -24,7 +34,7 @@ const page = async ({ params }) => {
         ></div>
         <div className="container">
           <div className="page-header__inner">
-            <h3 className="text-capitalize">{slug.split("-").join(" ")}</h3>
+            <h3 className="text-capitalize">{service.title}</h3>
             <div className="thm-breadcrumb__inner">
               <ul className="thm-breadcrumb list-unstyled">
                 <li>
@@ -39,7 +49,7 @@ const page = async ({ params }) => {
                 <li>
                   <span className="icon-arrow-angle-pointing-to-right"></span>
                 </li>
-                <li>{slug.split("-").join(" ")}</li>
+                <li>{service.title}</li>
               </ul>
             </div>
           </div>
@@ -57,17 +67,12 @@ const page = async ({ params }) => {
                 style={{ position: "sticky", top: "100px", zIndex: 1 }}
               >
                 <div className="service-details__services-box">
-                  <h3 className="service-details__services-title">
-                    Our Services
-                  </h3>
+                  <h3 className="service-details__services-title">Our Services</h3>
                   <ul className="service-details__services-list list-unstyled">
-                    {servicesData.map((service) => (
-                      <li
-                        key={service.slug}
-                        className={service.slug === slug ? "active" : ""}
-                      >
-                        <Link href={`/service/${service.slug}`}>
-                          {service.title}
+                    {data?.serviceCollection?.items.map((s) => (
+                      <li key={s.slug} className={s.slug === slug ? "active" : ""}>
+                        <Link href={`/service/${s.slug}`}>
+                          {s.title}
                           <span className="icon-arrow-right"></span>
                         </Link>
                       </li>
@@ -83,164 +88,21 @@ const page = async ({ params }) => {
                 {/* Main Image */}
                 <div className="service-details__img">
                   <Image
-                    src={serviceData.img}
-                    alt={serviceData.title}
+                    src={service.image.url}
+                    alt={service.title}
                     width={1000}
                     height={600}
                     className="w-100"
                     style={{ height: "auto" }}
-                    unoptimized
                   />
                 </div>
 
                 {/* Title */}
-                <h3 className="service-details__title-1 text-capitalize">
-                  {serviceData.title}
-                </h3>
+                <h3 className="service-details__title-1">{service.title}</h3>
 
-                {/* Description */}
-                <p className="service-details__text-1">
-                  {serviceData.description}
-                </p>
-
-                {/* Static Extra Text (optional) */}
-                <p className="service-details__text-2">
-                  Consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                  ut labore et dolore magna aliqua. Duis aute irure dolor in
-                  reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                  nulla pariatur.
-                </p>
-
-                {/* Optional Points List */}
-                <ul className="service-details__points-list list-unstyled">
-                  <li>
-                    <div className="icon">
-                      <span className="icon-check"></span>
-                    </div>
-                    <p>
-                      It is a long established fact that a reader will be
-                      distracted by readable content.
-                    </p>
-                  </li>
-                  <li>
-                    <div className="icon">
-                      <span className="icon-check"></span>
-                    </div>
-                    <p>
-                      Content layout and readability enhance user experience.
-                    </p>
-                  </li>
-                  <li>
-                    <div className="icon">
-                      <span className="icon-check"></span>
-                    </div>
-                    <p>Clear content presentation keeps users engaged.</p>
-                  </li>
-                  <li>
-                    <div className="icon">
-                      <span className="icon-check"></span>
-                    </div>
-                    <p>
-                      Good design and structure improve trust and conversion.
-                    </p>
-                  </li>
-                </ul>
-
-                {/* Optional Image Boxes */}
-                <div className="service-details__img-box">
-                  <div className="row">
-                    <div className="col-xl-6">
-                      <div className="service-details__img-box-single">
-                        <div className="service-details__img-box-img">
-                          <Image
-                            src="/assets/images/services/service-details-img-box-img-1.jpg"
-                            alt=""
-                            width={400}
-                            height={300}
-                            className="w-100"
-                            style={{ height: "auto" }}
-                          />
-                        </div>
-                        <div className="service-details__img-box-content">
-                          <div className="service-details__img-box-content-icon-and-title">
-                            <div className="service-details__img-box-content-icon">
-                              <span className="icon-financial"></span>
-                            </div>
-                            <h3 className="service-details__img-box-content-title">
-                              Quality Full Work
-                            </h3>
-                          </div>
-                          <p className="service-details__img-box-content-text">
-                            Duis aute irure dolor in reprehenderit in voluptate
-                            velit esse cillum dolore.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-xl-6">
-                      <div className="service-details__img-box-single">
-                        <div className="service-details__img-box-img">
-                          <Image
-                            src="/assets/images/services/service-details-img-box-img-2.jpg"
-                            alt=""
-                            width={400}
-                            height={300}
-                            className="w-100"
-                            style={{ height: "auto" }}
-                          />
-                        </div>
-                        <div className="service-details__img-box-content">
-                          <div className="service-details__img-box-content-icon-and-title">
-                            <div className="service-details__img-box-content-icon">
-                              <span className="icon-certified"></span>
-                            </div>
-                            <h3 className="service-details__img-box-content-title">
-                              100% Work Satisfaction
-                            </h3>
-                          </div>
-                          <p className="service-details__img-box-content-text">
-                            Duis aute irure dolor in reprehenderit in voluptate
-                            velit esse cillum dolore.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* FAQ Section (Optional Static) */}
-                <div className="service-details__faq-box">
-                  <div
-                    className="accrodion-grp"
-                    data-grp-name="faq-one-accrodion"
-                  >
-                    <div className="accrodion">
-                      <div className="accrodion-title">
-                        <h4>How long should a business plan be?</h4>
-                      </div>
-                      <div className="accrodion-content">
-                        <div className="inner">
-                          <p>
-                            From personalized solutions to expert execution, we
-                            prioritize quality and reliability.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="accrodion active">
-                      <div className="accrodion-title">
-                        <h4>Do I need a business plan?</h4>
-                      </div>
-                      <div className="accrodion-content">
-                        <div className="inner">
-                          <p>
-                            Yes, a business plan helps guide your strategy and
-                            decision making.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                {/* Rich Text Description */}
+                <div className="service-details__text-1">
+                  {documentToReactComponents(service.richText.json)}
                 </div>
               </div>
             </div>
@@ -251,4 +113,4 @@ const page = async ({ params }) => {
   );
 };
 
-export default page;
+export default ServiceDetailPage;

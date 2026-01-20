@@ -10,7 +10,7 @@ import Testimonial from "../components/sections/Testimonial";
 import Contact from "../components/sections/Contact";
 import Brand from "../components/sections/Brand";
 import Team from "../components/sections/Team";
-import Blog from "../components/sections/Blog";
+// import Blog from "../components/sections/Blog";
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
       <Contact />
       <Brand />
       <Team />
-      <Blog />
+      {/* <Blog /> */}
     </div>
   );
 }
