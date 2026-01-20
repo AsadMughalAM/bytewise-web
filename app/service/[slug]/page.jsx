@@ -1,11 +1,41 @@
 "use client";
 import React from "react";
 import { useQuery } from "@apollo/client/react";
-import { GET_SERVICE_BY_SLUG } from "./query"; // GraphQL query
+import { GET_SERVICE_BY_SLUG } from "./query";
 import { useParams } from "next/navigation";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
 import Image from "next/image";
 import Link from "next/link";
+
+const richTextOptions = {
+  renderBlock: {
+    [BLOCKS.HEADING_1]: (node, children) => <h1>{children}</h1>,
+    [BLOCKS.HEADING_2]: (node, children) => <h2>{children}</h2>,
+    [BLOCKS.HEADING_3]: (node, children) => <h3>{children}</h3>,
+
+    [BLOCKS.PARAGRAPH]: (node, children) => (
+      <p style={{ marginBottom: "16px" }}>{children}</p>
+    ),
+
+    [BLOCKS.UL_LIST]: (node, children) => (
+      <ul className="rich-ul">{children}</ul>
+    ),
+
+    [BLOCKS.OL_LIST]: (node, children) => (
+      <ol className="rich-ol">{children}</ol>
+    ),
+
+    [BLOCKS.LIST_ITEM]: (node, children) => (
+      <li className="rich-li">{children}</li>
+    ),
+  },
+
+  renderMark: {
+    [MARKS.BOLD]: (text) => <strong>{text}</strong>,
+    [MARKS.ITALIC]: (text) => <em>{text}</em>,
+  },
+};
 
 const ServiceDetailPage = () => {
   const { slug } = useParams();
@@ -20,6 +50,7 @@ const ServiceDetailPage = () => {
   const service = data?.serviceCollection?.items[0];
 
   if (!service) return <p>Service not found</p>;
+  console.log(data);
 
   return (
     <>
@@ -67,10 +98,15 @@ const ServiceDetailPage = () => {
                 style={{ position: "sticky", top: "100px", zIndex: 1 }}
               >
                 <div className="service-details__services-box">
-                  <h3 className="service-details__services-title">Our Services</h3>
+                  <h3 className="service-details__services-title">
+                    Our Services
+                  </h3>
                   <ul className="service-details__services-list list-unstyled">
                     {data?.serviceCollection?.items.map((s) => (
-                      <li key={s.slug} className={s.slug === slug ? "active" : ""}>
+                      <li
+                        key={s.slug}
+                        className={s.slug === slug ? "active" : ""}
+                      >
                         <Link href={`/service/${s.slug}`}>
                           {s.title}
                           <span className="icon-arrow-right"></span>
@@ -88,12 +124,12 @@ const ServiceDetailPage = () => {
                 {/* Main Image */}
                 <div className="service-details__img">
                   <Image
-                    src={service.image.url}
+                    src={`${service.image.url}`}
                     alt={service.title}
-                    width={1000}
-                    height={600}
+                    width={1600}
+                    height={900}
                     className="w-100"
-                    style={{ height: "auto" }}
+                    priority
                   />
                 </div>
 
@@ -101,8 +137,11 @@ const ServiceDetailPage = () => {
                 <h3 className="service-details__title-1">{service.title}</h3>
 
                 {/* Rich Text Description */}
-                <div className="service-details__text-1">
-                  {documentToReactComponents(service.richText.json)}
+                <div className="rich-text">
+                  {documentToReactComponents(
+                    service.longDescription.json,
+                    richTextOptions,
+                  )}
                 </div>
               </div>
             </div>

@@ -168,3 +168,30 @@ body {
 .sidebar__search-form button:hover {
     background-color: #000;
 }
+
+/* FORCE bullets for Contentful rich text */
+.rich-text ul {
+  list-style-type: disc !important;
+  padding-left: 24px !important;
+  margin-bottom: 16px !important;
+}
+
+.rich-text ol {
+  list-style-type: decimal !important;
+  padding-left: 24px !important;
+  margin-bottom: 16px !important;
+}
+
+.rich-text li {
+  display: list-item !important;
+  margin-bottom: 8px;
+}
+
+/* Nested lists support */
+.rich-text ul ul {
+  list-style-type: circle !important;
+}
+
+.rich-text ul ul ul {
+  list-style-type: square !important;
+}

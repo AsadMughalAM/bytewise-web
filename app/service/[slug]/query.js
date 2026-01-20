@@ -7,10 +7,10 @@ export const GET_SERVICE_BY_SLUG = gql`
         title
         slug
         shortDescription
-        richText { json }
+        longDescription { json }
         image { url }
         icon { url }
       }
     }
   }
-} `;
+`;
