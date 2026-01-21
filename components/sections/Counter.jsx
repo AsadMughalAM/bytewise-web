@@ -1,7 +1,7 @@
 "use client";
-import { useEffect, useRef } from "react";
+import CountUp from "react-countup";
 
-const Counter = () => {
+const Counter = ({ variant = "one" }) => {
   const counters = [
     {
       icon: "icon-trophy",
@@ -33,22 +33,6 @@ const Counter = () => {
     },
   ];
 
-  const counterRefs = counters.map(() => useRef(null));
-
-  useEffect(() => {
-    if (window.Odometer) {
-      counterRefs.forEach((ref, index) => {
-        if (ref.current) {
-          const odometer = new window.Odometer({
-            el: ref.current,
-            value: 0,
-          });
-          odometer.update(counters[index].count);
-        }
-      });
-    }
-  }, []);
-
   return (
     <section className="counter-two">
       <div
@@ -64,7 +48,11 @@ const Counter = () => {
             <div
               key={index}
               className={`col-xl-3 col-lg-6 col-md-6 wow ${
-                index < 2 ? "fadeInLeft" : "fadeInRight"
+                variant === "one"
+                  ? index < 2
+                    ? "fadeInLeft"
+                    : "fadeInRight"
+                  : "fadeInLeft"
               }`}
               data-wow-delay={counter.delay}
             >
@@ -74,8 +62,8 @@ const Counter = () => {
                 </div>
                 <div className="counter-two__content">
                   <div className="counter-two__count-box">
-                    <h3 className="odometer" ref={counterRefs[index]}>
-                      00
+                    <h3 className="odometer">
+                      <CountUp end={counter.count} duration={2.5} />
                     </h3>
                     <span>{counter.suffix}</span>
                   </div>
