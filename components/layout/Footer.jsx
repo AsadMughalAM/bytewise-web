@@ -1,7 +1,12 @@
 "use client";
 import Link from "next/link";
+import { useQuery } from "@apollo/client/react";
+import { GET_ALL_SERVICES } from "@/app/service/query";
 
 const Footer = () => {
+  const { data } = useQuery(GET_ALL_SERVICES);
+  const services = data?.serviceCollection?.items || [];
+
   return (
     <footer className="site-footer-three pt-5">
       <div
@@ -58,7 +63,7 @@ const Footer = () => {
                       <Link href="/about">About Us</Link>
                     </li>
                     <li>
-                      <Link href="/team">Meet Our Team</Link>
+                      <Link href="/blog">Blog</Link>
                     </li>
                     <li>
                       <Link href="/portfolio">Our Projects</Link>
@@ -82,21 +87,13 @@ const Footer = () => {
                   <h3 className="footer-widget-three__title">Our Services</h3>
                 </div>
                 <ul className="footer-widget-three__link list-unstyled">
-                  <li>
-                    <Link href="/service">Web Development</Link>
-                  </li>
-                  <li>
-                    <Link href="/service">Cloud services</Link>
-                  </li>
-                  <li>
-                    <Link href="/service">Product Management</Link>
-                  </li>
-                  <li>
-                    <Link href="/service">UI/UX Design</Link>
-                  </li>
-                  <li>
-                    <Link href="/service">Business Development</Link>
-                  </li>
+                  {services.slice(0, 5).map((service) => (
+                    <li key={service.slug}>
+                      <Link href={`/service/${service.slug}`}>
+                        {service.title}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
