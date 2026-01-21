@@ -1,49 +1,47 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useQuery } from "@apollo/client/react";
 import { GET_ALL_SERVICES } from "@/app/service/query";
-import { portfolioProjects } from "@/data/portfolioData";
+import { GET_ALL_PORTFOLIO } from "@/app/portfolio/query";
 
 const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const { data } = useQuery(GET_ALL_SERVICES);
-  const [menuItems, setMenuItems] = useState([]);
 
-  useEffect(() => {
-    const services = data?.serviceCollection?.items || [];
+  const { data: servicesData } = useQuery(GET_ALL_SERVICES);
+  const services = servicesData?.serviceCollection?.items || [];
 
-    const items = [
-      { title: "Home", href: "/" },
-      { title: "About", href: "/about" },
-      {
-        title: "Portfolio",
-        href: "/portfolio",
-        dropdown: [
-          { title: "All Projects", href: "/portfolio" },
-          ...portfolioProjects.map((project) => ({
-            title: project.title,
-            href: `/portfolio/${project.slug}`,
-          })),
-        ],
-      },
-      {
-        title: "Services",
-        href: "/service",
-        dropdown: [
-          { title: "Our Services", href: "/service" },
-          ...services.map((service) => ({
-            title: service.title,
-            href: `/service/${service.slug}`,
-          })),
-        ],
-      },
-      { title: "Blog", href: "/blog" },
-      { title: "Contact", href: "/contact" },
-    ];
+  const { data: portfolioData } = useQuery(GET_ALL_PORTFOLIO);
+  const portfolios = portfolioData?.portfolioCollection?.items || [];
 
-    setMenuItems(items);
-  }, [data]);
+  const menuItems = [
+    { title: "Home", href: "/" },
+    { title: "About", href: "/about" },
+    {
+      title: "Portfolio",
+      href: "/portfolio",
+      dropdown: [
+        { title: "All Projects", href: "/portfolio" },
+        ...portfolios.map((project) => ({
+          title: project.title,
+          href: `/portfolio/${project.slug}`,
+        })),
+      ],
+    },
+    {
+      title: "Services",
+      href: "/service",
+      dropdown: [
+        { title: "Our Services", href: "/service" },
+        ...services.map((service) => ({
+          title: service.title,
+          href: `/service/${service.slug}`,
+        })),
+      ],
+    },
+    { title: "Blog", href: "/blog" },
+    { title: "Contact", href: "/contact" },
+  ];
 
   return (
     <>

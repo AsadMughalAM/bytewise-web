@@ -1,26 +1,34 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
-import Image from "next/image"; // Added import
+import Image from "next/image";
+import { useQuery } from "@apollo/client/react";
+import { useParams } from "next/navigation";
+import { GET_PORTFOLIO_BY_SLUG, GET_ALL_PORTFOLIO } from "../query";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
-import { portfolioProjects } from "@/data/portfolioData";
-import { notFound } from "next/navigation";
+const ProjectDetails = () => {
+  const { slug } = useParams();
 
-const ProjectDetails = async ({ params }) => {
-  const { slug } = await params;
-  const project = portfolioProjects.find((p) => p.slug === slug);
+  const { data, loading, error } = useQuery(GET_PORTFOLIO_BY_SLUG, {
+    variables: { slug },
+  });
 
-  if (!project) {
-    notFound();
-  }
+  const { data: allProjectsData } = useQuery(GET_ALL_PORTFOLIO);
 
-  const projectTitle = project.title;
+  if (loading) return <p className="text-center mt-5">Loading project...</p>;
+  if (error) return <p className="text-center mt-5">Error: {error.message}</p>;
 
-  const currentIndex = portfolioProjects.findIndex((p) => p.slug === slug);
+  const project = data?.portfolioCollection?.items[0];
+  const allProjects = allProjectsData?.portfolioCollection?.items || [];
+
+  if (!project) return <p className="text-center mt-5">Project not found</p>;
+
+  const currentIndex = allProjects.findIndex((p) => p.slug === slug);
   const prevProject =
-    portfolioProjects[currentIndex - 1] ||
-    portfolioProjects[portfolioProjects.length - 1];
-  const nextProject =
-    portfolioProjects[currentIndex + 1] || portfolioProjects[0];
+    allProjects[currentIndex - 1] || allProjects[allProjects.length - 1];
+  const nextProject = allProjects[currentIndex + 1] || allProjects[0];
 
   return (
     <>
@@ -34,7 +42,7 @@ const ProjectDetails = async ({ params }) => {
         ></div>
         <div className="container">
           <div className="page-header__inner">
-            <h3>{projectTitle}</h3>
+            <h3>{project.title}</h3>
             <div className="thm-breadcrumb__inner">
               <ul className="thm-breadcrumb list-unstyled">
                 <li>
@@ -49,7 +57,7 @@ const ProjectDetails = async ({ params }) => {
                 <li>
                   <span className="icon-arrow-angle-pointing-to-right"></span>
                 </li>
-                <li>{projectTitle}</li>
+                <li>{project.title}</li>
               </ul>
             </div>
           </div>
@@ -61,28 +69,35 @@ const ProjectDetails = async ({ params }) => {
             <div className="col-xl-8 col-lg-7">
               <div className="project-details__left">
                 <div className="project-details__img">
-                  <Image
-                    src={project.img}
-                    alt={projectTitle}
-                    width={1000}
-                    height={600}
-                    className="w-100"
-                    style={{ height: "auto" }}
-                    unoptimized
-                  />
+                  {project.image?.url && (
+                    <Image
+                      src={project.image.url}
+                      alt={project.title}
+                      width={1000}
+                      height={600}
+                      className="w-100"
+                      style={{ height: "auto" }}
+                      priority
+                    />
+                  )}
                 </div>
+
                 <h3 className="project-details__title-1">
                   About The Project Overview
                 </h3>
-                <p className="project-details__text-1">
-                  Consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                  ut laborer et dolore magna aliqua. Out enigma ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                  ea commodo consequat. Duis aute inure dolor in the
-                  reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                  null pariatur. Excepteur snit occaecat cupidatat non proident,
-                  sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
+
+                {project.description?.json && (
+                  <div className="project-details__text-1">
+                    {documentToReactComponents(project.description.json)}
+                  </div>
+                )}
+
+                {!project.description?.json && project.shortDescription && (
+                  <p className="project-details__text-1">
+                    {project.shortDescription}
+                  </p>
+                )}
+
                 <h3 className="project-details__title-2">
                   The Project Challenge
                 </h3>
@@ -180,15 +195,19 @@ const ProjectDetails = async ({ params }) => {
                     </li>
                     <li>
                       <h4>Category :</h4>
-                      <p>{project.category}</p>
+                      <p>{project.category || "General"}</p>
                     </li>
                     <li>
-                      <h4>date :</h4>
-                      <p>02 June 2024</p>
+                      <h4>Date :</h4>
+                      <p>
+                        {project.date
+                          ? new Date(project.date).toDateString()
+                          : "Recently"}
+                      </p>
                     </li>
                     <li>
-                      <h4>location :</h4>
-                      <p>12 Green Road 05 New Yark</p>
+                      <h4>Description :</h4>
+                      <p>{project.shortDescription?.slice(0, 50)}...</p>
                     </li>
                   </ul>
                 </div>
@@ -242,37 +261,41 @@ const ProjectDetails = async ({ params }) => {
             <div className="col-xl-12">
               <div className="project-details__previous-next">
                 <ul>
-                  <li>
-                    <div className="icon">
-                      <Link href={`/portfolio/${prevProject.slug}`}>
-                        <span
-                          className="icon-right-arrow"
-                          style={{
-                            transform: "rotate(180deg)",
-                            display: "inline-block",
-                          }}
-                        ></span>
-                      </Link>
-                    </div>
-                    <div className="text-box">
-                      <Link href={`/portfolio/${prevProject.slug}`}>
-                        Previous Project
-                      </Link>
-                    </div>
-                  </li>
+                  {prevProject && (
+                    <li>
+                      <div className="icon">
+                        <Link href={`/portfolio/${prevProject.slug}`}>
+                          <span
+                            className="icon-right-arrow"
+                            style={{
+                              transform: "rotate(180deg)",
+                              display: "inline-block",
+                            }}
+                          ></span>
+                        </Link>
+                      </div>
+                      <div className="text-box">
+                        <Link href={`/portfolio/${prevProject.slug}`}>
+                          Previous Project
+                        </Link>
+                      </div>
+                    </li>
+                  )}
 
-                  <li>
-                    <div className="text-box">
-                      <Link href={`/portfolio/${nextProject.slug}`}>
-                        Next Project
-                      </Link>
-                    </div>
-                    <div className="icon">
-                      <Link href={`/portfolio/${nextProject.slug}`}>
-                        <span className="icon-right-arrow"></span>
-                      </Link>
-                    </div>
-                  </li>
+                  {nextProject && (
+                    <li>
+                      <div className="text-box">
+                        <Link href={`/portfolio/${nextProject.slug}`}>
+                          Next Project
+                        </Link>
+                      </div>
+                      <div className="icon">
+                        <Link href={`/portfolio/${nextProject.slug}`}>
+                          <span className="icon-right-arrow"></span>
+                        </Link>
+                      </div>
+                    </li>
+                  )}
                 </ul>
               </div>
             </div>
