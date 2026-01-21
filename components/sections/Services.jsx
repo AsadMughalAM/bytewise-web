@@ -1,12 +1,21 @@
 "use client";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import Link from "next/link";
-import { services } from "@/data/servicesData";
+import { useQuery } from "@apollo/client/react";
+import { GET_ALL_SERVICES } from "@/app/service/query";
 
 const Services = ({ variant = "three" }) => {
+  const { data, loading, error } = useQuery(GET_ALL_SERVICES);
+
+  if (loading) return null; // Or a loading spinner
+  if (error) return null; // Or error message
+
+  const services = data?.serviceCollection?.items || [];
+
   if (variant === "one") {
     return (
       <section className="service-one">
@@ -37,21 +46,53 @@ const Services = ({ variant = "three" }) => {
             }}
           >
             {services.map((service, index) => (
-              <SwiperSlide key={index}>
-                <div className="item">
-                  <div className="service-one__single-inner">
+              <SwiperSlide key={index} style={{ height: "auto" }}>
+                <div className="item h-100">
+                  <div className="service-one__single-inner h-100">
                     <div className="service-one__single-wrap">
                       <div className="service-one__single">
                         <div className="service-one__single-shape-1"></div>
                         <div className="service-one__icon">
-                          <span className={service.icon}></span>
+                          {service.icon?.url ? (
+                            <img
+                              src={service.icon.url}
+                              alt={service.icon.title || service.title}
+                              style={{
+                                width: "60px",
+                                height: "60px",
+                                objectFit: "contain",
+                              }}
+                            />
+                          ) : (
+                            <span className="icon-service"></span>
+                          )}
                         </div>
                         <h3 className="service-one__title">
-                          <Link href={`/service/${service.slug}`}>
+                          <Link
+                            href={`/service/${service.slug}`}
+                            style={{
+                              display: "-webkit-box",
+                              WebkitLineClamp: 2,
+                              WebkitBoxOrient: "vertical",
+                              overflow: "hidden",
+                              height: "3.2em", // approx 2 lines
+                            }}
+                          >
                             {service.title}
                           </Link>
                         </h3>
-                        <p className="service-one__text">{service.text}</p>
+                        <p
+                          className="service-one__text"
+                          style={{
+                            display: "-webkit-box",
+                            WebkitLineClamp: 4,
+                            WebkitBoxOrient: "vertical",
+                            overflow: "hidden",
+                            height: "6em", // approx 4 lines
+                          }}
+                        >
+                          {service.shortDescription}
+                        </p>
                       </div>
                     </div>
                     <div className="service-one__btn-box">
@@ -103,19 +144,52 @@ const Services = ({ variant = "three" }) => {
           }}
         >
           {services.map((service, index) => (
-            <SwiperSlide key={index}>
-              <div className="item">
-                <div className="services-three__single">
+            <SwiperSlide key={index} style={{ height: "auto" }}>
+              <div className="item h-100">
+                <div className="services-three__single h-100 d-flex flex-column">
                   <div className="services-three__icon">
-                    <span className={service.icon}></span>
+                    {service.icon?.url ? (
+                      <img
+                        src={service.icon.url}
+                        alt={service.icon.title || service.title}
+                        style={{
+                          width: "60px",
+                          height: "60px",
+                          objectFit: "contain",
+                        }}
+                      />
+                    ) : (
+                      <span className="icon-service"></span>
+                    )}
                   </div>
                   <h3 className="services-three__title">
-                    <Link href={`/service/${service.slug}`}>
+                    <Link
+                      href={`/service/${service.slug}`}
+                      style={{
+                        display: "-webkit-box",
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: "vertical",
+                        overflow: "hidden",
+                        height: "3.2em",
+                      }}
+                    >
                       {service.title}
                     </Link>
                   </h3>
-                  <p className="services-three__text">{service.text}</p>
-                  <div className="services-three__read-more">
+                  <p
+                    className="services-three__text flex-grow-1"
+                    style={{
+                      display: "-webkit-box",
+                      WebkitLineClamp: 4,
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
+                      height: "6em",
+                      marginBottom: "1rem",
+                    }}
+                  >
+                    {service.shortDescription}
+                  </p>
+                  <div className="services-three__read-more  mt-auto ">
                     <Link href={`/service/${service.slug}`}>
                       Read More
                       <span className="fas fa-arrow-right"></span>

@@ -1,6 +1,15 @@
-import { services } from "@/data/servicesData";
+"use client";
+import React from "react";
+import { useQuery } from "@apollo/client/react";
+import { GET_ALL_SERVICES } from "@/app/service/query";
 
 const SlidingText = () => {
+  const { data, loading, error } = useQuery(GET_ALL_SERVICES);
+
+  if (loading) return null;
+  if (error) return null;
+
+  const services = data?.serviceCollection?.items || [];
   const items = services.map((s) => s.title);
 
   return (
