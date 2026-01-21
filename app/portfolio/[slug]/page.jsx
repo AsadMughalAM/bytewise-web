@@ -5,7 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { useQuery } from "@apollo/client/react";
 import { useParams } from "next/navigation";
-import { GET_PORTFOLIO_BY_SLUG, GET_ALL_PORTFOLIO } from "../query";
+import { GET_ALL_PORTFOLIO } from "../query";
+import { GET_PORTFOLIO_BY_SLUG } from "./query";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 const ProjectDetails = () => {
