@@ -1,40 +1,49 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { services } from "@/data/servicesData";
+import { useQuery } from "@apollo/client/react";
+import { GET_ALL_SERVICES } from "@/app/service/query";
 import { portfolioProjects } from "@/data/portfolioData";
-
-export const menuItems = [
-  { title: "Home", href: "/" },
-  { title: "About", href: "/about" },
-  {
-    title: "Portfolio",
-    href: "/portfolio",
-    dropdown: [
-      { title: "All Projects", href: "/portfolio" },
-      ...portfolioProjects.map((project) => ({
-        title: project.title,
-        href: `/portfolio/${project.slug}`,
-      })),
-    ],
-  },
-  {
-    title: "Services",
-    href: "/service",
-    dropdown: [
-      { title: "Our Services", href: "/service" },
-      ...services.map((service) => ({
-        title: service.title,
-        href: `/service/${service.slug}`,
-      })),
-    ],
-  },
-  { title: "Blog", href: "/blog" },
-  { title: "Contact", href: "/contact" },
-];
 
 const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const { data } = useQuery(GET_ALL_SERVICES);
+  const [menuItems, setMenuItems] = useState([]);
+
+  useEffect(() => {
+    const services = data?.serviceCollection?.items || [];
+
+    const items = [
+      { title: "Home", href: "/" },
+      { title: "About", href: "/about" },
+      {
+        title: "Portfolio",
+        href: "/portfolio",
+        dropdown: [
+          { title: "All Projects", href: "/portfolio" },
+          ...portfolioProjects.map((project) => ({
+            title: project.title,
+            href: `/portfolio/${project.slug}`,
+          })),
+        ],
+      },
+      {
+        title: "Services",
+        href: "/service",
+        dropdown: [
+          { title: "Our Services", href: "/service" },
+          ...services.map((service) => ({
+            title: service.title,
+            href: `/service/${service.slug}`,
+          })),
+        ],
+      },
+      { title: "Blog", href: "/blog" },
+      { title: "Contact", href: "/contact" },
+    ];
+
+    setMenuItems(items);
+  }, [data]);
 
   return (
     <>

@@ -30,10 +30,11 @@ const ServicePage_Services = () => {
                     <Image
                       src={service.image?.url}
                       alt={service.title}
-                      width={400}
-                      height={300}
+                      width={600}
+                      height={400}
+                      quality={100}
                       className="w-100"
-                      style={{ height: "auto" }}
+                      style={{ height: "280px", objectFit: "cover" }}
                     />
                   </div>
                   <div className="services-two__icon mb-3">
@@ -47,13 +48,33 @@ const ServicePage_Services = () => {
                 </div>
 
                 <div className="services-two__content">
-                  <h3 className="services-two__title">
-                    <Link href={`/service/${service.slug}`}>
+                  <h3
+                    className="services-two__title"
+                    style={{
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      padding: "0 10px",
+                    }}
+                  >
+                    <Link
+                      href={`/service/${service.slug}`}
+                      title={service.title}
+                    >
                       {service.title}
                     </Link>
                   </h3>
 
-                  <p className="services-two__text">
+                  <p
+                    className="services-two__text"
+                    style={{
+                      height: "100px",
+                      overflow: "hidden",
+                      display: "-webkit-box",
+                      WebkitLineClamp: 4,
+                      WebkitBoxOrient: "vertical",
+                    }}
+                  >
                     {service.shortDescription}
                   </p>
 
