@@ -1,23 +1,19 @@
 "use client";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
+import { useMenuData } from "@/hooks/useMenuData";
+
 const MobileNav = () => {
-  useEffect(() => {
-    try {
-      const mobileContainer = document.querySelector(".mobile-nav__container");
-      const mainMenu = document.querySelector(".main-menu__list");
-      if (
-        mobileContainer &&
-        mainMenu &&
-        !mobileContainer.querySelector(".main-menu__list")
-      ) {
-        mobileContainer.innerHTML = mainMenu.outerHTML;
-      }
-    } catch (e) {
-      // ignore in SSR or if DOM not available
-    }
-  }, []);
+  const menuItems = useMenuData();
+  const [expandedDropdowns, setExpandedDropdowns] = useState({});
+
+  const toggleDropdown = (index) => {
+    setExpandedDropdowns((prev) => ({
+      ...prev,
+      [index]: !prev[index], // Toggle boolean value
+    }));
+  };
 
   return (
     <>
@@ -39,7 +35,55 @@ const MobileNav = () => {
             </Link>
           </div>
 
-          <div className="mobile-nav__container"></div>
+          <div className="mobile-nav__container">
+            <ul className="main-menu__list">
+              {menuItems.map((item, index) => (
+                <li
+                  key={index}
+                  className={`${item.dropdown ? "dropdown" : ""} ${
+                    expandedDropdowns[index] ? "expanded" : ""
+                  }`}
+                >
+                  <div className="d-flex justify-content-between align-items-center">
+                    <Link href={item.href}>
+                      {item.title}
+                      {/* Note: In original script, button was appended to 'a' tag. 
+                          Here we separate or wrap content if needed, but styling might expect button inside.
+                          Let's try putting button next to text or check visual.
+                          Actually, original script appended button to the anchor tag.
+                      */}
+                    </Link>
+                    {item.dropdown && (
+                      <button
+                        aria-label="dropdown toggler"
+                        className={expandedDropdowns[index] ? "expanded" : ""}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          toggleDropdown(index);
+                        }}
+                      >
+                        <i className="fa fa-angle-down"></i>
+                      </button>
+                    )}
+                  </div>
+
+                  {item.dropdown && (
+                    <ul
+                      style={{
+                        display: expandedDropdowns[index] ? "block" : "none",
+                      }}
+                    >
+                      {item.dropdown.map((subItem, subIndex) => (
+                        <li key={subIndex}>
+                          <Link href={subItem.href}>{subItem.title}</Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
 
           <ul className="mobile-nav__contact list-unstyled">
             <li>

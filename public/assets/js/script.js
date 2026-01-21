@@ -552,13 +552,13 @@
             progress: function () {
               elm.val(Math.ceil(this.value)).trigger("change");
             },
-          }
+          },
         );
         $(this).append(function () {});
       },
       {
         accY: 20,
-      }
+      },
     );
   }
 
@@ -655,7 +655,7 @@
       },
       {
         accY: -50,
-      }
+      },
     );
   }
 
@@ -670,7 +670,7 @@
       },
       {
         accY: 0,
-      }
+      },
     );
   }
 
@@ -699,13 +699,13 @@
               complete: function () {
                 $t.find(".count-text").text(this.countNum);
               },
-            }
+            },
           );
         }
       },
       {
         accY: 0,
-      }
+      },
     );
   }
 
@@ -848,6 +848,7 @@
     dynamicCurrentMenuClass(mainNavUL);
   }
 
+  /*
   if ($(".main-menu__list").length && $(".mobile-nav__container").length) {
     let navContent = document.querySelector(".main-menu__list").outerHTML;
     let mobileNavContainer = document.querySelector(".mobile-nav__container");
@@ -858,10 +859,11 @@
     let mobileNavContainer = document.querySelector(".sticky-header__content");
     mobileNavContainer.innerHTML = navContent;
   }
+  */
 
   if ($(".mobile-nav__container .main-menu__list").length) {
     let dropdownAnchor = $(
-      ".mobile-nav__container .main-menu__list .dropdown > a"
+      ".mobile-nav__container .main-menu__list .dropdown > a",
     );
     dropdownAnchor.each(function () {
       let self = $(this);
@@ -990,7 +992,7 @@
     if ($(".post-filter.has-dynamic-filters-counter").length) {
       // var allItem = $('.single-filter-item').length;
       var activeFilterItem = $(".post-filter.has-dynamic-filters-counter").find(
-        "li"
+        "li",
       );
       activeFilterItem.each(function () {
         var filterElement = $(this).data("filter");
@@ -1019,7 +1021,7 @@
               scrollTop: $(target.attr("href")).offset().top - headerH + "px",
             },
             200,
-            "easeInOutExpo"
+            "easeInOutExpo",
           );
         anchor.removeClass("current");
         anchor.removeClass("current-menu-ancestor");
@@ -1082,7 +1084,7 @@
       return;
     }
     const quotes = document.querySelectorAll(
-      ".sec-title-animation .title-animation"
+      ".sec-title-animation .title-animation",
     );
 
     quotes.forEach((quote) => {
@@ -1153,10 +1155,10 @@
         },
       });
       $(".price-ranger .ranger-min-max-block .min").val(
-        "" + $(".price-ranger #slider-range").slider("values", 0)
+        "" + $(".price-ranger #slider-range").slider("values", 0),
       );
       $(".price-ranger .ranger-min-max-block .max").val(
-        "" + $(".price-ranger #slider-range").slider("values", 1)
+        "" + $(".price-ranger #slider-range").slider("values", 1),
       );
     }
   }
@@ -1213,15 +1215,15 @@
           return false;
         } else {
           $(".product__all-tab .tabs-button-box .tab-btn-item").removeClass(
-            "active-btn-item"
+            "active-btn-item",
           );
           $(this).addClass("active-btn-item");
           $(
-            ".product__all-tab .tabs-content-box .tab-content-box-item"
+            ".product__all-tab .tabs-content-box .tab-content-box-item",
           ).removeClass("tab-content-box-item-active");
           $(target).addClass("tab-content-box-item-active");
         }
-      }
+      },
     );
   }
 
@@ -1340,7 +1342,7 @@
       // var allItem = $('.single-filter-item').length;
 
       var activeFilterItem = $(".post-filter.has-dynamic-filter-counter").find(
-        "li"
+        "li",
       );
 
       activeFilterItem.each(function () {

@@ -1,52 +1,65 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import { useQuery } from "@apollo/client/react";
-import { GET_ALL_SERVICES } from "@/app/service/query";
-import { GET_ALL_PORTFOLIO } from "@/app/portfolio/query";
+import { useMenuData } from "@/hooks/useMenuData";
 
 const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const menuItems = useMenuData();
 
-  const { data: servicesData } = useQuery(GET_ALL_SERVICES);
-  const { data: portfolioData } = useQuery(GET_ALL_PORTFOLIO);
-  const [menuItems, setMenuItems] = useState([]);
+  const renderMenu = () => (
+    <div className="main-menu-three__wrapper">
+      <div className="container">
+        <div className="main-menu-three__wrapper-inner">
+          <div className="main-menu-three__left">
+            <div className="main-menu-three__logo">
+              <Link href="/">
+                <img src="/assets/images/resources/logo-1.png" alt="Logo" />
+              </Link>
+            </div>
+          </div>
+          <div className="main-menu-three__main-menu-box">
+            <Link href="/" className="mobile-nav__toggler">
+              <i className="fa fa-bars"></i>
+            </Link>
+            <ul className="main-menu__list">
+              {menuItems.map((item, index) => (
+                <li
+                  key={index}
+                  className={`${item.dropdown ? "dropdown" : ""} ${
+                    activeDropdown === item.title ? "active" : ""
+                  }`}
+                  onMouseEnter={() =>
+                    item.dropdown && setActiveDropdown(item.title)
+                  }
+                  onMouseLeave={() => item.dropdown && setActiveDropdown(null)}
+                >
+                  <Link href={item.href}>{item.title}</Link>
+                  {item.dropdown && (
+                    <ul className="shadow-box">
+                      {item.dropdown.map((subItem, subIndex) => (
+                        <li key={subIndex}>
+                          <Link href={subItem.href}>{subItem.title}</Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-  useEffect(() => {
-    const services = servicesData?.serviceCollection?.items || [];
-    const portfolios = portfolioData?.portfolioCollection?.items || [];
-
-    const items = [
-      { title: "Home", href: "/" },
-      { title: "About", href: "/about" },
-      {
-        title: "Portfolio",
-        href: "/portfolio",
-        dropdown: [
-          { title: "All Projects", href: "/portfolio" },
-          ...portfolios.map((project) => ({
-            title: project.title,
-            href: `/portfolio/${project.slug}`,
-          })),
-        ],
-      },
-      {
-        title: "Services",
-        href: "/service",
-        dropdown: [
-          { title: "Our Services", href: "/service" },
-          ...services.map((service) => ({
-            title: service.title,
-            href: `/service/${service.slug}`,
-          })),
-        ],
-      },
-      { title: "Blog", href: "/blog" },
-      { title: "Contact", href: "/contact" },
-    ];
-
-    setMenuItems(items);
-  }, [servicesData, portfolioData]);
+          <div className="main-menu-three__right">
+            <div className="main-menu-three__btn-box">
+              <Link href="/contact" className="thm-btn">
+                Get in Touch <span className="icon-right-arrow"></span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -119,68 +132,11 @@ const Navbar = () => {
         </div>
 
         {/* Main navigation */}
-        <nav className="main-menu main-menu-three">
-          <div className="main-menu-three__wrapper">
-            <div className="container">
-              <div className="main-menu-three__wrapper-inner">
-                <div className="main-menu-three__left">
-                  <div className="main-menu-three__logo">
-                    <Link href="/">
-                      <img
-                        src="/assets/images/resources/logo-1.png"
-                        alt="Logo"
-                      />
-                    </Link>
-                  </div>
-                </div>
-                <div className="main-menu-three__main-menu-box">
-                  <Link href="/" className="mobile-nav__toggler">
-                    <i className="fa fa-bars"></i>
-                  </Link>
-                  <ul className="main-menu__list">
-                    {menuItems.map((item, index) => (
-                      <li
-                        key={index}
-                        className={`${item.dropdown ? "dropdown" : ""} ${
-                          activeDropdown === item.title ? "active" : ""
-                        }`}
-                        onMouseEnter={() =>
-                          item.dropdown && setActiveDropdown(item.title)
-                        }
-                        onMouseLeave={() =>
-                          item.dropdown && setActiveDropdown(null)
-                        }
-                      >
-                        <Link href={item.href}>{item.title}</Link>
-                        {item.dropdown && (
-                          <ul className="shadow-box">
-                            {item.dropdown.map((subItem, subIndex) => (
-                              <li key={subIndex}>
-                                <Link href={subItem.href}>{subItem.title}</Link>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="main-menu-three__right">
-                  <div className="main-menu-three__btn-box">
-                    <Link href="/contact" className="thm-btn">
-                      Get in Touch <span className="icon-right-arrow"></span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav>
+        <nav className="main-menu main-menu-three">{renderMenu()}</nav>
       </header>
 
       <div className="stricky-header stricked-menu main-menu main-menu-three">
-        <div className="sticky-header__content"></div>
+        <div className="sticky-header__content">{renderMenu()}</div>
       </div>
     </>
   );
