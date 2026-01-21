@@ -115,7 +115,7 @@ const Services = ({ variant = "three" }) => {
   }
 
   return (
-    <section className="services-three" id="services">
+    <section className="services-three" id="services ">
       <div className="services-three__shape-1"></div>
       <div className="services-three__shape-2 float-bob-x">
         <img src="/assets/images/shapes/services-three-shape-2.png" alt="" />
@@ -146,7 +146,7 @@ const Services = ({ variant = "three" }) => {
           {services.map((service, index) => (
             <SwiperSlide key={index} style={{ height: "auto" }}>
               <div className="item h-100">
-                <div className="services-three__single h-100 d-flex flex-column">
+                <div className="services-three__single h-100 d-flex flex-column justify-content-center align-items-center">
                   <div className="services-three__icon">
                     {service.icon?.url ? (
                       <img

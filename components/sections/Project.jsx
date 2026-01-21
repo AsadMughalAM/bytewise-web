@@ -1,9 +1,13 @@
 "use client";
 import { useEffect } from "react";
 import Link from "next/link";
-import { portfolioProjects as projects } from "@/data/portfolioData";
+import { useQuery } from "@apollo/client/react";
+import { GET_ALL_PORTFOLIO } from "@/app/portfolio/query";
 
 const Project = () => {
+  const { data, loading, error } = useQuery(GET_ALL_PORTFOLIO);
+  const projects = data?.portfolioCollection?.items || [];
+
   useEffect(() => {
     // Initialize Magnific Popup for image popup
     if (window.jQuery && window.jQuery().magnificPopup) {
@@ -14,7 +18,10 @@ const Project = () => {
         },
       });
     }
-  }, []);
+  }, [projects]); // Re-run when projects load
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error loading projects</div>;
 
   return (
     <section className="project-three" id="project">
@@ -49,18 +56,26 @@ const Project = () => {
             {projects.slice(0, 4).map((project, index) => (
               <div
                 key={index}
-                className={`col-xl-3 col-lg-6 col-md-6 wow ${project.animation}`}
-                data-wow-delay={project.delay}
+                className={`col-xl-3 col-lg-6 col-md-6 wow fadeInUp`}
+                data-wow-delay={`${(index + 1) * 100}ms`}
               >
                 <div className="project-three__single">
                   <div className="project-three__img-box">
                     <div className="project-three__img">
-                      <img src={project.img} alt={project.title} />
+                      <img
+                        src={project.image?.url}
+                        alt={project.image?.title || project.title}
+                        style={{
+                          width: "100%",
+                          height: "280px",
+                          objectFit: "cover",
+                        }}
+                      />
                     </div>
                     <div className="project-three__content">
                       <div className="project-three__title-box">
                         <p className="project-three__sub-title">
-                          {project.subtitle}
+                          {project.shortDescription}
                         </p>
                         <h3 className="project-three__title">
                           <Link href={`/portfolio/${project.slug}`}>
@@ -69,7 +84,7 @@ const Project = () => {
                         </h3>
                       </div>
                       <div className="project-three__arrow">
-                        <a href={project.img} className="img-popup">
+                        <a href={project.image?.url} className="img-popup">
                           <span className="icon-right-arrow"></span>
                         </a>
                       </div>
