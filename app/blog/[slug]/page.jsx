@@ -8,7 +8,7 @@ import { GET_BLOG_BY_SLUG } from "./query";
 import { GET_ALL_BLOGS } from "../query";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
-
+import PageHeader from "../../../components/layout/PageHeader"
 const BlogDetailsPage = () => {
   const { slug } = useParams();
 
@@ -64,37 +64,7 @@ const BlogDetailsPage = () => {
 
   return (
     <>
-      <section className="page-header">
-        <div
-          className="page-header__bg"
-          style={{
-            backgroundImage:
-              "url(/assets/images/backgrounds/page-header-bg.jpg)",
-          }}
-        ></div>
-        <div className="container">
-          <div className="page-header__inner">
-            <h3>{blog.title}</h3>
-            <div className="thm-breadcrumb__inner">
-              <ul className="thm-breadcrumb list-unstyled">
-                <li>
-                  <Link href="/">Home</Link>
-                </li>
-                <li>
-                  <span className="icon-arrow-angle-pointing-to-right"></span>
-                </li>
-                <li>
-                  <Link href="/blog">Blog</Link>
-                </li>
-                <li>
-                  <span className="icon-arrow-angle-pointing-to-right"></span>
-                </li>
-                <li>Blog Details</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHeader title={blog.title} breadcrumb={[{ label: "Home", link: "/" }, { label: "Blog",link:"/blog" },{label:blog.title}]}/>
       <section className="blog-details">
         <div className="container">
           <div className="row">

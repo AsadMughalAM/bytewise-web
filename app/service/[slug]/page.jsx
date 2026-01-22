@@ -8,7 +8,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
 import Image from "next/image";
 import Link from "next/link";
-
+import PageHeader from "../../../components/layout/PageHeader"
 const richTextOptions = {
   renderBlock: {
     [BLOCKS.HEADING_1]: (node, children) => (
@@ -117,38 +117,7 @@ const ServiceDetailPage = () => {
 
   return (
     <>
-      {/* Page Header */}
-      <section className="page-header">
-        <div
-          className="page-header__bg"
-          style={{
-            backgroundImage:
-              "url(/assets/images/backgrounds/page-header-bg.jpg)",
-          }}
-        ></div>
-        <div className="container">
-          <div className="page-header__inner">
-            <h3 className="text-capitalize">{service.title}</h3>
-            <div className="thm-breadcrumb__inner">
-              <ul className="thm-breadcrumb list-unstyled">
-                <li>
-                  <Link href="/">Home</Link>
-                </li>
-                <li>
-                  <span className="icon-arrow-angle-pointing-to-right"></span>
-                </li>
-                <li>
-                  <Link href="/services">Services</Link>
-                </li>
-                <li>
-                  <span className="icon-arrow-angle-pointing-to-right"></span>
-                </li>
-                <li>{service.title}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+     <PageHeader title={service.title} breadcrumb={[{ label: "Home", link: "/" }, { label: "Service",link:"/service"},{label:service.title}]}/>
 
       {/* Service Details */}
       <section className="service-details">

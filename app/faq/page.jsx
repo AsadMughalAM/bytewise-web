@@ -1,33 +1,9 @@
 import Link from "next/link";
-
+import PageHeader from "../../components/layout/PageHeader";
 const Faq = () => {
   return (
     <>
-      <section className="page-header">
-        <div
-          className="page-header__bg"
-          style={{
-            backgroundImage:
-              "url(/assets/images/backgrounds/page-header-bg.jpg)",
-          }}
-        ></div>
-        <div className="container">
-          <div className="page-header__inner">
-            <h3>Our Faq</h3>
-            <div className="thm-breadcrumb__inner">
-              <ul className="thm-breadcrumb list-unstyled">
-                <li>
-                  <Link href="/">Home</Link>
-                </li>
-                <li>
-                  <span className="icon-arrow-angle-pointing-to-right"></span>
-                </li>
-                <li>Our Faq</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHeader title="FAQ" breadcrumb={[{ label: "Home", link: "/" }, { label: "FAQ" }]}/>
       <section className="faq-page">
         <div className="container">
           <div className="row">

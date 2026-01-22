@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import ServicePage_Services from "@/components/sections/ServicePage_Services";
+import PageHeader from "../../components/layout/PageHeader";
 const handleSubmit = (e) => {
   e.preventDefault();
   console.log("Contact form submitted");
@@ -9,33 +10,11 @@ const handleSubmit = (e) => {
 const Service = () => {
   return (
     <>
-      <section className="page-header">
-        <div
-          className="page-header__bg"
-          style={{
-            backgroundImage:
-              "url(/assets/images/backgrounds/page-header-bg.jpg)",
-          }}
-        ></div>
-        <div className="container">
-          <div className="page-header__inner">
-            <h3>Services</h3>
-            <div className="thm-breadcrumb__inner">
-              <ul className="thm-breadcrumb list-unstyled">
-                <li>
-                  <Link href="/">Home</Link>
-                </li>
-                <li>
-                  <span className="icon-arrow-angle-pointing-to-right"></span>
-                </li>
-                <li>Services</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHeader
+        title="Service"
+        breadcrumb={[{ label: "Home", link: "/" }, { label: "Service" }]}
+      />
       <ServicePage_Services />
-
       <section className="process-two">
         <div
           className="process-two__bg-shape"

@@ -8,7 +8,7 @@ import { useParams } from "next/navigation";
 import { GET_ALL_PORTFOLIO } from "../query";
 import { GET_PORTFOLIO_BY_SLUG } from "./query";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-
+import PageHeader from '../../../components/layout/PageHeader'
 const ProjectDetails = () => {
   const { slug } = useParams();
 
@@ -33,37 +33,7 @@ const ProjectDetails = () => {
 
   return (
     <>
-      <section className="page-header">
-        <div
-          className="page-header__bg"
-          style={{
-            backgroundImage:
-              "url(/assets/images/backgrounds/page-header-bg.jpg)",
-          }}
-        ></div>
-        <div className="container">
-          <div className="page-header__inner">
-            <h3>{project.title}</h3>
-            <div className="thm-breadcrumb__inner">
-              <ul className="thm-breadcrumb list-unstyled">
-                <li>
-                  <Link href="/">Home</Link>
-                </li>
-                <li>
-                  <span className="icon-arrow-angle-pointing-to-right"></span>
-                </li>
-                <li>
-                  <Link href="/portfolio">Portfolio</Link>
-                </li>
-                <li>
-                  <span className="icon-arrow-angle-pointing-to-right"></span>
-                </li>
-                <li>{project.title}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
+    <PageHeader title={project.title} breadcrumb={[{ label: "Home", link: "/" }, { label: "Portfolio",link:"/portfolio" },{label:project.title}]}/>
       <section className="project-details">
         <div className="container">
           <div className="row">

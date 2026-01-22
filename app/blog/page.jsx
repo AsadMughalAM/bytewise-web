@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { useQuery } from "@apollo/client/react";
 import { GET_ALL_BLOGS } from "./query";
-
+import PageHeader from "../../components/layout/PageHeader";
 const BlogPage = () => {
   const { data, loading, error } = useQuery(GET_ALL_BLOGS);
   console.log(data);
@@ -28,32 +28,10 @@ const BlogPage = () => {
 
   return (
     <>
-      <section className="page-header">
-        <div
-          className="page-header__bg"
-          style={{
-            backgroundImage:
-              "url(/assets/images/backgrounds/page-header-bg.jpg)",
-          }}
-        ></div>
-        <div className="container">
-          <div className="page-header__inner">
-            <h3>Blog Listing</h3>
-            <div className="thm-breadcrumb__inner">
-              <ul className="thm-breadcrumb list-unstyled">
-                <li>
-                  <Link href="/">Home</Link>
-                </li>
-                <li>
-                  <span className="icon-arrow-angle-pointing-to-right"></span>
-                </li>
-                <li>Blog</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <PageHeader
+        title="Blog"
+        breadcrumb={[{ label: "Home", link: "/" }, { label: "Blog" }]}
+      />
       <section className="blog-page py-5">
         <div className="container">
           <div className="row g-4">
