@@ -7,7 +7,6 @@ import { GET_ALL_BLOGS } from "./query";
 import PageHeader from "../../components/layout/PageHeader";
 const BlogPage = () => {
   const { data, loading, error } = useQuery(GET_ALL_BLOGS);
-  console.log(data);
   if (loading) return <div className="text-center py-5">Loading blogs...</div>;
   if (error)
     return <div className="text-center py-5">Error: {error.message}</div>;
