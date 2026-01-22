@@ -8,89 +8,56 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
 import Image from "next/image";
 import Link from "next/link";
-import PageHeader from "../../../components/layout/PageHeader"
+import PageHeader from "../../../components/layout/PageHeader";
+
 const richTextOptions = {
-  renderBlock: {
-    [BLOCKS.HEADING_1]: (node, children) => (
-      <h1
-        style={{
-          fontSize: "32px",
-          fontWeight: "700",
-          marginBottom: "20px",
-          marginTop: "30px",
-          color: "#1a1a1a",
-        }}
-      >
-        {children}
-      </h1>
-    ),
-    [BLOCKS.HEADING_2]: (node, children) => (
-      <h2
-        style={{
-          fontSize: "26px",
-          fontWeight: "700",
-          marginBottom: "18px",
-          marginTop: "28px",
-          color: "#1a1a1a",
-        }}
-      >
-        {children}
-      </h2>
-    ),
-    [BLOCKS.HEADING_3]: (node, children) => (
-      <h3
-        style={{
-          fontSize: "22px",
-          fontWeight: "600",
-          marginBottom: "16px",
-          marginTop: "24px",
-          color: "#1a1a1a",
-        }}
-      >
-        {children}
-      </h3>
-    ),
+  renderMark: {
+    [MARKS.BOLD]: (text) => <strong className="font-semibold">{text}</strong>,
+    [MARKS.ITALIC]: (text) => <em className="italic">{text}</em>,
+  },
+  renderNode: {
     [BLOCKS.PARAGRAPH]: (node, children) => (
-      <p
-        style={{
-          marginBottom: "20px",
-          lineHeight: "1.8",
-          color: "#555",
-          fontSize: "16px",
-        }}
-      >
+      <p className="text-justify leading-relaxed mb-4 text-gray-800">
         {children}
       </p>
     ),
+    [BLOCKS.HEADING_1]: (node, children) => (
+      <h1 className="text-3xl mt-6 mb-2 font-bold">
+        <strong>{children}</strong>
+      </h1>
+    ),
+    [BLOCKS.HEADING_2]: (node, children) => (
+      <h2 className="text-2xl mt-5 mb-2 font-bold">
+        <strong>{children}</strong>
+      </h2>
+    ),
+    [BLOCKS.HEADING_3]: (node, children) => (
+      <h3 className="text-xl mt-4 mb-2 font-bold">{children}</h3>
+    ),
     [BLOCKS.UL_LIST]: (node, children) => (
-      <ul
-        style={{ paddingLeft: "20px", marginBottom: "20px" }}
-        className="rich-ul"
-      >
-        {children}
-      </ul>
+      <ul className="list-none mb-4 pl-4">{children}</ul> // no bullets
     ),
     [BLOCKS.OL_LIST]: (node, children) => (
-      <ol
-        style={{ paddingLeft: "20px", marginBottom: "20px" }}
-        className="rich-ol"
-      >
-        {children}
-      </ol>
+      <ol className="list-decimal list-inside mb-4 pl-4">{children}</ol>
     ),
     [BLOCKS.LIST_ITEM]: (node, children) => (
-      <li
-        style={{ marginBottom: "10px", lineHeight: "1.6", color: "#555" }}
-        className="rich-li"
-      >
-        {children}
-      </li>
+      <li className="mb-1 text-gray-700 leading-relaxed">{children}</li> // clean li
     ),
-  },
-
-  renderMark: {
-    [MARKS.BOLD]: (text) => <strong style={{ color: "#333" }}>{text}</strong>,
-    [MARKS.ITALIC]: (text) => <em>{text}</em>,
+    [BLOCKS.QUOTE]: (node, children) => (
+      <blockquote className="border-l-4 border-blue-500 pl-4 italic text-gray-600 mb-4">
+        {children}
+      </blockquote>
+    ),
+    [BLOCKS.EMBEDDED_ASSET]: (node) => {
+      const { url, description } = node.data.target.fields.file;
+      return (
+        <img
+          src={url}
+          alt={description || "service image"}
+          className="w-full my-4 rounded-lg shadow-md"
+        />
+      );
+    },
   },
 };
 
@@ -117,7 +84,14 @@ const ServiceDetailPage = () => {
 
   return (
     <>
-     <PageHeader title={service.title} breadcrumb={[{ label: "Home", link: "/" }, { label: "Service",link:"/service"},{label:service.title}]}/>
+      <PageHeader
+        title={service.title}
+        breadcrumb={[
+          { label: "Home", link: "/" },
+          { label: "Service", link: "/service" },
+          { label: service.title },
+        ]}
+      />
 
       {/* Service Details */}
       <section className="service-details">
@@ -156,21 +130,14 @@ const ServiceDetailPage = () => {
                 {/* Main Image */}
                 <div
                   className="service-details__img mb-5"
-                  style={{
-                    borderRadius: "20px",
-                    overflow: "hidden",
-                    boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-                  }}
                 >
                   <Image
                     src={`${service.image.url}`}
                     alt={service.title}
-                    width={800} // Optimized width for content column
-                    height={500} // Standard aspect ratio
-                    className="w-100"
+                    width={1200}
+                    height={500}
+                    className="w-full h-[400px] object-cover rounded-lg shadow-md"
                     priority
-                    quality={100}
-                    style={{ objectFit: "cover", height: "auto" }}
                   />
                 </div>
 
