@@ -28,7 +28,7 @@ const BlogDetailsPage = () => {
     return <div className="text-center py-5">Error: {blogError.message}</div>;
 
   const blog = blogData?.blogCollection?.items[0];
-  const recentPosts = allBlogsData?.blogCollection?.items?.slice(0, 3) || [];
+  const recentPosts = allBlogsData?.blogCollection?.items?.slice(0, 4) || [];
 
   if (!blog) return <div className="text-center py-5">Post not found.</div>;
 
@@ -115,6 +115,7 @@ const BlogDetailsPage = () => {
             </div>
 
             <div className="col-xl-4 col-lg-5">
+                <div className="sticky top-15">
               <div className="sidebar">
                 <div
                   className="sidebar__single sidebar__post wow fadeInUp"
@@ -144,6 +145,7 @@ const BlogDetailsPage = () => {
                     ))}
                   </ul>
                 </div>
+              </div>
               </div>
             </div>
           </div>
